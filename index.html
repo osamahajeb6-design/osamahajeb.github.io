@@ -448,6 +448,33 @@
 
     <!-- المنطق البرمجي للتحكم التفاعلي -->
     <script>
+        // --- نظام الحماية وكلمة المرور ---
+        // يمكنك تغيير كلمة المرور أدناه (Osama2026) إلى أي كلمة تريدها
+        const SECRET_PASSWORD = "Osama2026"; 
+
+        // فحص الرابط وقراءة المعامل السري للوصول
+        const urlParams = new URLSearchParams(window.location.search);
+        const userPassword = urlParams.get('access');
+        
+        // جلب أزرار وعناصر التحكم الخاصة بالتعديل
+        const editModeBtn = document.getElementById('edit-mode-btn');
+        const sizeControlPanel = document.getElementById('size-control-panel');
+        
+        // التحقق من صحة كلمة المرور المدخلة في الرابط عند تحميل الصفحة فوراً
+        window.addEventListener('DOMContentLoaded', () => {
+            const editOnlyElements = document.querySelectorAll('.edit-only');
+            if (userPassword === SECRET_PASSWORD) {
+                // إذا كانت كلمة المرور صحيحة: اظهر الأزرار الأساسية للتعديل
+                if (editModeBtn) editModeBtn.classList.remove('hidden');
+            } else {
+                // للزوار العاديين: اخفِ كل أدوات التعديل تماماً
+                if (editModeBtn) editModeBtn.classList.add('hidden');
+                if (sizeControlPanel) sizeControlPanel.classList.add('hidden');
+                editOnlyElements.forEach(el => el.classList.add('hidden'));
+            }
+        });
+
+        // --- المنطق الأصلي للكود الخاص بك دون أي تعديل في النصوص ---
         let editMode = false;
 
         function toggleSizePanel() {
@@ -602,5 +629,6 @@
         function closeLightbox() { document.getElementById('lightbox').classList.add('hidden'); document.getElementById('lightbox').classList.remove('flex'); }
         function removeElement(btn) { if(confirm('هل أنت متأكد من حذف هذا العنصر؟')) btn.parentElement.remove(); }
     </script>
+
 </body>
 </html>
