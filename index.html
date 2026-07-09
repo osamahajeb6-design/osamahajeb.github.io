@@ -93,10 +93,20 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* حركات التنبيهات الاحترافية */
+        @keyframes toastIn {
+            from { transform: translateY(20px) scale(0.9); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
+        }
+        .animate-toast {
+            animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
     </style>
 </head>
 <body class="data-grid-bg min-h-screen selection:bg-sky-500 selection:text-white pb-24">
 
+    <!-- شريط التنقل العلوي -->
     <nav class="sticky top-0 z-40 backdrop-blur-md border-b" style="background-color: var(--bg-nav); border-color: var(--border-color);">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -121,6 +131,7 @@
         </div>
     </nav>
 
+    <!-- واجهة الترحيب العلوية Hero Section -->
     <section id="hero" class="relative py-20 md:py-28 overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div id="hero-tag" class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 px-3.5 py-1.5 rounded-full text-sky-400 text-xs sm:text-sm font-medium mb-8" data-editable>
@@ -145,6 +156,7 @@
         </div>
     </section>
 
+    <!-- إحصائيات الأداء والمؤشرات الحيوية KPIs -->
     <section class="py-10 border-y bg-slate-950/40" style="border-color: var(--border-color);">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -172,6 +184,7 @@
         </div>
     </section>
 
+    <!-- قسم المشاريع الاستراتيجية وعرض التقارير لوحات التحكم -->
     <section id="projects" class="py-20">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
@@ -190,6 +203,7 @@
         </div>
     </section>
 
+    <!-- قسم المسار المهني والخبرات -->
     <section id="experience" class="py-20 bg-slate-950/10 border-y" style="border-color: var(--border-color);">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 relative">
@@ -202,6 +216,7 @@
         </div>
     </section>
 
+    <!-- قسم الشهادات والمؤهلات الأكاديمية -->
     <section id="certificates" class="py-20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 relative">
@@ -214,6 +229,7 @@
         </div>
     </section>
 
+    <!-- قسم المهارات والقدرات الفنية -->
     <section id="skills" class="py-20 border-t" style="border-color: var(--border-color);">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -226,6 +242,7 @@
         </div>
     </section>
 
+    <!-- قسم التواصل وقنوات الاتصال وبوابات المراسلة -->
     <section id="contact" class="py-20 border-t border-slate-900 bg-slate-950/20">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -263,7 +280,7 @@
                     </div>
                 </div>
                 <div class="lg:col-span-7">
-                    <form class="glass-card p-8 rounded-2xl border border-slate-800 space-y-6" onsubmit="event.preventDefault(); alert('تم محاكاة إرسال الاستمارة بنجاح!');">
+                    <form class="glass-card p-8 rounded-2xl border border-slate-800 space-y-6" onsubmit="event.preventDefault(); showCustomToast('تم إرسال استمارة المراسلة بنجاح واستلام مشروعك!', 'success');">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-xs font-semibold text-slate-400 mb-2 uppercase">الاسم الكامل</label>
@@ -299,12 +316,14 @@
         </div>
     </section>
 
+    <!-- ذيل الصفحة Footer -->
     <footer class="py-8 border-t text-center text-xs" style="background-color: var(--bg-main); border-color: var(--border-color); color: var(--text-muted);">
         <div class="max-w-6xl mx-auto px-4">
             <p>© 2026 جميع الحقوق محفوظة لـ <span id="footer-credit-name" class="font-bold" style="color: var(--text-main);" data-editable>أُسَامَة حَاجِب</span>.</p>
         </div>
     </footer>
 
+    <!-- لوحة تحكم حجم الخطوط العام لقابلية القراءة السهلة -->
     <div id="size-control-panel" class="fixed bottom-24 left-24 z-50 bg-slate-900/95 border border-slate-800 p-4 rounded-2xl w-64 shadow-2xl backdrop-blur-md hidden transition-all">
         <div class="space-y-4">
             <div>
@@ -314,21 +333,26 @@
         </div>
     </div>
 
+    <!-- لوحة اختيار الثيمات الذكية للموقع ومظهر الألوان المستجيب -->
     <div id="theme-selection-panel" class="fixed bottom-24 left-6 z-50 bg-slate-900/95 border border-slate-800 p-3 rounded-2xl w-64 shadow-2xl backdrop-blur-md hidden theme-menu-animate">
         <div class="text-xs font-bold text-slate-400 mb-2 px-1 text-right">اختر مظهر الموقع الاحترافي:</div>
         <div class="grid grid-cols-1 gap-1.5" id="themes-list-container"></div>
     </div>
 
+    <!-- حاوية التنبيهات الاحترافية المنبثقة UX Toasts Container -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 max-w-sm w-full px-4"></div>
+
+    <!-- القائمة العائمة السحرية المتكاملة والذكية لتجربة مستخدم (FAB Center) تفاعلية خرافية -->
     <div class="fixed bottom-6 left-6 z-50 flex flex-col items-center gap-3.5" id="fab-container">
         <div id="fab-options" class="flex flex-col items-center gap-3 transition-all duration-300 transform translate-y-10 opacity-0 pointer-events-none">
           <button onclick="toggleEditMode()" id="edit-mode-btn" class="w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-amber-400 transition-all transform hover:scale-110 active:scale-95 hidden" title="تفعيل / حفظ ومزامنة التعديلات">
-            <i class="fa-solid fa-regular fa-pen-to-square text-base"></i>
+            <i class="fa-solid fa-pen-to-square text-base text-white"></i>
           </button>
           <button onclick="toggleThemePanel(); event.stopPropagation();" class="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-purple-500 transition-all transform hover:scale-110 active:scale-95" title="تغيير مظهر وثيم الموقع">
-            <i class="fa-solid fa-palette text-base"></i>
+            <i class="fa-solid fa-palette text-base text-white"></i>
           </button>
           <button onclick="toggleSizePanel(); event.stopPropagation();" class="w-12 h-12 bg-slate-700 text-slate-200 rounded-full flex items-center justify-center shadow-lg hover:bg-slate-600 transition-all transform hover:scale-110 active:scale-95" title="التحكم بحجم الخطوط">
-            <i class="fa-solid fa-text-height text-base"></i>
+            <i class="fa-solid fa-text-height text-base text-white"></i>
           </button>
         </div>
         <button id="fab-main-btn" class="w-14 h-14 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-blue-500 transition-all duration-300 transform active:scale-90 focus:outline-none ring-4 ring-blue-600/20">
@@ -336,10 +360,12 @@
         </button>
     </div>
 
+    <!-- نافذة لايت بوكس لعرض صور التقارير ولوحات التحكم مكبرة -->
     <div id="lightbox" class="fixed inset-0 z-50 bg-slate-950/95 hidden flex-col items-center justify-center p-4" onclick="closeLightbox()">
         <img id="lightbox-img" src="" class="max-w-full max-h-[85vh] rounded-xl object-contain border border-slate-800 shadow-2xl">
     </div>
 
+    <!-- محرك العمليات الشامل والكامل من الكود الأول لربط Firebase ومزامنة عناصر DOM وتفعيل السلايدر -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -402,6 +428,41 @@
         let localPortfolioData = JSON.parse(JSON.stringify(defaultPortfolioData));
         let editMode = false;
 
+        // دالة عرض شاشات التنبيه الاحترافية (Custom UX Toast Window)
+        window.showCustomToast = function(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            if(!container) return;
+
+            const toast = document.createElement('div');
+            toast.className = "animate-toast flex items-center p-4 rounded-xl border backdrop-blur-md shadow-2xl text-sm font-medium transition-all duration-300";
+            
+            if(type === 'success') {
+                toast.style.backgroundColor = "rgba(16, 185, 129, 0.15)";
+                toast.style.borderColor = "rgba(16, 185, 129, 0.3)";
+                toast.style.color = "#34d399";
+                toast.innerHTML = `<i class="fa-solid fa-circle-check ml-3 text-lg"></i> <span>${message}</span>`;
+            } else if(type === 'info') {
+                toast.style.backgroundColor = "rgba(56, 189, 248, 0.15)";
+                toast.style.borderColor = "rgba(56, 189, 248, 0.3)";
+                toast.style.color = "#38bdf8";
+                toast.innerHTML = `<i class="fa-solid fa-circle-info ml-3 text-lg"></i> <span>${message}</span>`;
+            } else {
+                toast.style.backgroundColor = "rgba(239, 68, 68, 0.15)";
+                toast.style.borderColor = "rgba(239, 68, 68, 0.3)";
+                toast.style.color = "#f87171";
+                toast.innerHTML = `<i class="fa-solid fa-triangle-exclamation ml-3 text-lg"></i> <span>${message}</span>`;
+            }
+
+            container.appendChild(toast);
+
+            // إخفاء وحذف التنبيه تلقائياً بعد 4 ثوانٍ مع حركة تلاشي سلسة
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(-10px)';
+                setTimeout(() => { toast.remove(); }, 300);
+            }, 4000);
+        }
+
         // دالة فتح القائمة العائمة (FAB Open)
         const openFAB = () => {
           fabOptions.classList.remove('translate-y-10', 'opacity-0', 'pointer-events-none');
@@ -411,7 +472,6 @@
           fabMainBtn.classList.add('rotate-180', 'bg-rose-600', 'ring-rose-600/20');
           fabMainBtn.classList.remove('bg-blue-600', 'ring-blue-600/20');
           
-          // حماية إضافية: عند فتح القائمة، نقوم بالتأكد من الرابط السري لإظهار زر التعديل الأصفر أو بقائه مخفياً
           if (userPassword === SECRET_PASSWORD) {
               if (editModeBtn) editModeBtn.classList.remove('hidden');
           } else {
@@ -432,7 +492,6 @@
         };
 
         window.addEventListener('DOMContentLoaded', () => {
-            // فحص محكم لمنع ظهور خيار التعديل نهائياً للمستخدمين العاديين
             if (userPassword === SECRET_PASSWORD) {
                 if (editModeBtn) editModeBtn.classList.remove('hidden');
             } else {
@@ -441,14 +500,12 @@
             renderThemesMenuButtonsHTML();
         });
 
-        // النقر على زر التحكم العائم الرئيسي
         fabMainBtn.addEventListener('click', (e) => {
           e.stopPropagation();
           const isOpen = fabOptions.classList.contains('opacity-100');
           if (isOpen) { closeFAB(); } else { openFAB(); }
         });
 
-        // النقر خارج الـ FAB لإغلاقه تلقائياً لتحسين تجربة المستخدم
         document.addEventListener('click', (e) => {
           if (!fabContainer.contains(e.target)) {
             closeFAB();
@@ -689,6 +746,7 @@
                     localPortfolioData.projects[projIdx].images.push(e.target.result);
                     renderAllProjectsHTML();
                     applyEditVisibility();
+                    showCustomToast('تم إدراج صورة لوحة التحكم بنجاح الحفظ معلق حتى تضغط زر الإنهاء.', 'info');
                 };
                 reader.readAsDataURL(file);
             }
@@ -700,6 +758,7 @@
             localPortfolioData.projects[projIdx].images.splice(imgIdx, 1);
             renderAllProjectsHTML();
             applyEditVisibility();
+            showCustomToast('تم حذف الصورة من السلايدر.', 'info');
         }
 
         window.removeArrayElement = function(key, idx, event) {
@@ -711,6 +770,7 @@
             if(key === 'certificates') renderAllCertificatesHTML();
             if(key === 'skills') renderAllSkillsHTML();
             applyEditVisibility();
+            showCustomToast('تم حذف العنصر محلياً.', 'info');
         }
 
         window.addNewProject = function() {
@@ -741,7 +801,6 @@
             const editables = document.querySelectorAll('[data-editable], .DOM-title, .DOM-company, .DOM-desc, .DOM-date, .DOM-badge, .DOM-name');
             const editOnlyElements = document.querySelectorAll('.edit-only');
             
-            // تحقق حرج: للتأكد من أن وضع التعديل لن يشتغل نهائياً إلا بمطابقة رمز السر
             if (editMode && userPassword === SECRET_PASSWORD) {
                 editables.forEach(el => { 
                     el.setAttribute('contenteditable', 'true'); 
@@ -759,7 +818,7 @@
 
         window.toggleEditMode = function() {
             if (userPassword !== SECRET_PASSWORD) {
-                alert('عذراً، لا تمتلك صلاحية تعديل هذا النظام.');
+                showCustomToast('عذراً، لا تمتلك صلاحية تعديل هذا النظام.', 'error');
                 return;
             }
 
@@ -767,7 +826,7 @@
 
             if (editMode) {
                 applyEditVisibility();
-                alert('وضع التعديل نشط الآن! اضغط على أي نص لتعديله مباشرة ثم اضغط على نفس الزر لحفظ المزامنة.');
+                showCustomToast('وضع التعديل نشط! انقر على النصوص والبيانات لتحديثها مباشرة ثم احفظ.', 'info');
             } else {
                 document.querySelectorAll('[data-editable]').forEach(el => {
                     if (el.id && !el.className.includes('DOM-')) {
@@ -815,9 +874,9 @@
                 applyEditVisibility();
 
                 set(ref(db, 'osamaPortfolioMaster'), localPortfolioData).then(() => {
-                    alert('تم الحفظ والمزامنة اللحظية الشاملة لكافة العناصر والثيم المختار بنجاح! 🎉');
+                    showCustomToast('تم الحفظ والمزامنة اللحظية لكافة البيانات بنجاح! 🎉', 'success');
                 }).catch((error) => {
-                    alert('حدث خطأ أثناء المزامنة: ' + error.message);
+                    showCustomToast('حدث خطأ أثناء المزامنة: ' + error.message, 'error');
                 });
             }
         }
