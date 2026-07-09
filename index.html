@@ -54,7 +54,6 @@
 </head>
 <body class="data-grid-bg text-slate-100 min-h-screen selection:bg-sky-500 selection:text-white">
 
-    <!-- شريط التنقل -->
     <nav class="sticky top-0 z-40 backdrop-blur-md bg-slate-950/80 border-b border-slate-900">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -79,7 +78,6 @@
         </div>
     </nav>
 
-    <!-- واجهة الهيرو -->
     <section id="hero" class="relative py-20 md:py-28 overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div id="hero-tag" class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 px-3.5 py-1.5 rounded-full text-sky-400 text-xs sm:text-sm font-medium mb-8" data-editable>
@@ -107,10 +105,9 @@
         </div>
     </section>
 
-    <!-- شريط الـ KPIs والإنجازات الرقمية -->
     <section class="py-10 border-y border-slate-900 bg-slate-950/40">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="kpi-container">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="glass-card p-6 rounded-2xl text-center relative group">
                     <div class="text-sky-400 text-3xl font-extrabold mb-1" id="kpi-sales" data-editable>1.92M</div>
                     <span id="kpi-sales-lbl" class="text-xs text-sky-400 font-bold block mb-1" data-editable>إجمالي المبيعات ($)</span>
@@ -135,13 +132,12 @@
         </div>
     </section>
 
-    <!-- قسم المشاريع الإستراتيجية -->
     <section id="projects" class="py-20">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
                 <div>
-                    <h2 id="projects-section-title" class="text-3xl font-bold text-white mb-3" data-editable>المشاريع الإستراتيجية وتحليل البيانات</h2>
-                    <p id="projects-section-desc" class="text-slate-400 text-sm sm:text-base" data-editable>نماذج حية للمشاريع التي قمت بإدارتها وهندسة بياناتها بالكامل.</p>
+                    <h2 class="text-3xl font-bold text-white mb-3">المشاريع الإستراتيجية وتحليل البيانات</h2>
+                    <p class="text-slate-400 text-sm sm:text-base">نماذج حية للمشاريع التي قمت بإدارتها وهندسة بياناتها بالكامل.</p>
                 </div>
                 <div class="flex flex-wrap gap-2 items-center">
                     <button onclick="addNewProject()" class="edit-only hidden bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1 transition">
@@ -151,164 +147,55 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="projects-grid">
-                
-                <!-- مشروع 1: Sales Performance Strategy Project -->
-                <div class="glass-card rounded-2xl overflow-hidden flex flex-col group project-item relative" id="project-sales">
-                    <button onclick="removeElement(this)" class="absolute top-4 left-4 z-50 bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-lg">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                    
-                    <div class="relative h-64 sm:h-72 bg-slate-900 overflow-hidden project-slider image-placeholder flex items-center justify-center" data-current-index="0">
-                        <div class="slider-wrapper flex w-full h-full transition-transform duration-500">
-                            <div class="w-full h-full flex flex-col items-center justify-center text-slate-500 no-images-notice">
-                                <i class="fa-regular fa-image text-4xl mb-2"></i>
-                                <span id="project-sales-placeholder-text" class="text-xs" data-editable>لم يتم رفع صور لوحة التحكم لهذا المشروع بعد. شغل وضع التعديل لرفع الصور.</span>
-                            </div>
-                        </div>
-                        <button onclick="prevSlide(this, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-right"></i></button>
-                        <button onclick="nextSlide(this, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-left"></i></button>
-                        <div class="slider-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-30 hidden"></div>
-                        
-                        <span id="project-sales-badge" class="absolute top-4 right-4 bg-sky-500 text-slate-950 text-xs px-3 py-1.5 rounded-lg font-extrabold uppercase project-badge z-20" data-editable>محلل بيانات رئيسي (Lead Data Analyst)</span>
-                        
-                        <!-- غطاء الإضافة للمشروعات الفارغة -->
-                        <div class="absolute inset-0 bg-slate-950/80 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition duration-300 edit-only hidden z-20 upload-overlay">
-                            <label class="cursor-pointer bg-sky-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-2">
-                                <i class="fa-solid fa-cloud-arrow-up"></i> <span id="project-sales-upload-lbl" data-editable>إضافة صورة لوحة التحكم</span>
-                                <input type="file" accept="image/*" class="hidden" onchange="uploadDashboardImage(this)">
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="p-6 flex-grow flex flex-col justify-between">
-                        <div>
-                            <div class="flex justify-between items-center mb-3">
-                                <h3 id="project-sales-title" class="text-xl font-bold text-white group-hover:text-sky-400 transition" data-editable>مشروع إستراتيجية أداء المبيعات</h3>
-                                <span id="project-sales-date" class="text-xs text-slate-500" data-editable>2025 - 2026</span>
-                            </div>
-                            <p id="project-sales-desc" class="text-slate-300 text-sm mb-4 leading-relaxed" data-editable>قمت بدمج وتطهير 6 مجموعات بيانات منفصلة (العملاء، المنتجات، المبيعات، طرق الدفع، العلامات التجارية، والفروع) باستخدام Power Query لضمان سلامة البيانات بنسبة 100%. نفذت عمليات ETL متقدمة في Excel، تضمنت استخدام الأعمدة الشرطية (Conditional Columns) لتصنيف الفواتير، وتقسيم البيانات (Data Splitting) لتحليل النصوص المعقدة، ووظائف التعبئة (Fill functions) لمعالجة الفجوات الهيكلية.</p>
-                        </div>
-                        <div class="bg-slate-950/50 p-4 rounded-xl border border-slate-900 text-xs space-y-1">
-                            <span id="project-sales-result-title" class="font-bold text-sky-400 block" data-editable><i class="fa-solid fa-circle-check"></i> النتائج والرؤى الإستراتيجية:</span>
-                            <p id="project-sales-result-desc" data-editable>تطوير داشبورد Power BI عالي الأثر أظهر إجمالي مبيعات بقيمة 1.92 مليون دولار وصافي أرباح بلغت 224 ألف دولار.</p>
-                        </div>
-                    </div>
                 </div>
-
-                <!-- مشروع 2: Workforce Stability & Retention Analytics -->
-                <div class="glass-card rounded-2xl overflow-hidden flex flex-col group project-item relative" id="project-hr">
-                    <button onclick="removeElement(this)" class="absolute top-4 left-4 z-50 bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-lg">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                    
-                    <div class="relative h-64 sm:h-72 bg-slate-900 overflow-hidden project-slider image-placeholder flex items-center justify-center" data-current-index="0">
-                        <div class="slider-wrapper flex w-full h-full transition-transform duration-500">
-                            <div class="w-full h-full flex flex-col items-center justify-center text-slate-500 no-images-notice">
-                                <i class="fa-regular fa-image text-4xl mb-2"></i>
-                                <span id="project-hr-placeholder-text" class="text-xs" data-editable>لم يتم رفع صور لوحة التحكم لهذا المشروع بعد. شغل وضع التعديل لرفع الصور.</span>
-                            </div>
-                        </div>
-                        <button onclick="prevSlide(this, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-right"></i></button>
-                        <button onclick="nextSlide(this, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-left"></i></button>
-                        <div class="slider-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-30 hidden"></div>
-                        
-                        <span id="project-hr-badge" class="absolute top-4 right-4 bg-emerald-500 text-slate-950 text-xs px-3 py-1.5 rounded-lg font-extrabold uppercase project-badge z-20" data-editable>مشروع بيانات الموارد البشرية (HR Data Project)</span>
-                        
-                        <!-- غطاء الإضافة للمشروعات الفارغة -->
-                        <div class="absolute inset-0 bg-slate-950/80 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition duration-300 edit-only hidden z-20 upload-overlay">
-                            <label class="cursor-pointer bg-emerald-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-2">
-                                <i class="fa-solid fa-cloud-arrow-up"></i> <span id="project-hr-upload-lbl" data-editable>إضافة صورة لوحة التحكم</span>
-                                <input type="file" accept="image/*" class="hidden" onchange="uploadDashboardImage(this)">
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="p-6 flex-grow flex flex-col justify-between">
-                        <div>
-                            <div class="flex justify-between items-center mb-3">
-                                <h3 id="project-hr-title" class="text-xl font-bold text-white group-hover:text-emerald-400 transition" data-editable>تحليلات استقرار القوى العاملة واستبقاء الموظفين</h3>
-                                <span id="project-hr-date" class="text-xs text-slate-500" data-editable>2024 - 2025</span>
-                            </div>
-                            <p id="project-hr-desc" class="text-slate-300 text-sm mb-4 leading-relaxed" data-editable>أجريت تحليلاً شاملاً لمعدلات التسرب والاقصاء الوظيفي لقوة عامة قوامها 800 موظف (665 موظف نشط، و135 حالة ترك عمل) بالاعتماد على لغة Python وبرنامج Excel.</p>
-                        </div>
-                        <div class="bg-slate-950/50 p-4 rounded-xl border border-slate-900 text-xs">
-                            <span id="project-hr-result-title" class="font-bold text-emerald-400 block mb-1" data-editable><i class="fa-solid fa-circle-check"></i> المخرجات:</span>
-                            <span id="project-hr-result-desc" data-editable>تقديم خارطة طريق استباقية وتطوير حزمة متكاملة من لوحات التحكم (Power BI Visualizations) لقيادة الموارد البشرية.</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
         </div>
     </section>
 
-    <!-- قسم المسار المهني والخبرات -->
     <section id="experience" class="py-20 bg-slate-950/30 border-y border-slate-900/60">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 relative">
-                <h2 id="experience-section-title" class="text-3xl font-bold text-white mb-4" data-editable>المسار المهني والخبرات الوظيفية (EXPERIENCE)</h2>
+                <h2 class="text-3xl font-bold text-white mb-4">المسار المهني والخبرات الوظيفية (EXPERIENCE)</h2>
                 <button onclick="addNewTimelineItem()" class="edit-only hidden mt-4 mx-auto bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1 transition">
                     <i class="fa-solid fa-plus"></i> إضافة خبرة جديدة
                 </button>
             </div>
-            
             <div class="relative border-r-2 border-slate-800 mr-4 md:mr-8 space-y-12" id="timeline-container">
-                <div class="relative pr-8 group timeline-item">
-                    <button onclick="removeElement(this)" class="absolute top-0 left-0 bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-md">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                    <span class="absolute right-0 top-1.5 -mr-[11px] w-5 h-5 rounded-full bg-sky-500 border-4 border-slate-950"></span>
-                    <span id="exp-sky-date" class="text-xs text-sky-400 font-bold block mb-1" style="font-family: 'Plus Jakarta Sans'" data-editable>2022 – 2025</span>
-                    <h3 id="exp-sky-title" class="text-xl font-bold text-white" data-editable>أخصائي نظم تكنولوجيا المعلومات (IT Systems Specialist)</h3>
-                    <p id="exp-sky-company" class="text-sky-400/80 text-xs sm:text-sm mb-3" data-editable>سكاي سوفت عمران (Sky Soft Amran)</p>
-                    <p id="exp-sky-desc" class="text-slate-300 text-sm leading-relaxed" data-editable>صممت وأشرفت على الدورة الكاملة لتنفيذ وصيانة الأنظمة التقنية الحيوية لدعم البنية التحتية للمؤسسة.</p>
                 </div>
-            </div>
         </div>
     </section>
 
-    <!-- قسم الشهادات والمؤهلات الأكاديمية -->
     <section id="certificates" class="py-20 bg-slate-950/10">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 relative">
-                <h2 id="certificates-section-title" class="text-3xl font-bold text-white mb-4" data-editable>الشهادات والمؤهلات الأكاديمية (Certificates)</h2>
+                <h2 class="text-3xl font-bold text-white mb-4">الشهادات والمؤهلات الأكاديمية (Certificates)</h2>
+                <button onclick="addNewCertificate()" class="edit-only hidden mt-4 mx-auto bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1 transition">
+                    <i class="fa-solid fa-plus"></i> إضافة شهادة جديدة
+                </button>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="certificates-container">
-                <div class="glass-card p-6 rounded-2xl relative group">
-                    <span id="cert-un-date" class="text-xs text-purple-400 font-bold block mb-1" data-editable>2023</span>
-                    <h3 id="cert-un-title" class="text-lg font-bold text-white mb-2" data-editable>بكالوريوس نظم معلومات حاسوبية</h3>
-                    <p id="cert-un-company" class="text-xs text-slate-400 mb-2" data-editable>جامعة عمران (Amran University)</p>
-                    <p id="cert-un-desc" class="text-xs text-slate-300" data-editable>التخصص: نظم معلومات حاسوبية | التقدير: ممتاز</p>
                 </div>
-            </div>
         </div>
     </section>
 
-    <!-- قسم المهارات والقدرات -->
     <section id="skills" class="py-20 border-t border-slate-900/60">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 id="skills-section-title" class="text-3xl font-bold text-white mb-4" data-editable>المهارات والقدرات (Skills & abilities)</h2>
+                <h2 class="text-3xl font-bold text-white mb-4">المهارات والقدرات (Skills & abilities)</h2>
                 <button onclick="addNewSkill()" class="edit-only hidden mt-4 mx-auto bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1 transition">
                     <i class="fa-solid fa-plus"></i> إضافة مهارة جديدة
                 </button>
             </div>
             <div class="flex flex-wrap justify-center gap-3" id="skills-container">
-                <span class="bg-slate-900 border border-slate-800 text-sky-400 px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 group relative">
-                    <i class="fa-brands fa-python"></i> <span id="skill-py-text" data-editable>Python (SciPy / Pandas)</span>
-                    <button onclick="removeElement(this)" class="absolute -top-2 -left-2 bg-red-600 text-white w-4 h-4 rounded-full flex items-center justify-center text-[8px] opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-sm">✕</button>
-                </span>
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- قسم تفاصيل التواصل -->
     <section id="contact" class="py-20 border-t border-slate-900 bg-slate-950/20">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                 <div class="lg:col-span-5">
-                    <h2 id="contact-section-title" class="text-3xl font-bold text-white mb-6" data-editable>دعنا نناقش مشروعك القادم!</h2>
-                    <p id="contact-section-desc" class="text-slate-400 text-sm sm:text-base mb-8 leading-relaxed" data-editable>تواصل معي مباشرة لمناقشة كيفية تحويل مجموعات البيانات المعقدة إلى استبصارات وقرارات ذكية مدفوعة بالأرقام.</p>
+                    <h2 class="text-3xl font-bold text-white mb-6">دعنا نناقش مشروعك القادم!</h2>
+                    <p class="text-slate-400 text-sm sm:text-base mb-8 leading-relaxed">تواصل معي مباشرة لمناقشة كيفية تحويل مجموعات البيانات المعقدة إلى استبصارات وقرارات ذكية مدفوعة بالأرقام.</p>
                 </div>
                 <div class="lg:col-span-7">
                     <form class="glass-card p-8 rounded-2xl border border-slate-800 space-y-6" onsubmit="event.preventDefault(); alert('تم محاكاة إرسال الاستمارة بنجاح!');">
@@ -319,14 +206,12 @@
         </div>
     </section>
 
-    <!-- التذييل -->
     <footer class="bg-slate-950 py-8 border-t border-slate-900 text-center text-xs text-slate-500">
         <div class="max-w-6xl mx-auto px-4">
             <p>© 2026 جميع الحقوق محفوظة لـ <span id="footer-credit-name" class="text-slate-300 font-bold" data-editable>أُسَامَة حَاجِب</span>.</p>
         </div>
     </footer>
 
-    <!-- لوحة التحكم العائمة بالأحجام -->
     <div id="size-control-panel" class="fixed bottom-24 right-6 z-50 bg-slate-900/95 border border-slate-800 p-4 rounded-2xl w-64 shadow-2xl backdrop-blur-md hidden transition-all">
         <div class="space-y-4">
             <div>
@@ -336,7 +221,6 @@
         </div>
     </div>
 
-    <!-- أزرار التحكم الطافية -->
     <div class="fixed bottom-6 left-6 z-50 flex gap-2">
         <button onclick="toggleSizePanel()" class="bg-slate-900 border border-slate-800 text-slate-300 px-4 py-3 rounded-full font-bold shadow-xl hover:bg-slate-800 transition flex items-center justify-center">
             <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
@@ -346,7 +230,6 @@
         </button>
     </div>
 
-    <!-- الـ Lightbox -->
     <div id="lightbox" class="fixed inset-0 z-50 bg-slate-950/95 hidden flex-col items-center justify-center p-4" onclick="closeLightbox()">
         <img id="lightbox-img" src="" class="max-w-full max-h-[85vh] rounded-xl object-contain border border-slate-800 shadow-2xl">
     </div>
@@ -376,7 +259,7 @@
         const editModeBtn = document.getElementById('edit-mode-btn');
         const sizeControlPanel = document.getElementById('size-control-panel');
         
-        let projectImagesData = {};
+        let localPortfolioData = { texts: {}, projects: [], timeline: [], certificates: [], skills: [] };
         let editMode = false;
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -385,7 +268,6 @@
             } else {
                 if (editModeBtn) editModeBtn.classList.add('hidden');
                 if (sizeControlPanel) sizeControlPanel.classList.add('hidden');
-                document.querySelectorAll('.edit-only').forEach(el => el.classList.add('hidden'));
             }
         });
 
@@ -396,94 +278,232 @@
             document.documentElement.style.setProperty('--global-text-scale', val + 'px');
         }
 
-        onValue(ref(db, 'portfolioTexts'), (snapshot) => {
+        // الاستماع الفوري والمزامنة الحية لكل الأقسام مجتمعة
+        onValue(ref(db, 'osamaPortfolioMaster'), (snapshot) => {
             const data = snapshot.val();
             if (data) {
-                Object.keys(data).forEach(id => {
+                localPortfolioData = data;
+                if (!localPortfolioData.projects) localPortfolioData.projects = [];
+                if (!localPortfolioData.timeline) localPortfolioData.timeline = [];
+                if (!localPortfolioData.certificates) localPortfolioData.certificates = [];
+                if (!localPortfolioData.skills) localPortfolioData.skills = [];
+                if (!localPortfolioData.texts) localPortfolioData.texts = {};
+
+                // 1. تحديث النصوص الثابتة
+                Object.keys(localPortfolioData.texts).forEach(id => {
                     const el = document.getElementById(id);
-                    if (el) el.innerText = data[id];
+                    if (el) el.innerText = localPortfolioData.texts[id];
                 });
+
+                // 2. بناء المشاريع
+                renderAllProjectsHTML();
+
+                // 3. بناء الخبرات
+                renderAllTimelineHTML();
+
+                // 4. بناء الشهادات
+                renderAllCertificatesHTML();
+
+                // 5. بناء المهارات
+                renderAllSkillsHTML();
+
+                applyEditVisibility();
             }
         });
 
-        onValue(ref(db, 'projectImages'), (snapshot) => {
-            const data = snapshot.val();
-            if (data) {
-                projectImagesData = data;
-                Object.keys(data).forEach(projectId => {
-                    const projectCard = document.getElementById(projectId);
-                    if (projectCard) {
-                        renderProjectImages(projectCard, data[projectId]);
-                    }
-                });
-            }
-        });
+        function renderAllProjectsHTML() {
+            const grid = document.getElementById('projects-grid');
+            grid.innerHTML = '';
+            localPortfolioData.projects.forEach((proj, idx) => {
+                const card = document.createElement('div');
+                card.className = "glass-card rounded-2xl overflow-hidden flex flex-col group project-item relative";
+                card.innerHTML = `
+                    <button onclick="removeArrayElement('projects', ${idx}, event)" class="absolute top-4 left-4 z-50 bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-lg">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                    <div class="relative h-64 sm:h-72 bg-slate-900 overflow-hidden project-slider flex items-center justify-center" data-current-index="0">
+                        <div class="slider-wrapper flex w-full h-full transition-transform duration-500"></div>
+                        <button onclick="prevSlide(this, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-right"></i></button>
+                        <button onclick="nextSlide(this, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div class="slider-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-30 hidden"></div>
+                        <span class="absolute top-4 right-4 bg-sky-500 text-slate-950 text-xs px-3 py-1.5 rounded-lg font-extrabold uppercase z-20 DOM-badge" data-editable>${proj.badge || 'محلل بيانات'}</span>
+                        <div class="absolute inset-0 bg-slate-950/80 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition duration-300 edit-only hidden z-20 upload-overlay">
+                            <label class="cursor-pointer bg-sky-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-2">
+                                <i class="fa-solid fa-cloud-arrow-up"></i> <span>إضافة صورة لوحة التحكم</span>
+                                <input type="file" accept="image/*" class="hidden" onchange="uploadProjectImageInline(${idx}, this)">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-xl font-bold text-white group-hover:text-sky-400 transition DOM-title" data-editable>${proj.title || ''}</h3>
+                                <span class="text-xs text-slate-500 DOM-date" data-editable>${proj.date || ''}</span>
+                            </div>
+                            <p class="text-slate-300 text-sm mb-4 leading-relaxed DOM-desc" data-editable>${proj.desc || ''}</p>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+                renderProjectImagesInsideSlider(card.querySelector('.project-slider'), proj.images || [], idx);
+            });
+        }
 
-        // رندر مخصص صارم يضمن عزل الأحداث وحذف الطبقات المتداخلة تماماً
-        function renderProjectImages(projectCard, imagesArray) {
-            const slider = projectCard.querySelector('.project-slider');
+        function renderProjectImagesInsideSlider(slider, imagesArray, projIdx) {
             const wrapper = slider.querySelector('.slider-wrapper');
             const dotsContainer = slider.querySelector('.slider-dots');
             const prevBtn = slider.querySelector('button[onclick*="prevSlide"]');
             const nextBtn = slider.querySelector('button[onclick*="nextSlide"]');
             const uploadOverlay = slider.querySelector('.upload-overlay');
             
-            if (!imagesArray || imagesArray.length === 0) {
+            if (imagesArray.length === 0) {
                 slider.classList.add('image-placeholder');
                 wrapper.innerHTML = `
-                    <div class="w-full h-full flex flex-col items-center justify-center text-slate-500 no-images-notice">
+                    <div class="w-full h-full flex flex-col items-center justify-center text-slate-500">
                         <i class="fa-regular fa-image text-4xl mb-2"></i>
-                        <span class="text-xs">لم يتم رفع صور لهذا المشروع بعد. فعل وضع التعديل للإضافة.</span>
+                        <span class="text-xs">لم يتم رفع صور لوحة التحكم. شغل وضع التعديل للإضافة.</span>
                     </div>`;
-                if(dotsContainer) dotsContainer.classList.add('hidden');
-                if(prevBtn) prevBtn.classList.add('hidden');
-                if(nextBtn) nextBtn.classList.add('hidden');
-                if(uploadOverlay) uploadOverlay.style.display = 'flex'; // إظهار الغطاء الرئيسي فقط عند الفراغ التام
-                
-                const oldFloat = slider.querySelector('.floating-add-container');
-                if(oldFloat) oldFloat.remove();
+                if(uploadOverlay) uploadOverlay.style.display = 'flex';
                 return;
             }
 
             slider.classList.remove('image-placeholder');
-            wrapper.innerHTML = '';
-            if(dotsContainer) { dotsContainer.innerHTML = ''; dotsContainer.classList.remove('hidden'); }
+            if(uploadOverlay) uploadOverlay.style.display = 'none';
+            if(dotsContainer) dotsContainer.classList.remove('hidden');
             if(prevBtn) prevBtn.classList.remove('hidden');
             if(nextBtn) nextBtn.classList.remove('hidden');
-            
-            // حل نهائي: إخفاء الغطاء الأوسط بالكامل لمنع أي تداخل أحداث في الموبايل
-            if(uploadOverlay) uploadOverlay.style.display = 'none'; 
 
-            imagesArray.forEach((imgSrc, index) => {
+            imagesArray.forEach((imgSrc, imgIdx) => {
                 const imgContainer = document.createElement('div');
                 imgContainer.className = "relative w-full h-full flex-shrink-0 project-img-container";
                 imgContainer.innerHTML = `
                     <img src="${imgSrc}" class="w-full h-full object-cover cursor-pointer" onclick="openLightbox(this.src)">
-                    <button onclick="removeProjectImage('${projectCard.id}', ${index}, event)" class="absolute top-4 right-4 bg-red-600 hover:bg-red-700 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold z-50 shadow-2xl ${editMode ? '' : 'hidden'} edit-only" style="pointer-events: auto;">✕</button>
+                    <button onclick="removeInlineImage(${projIdx}, ${imgIdx}, event)" class="absolute top-4 right-4 bg-red-600 hover:bg-red-700 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold z-50 shadow-2xl edit-only hidden">✕</button>
                 `;
                 wrapper.appendChild(imgContainer);
 
                 const dot = document.createElement('span');
-                dot.className = index === 0 ? "slider-dot w-5 h-2 rounded-full bg-sky-400 transition-all" : "slider-dot w-2 h-2 rounded-full bg-white/40 transition-all";
+                dot.className = imgIdx === 0 ? "slider-dot w-5 h-2 rounded-full bg-sky-400 transition-all" : "slider-dot w-2 h-2 rounded-full bg-white/40 transition-all";
                 if(dotsContainer) dotsContainer.appendChild(dot);
             });
 
-            // الزر العائم الصغير في الأسفل للإضافة المستمرة دون تداخل أحداث
-            const oldFloat = slider.querySelector('.floating-add-container');
-            if(oldFloat) oldFloat.remove();
-
             const floatingAddBtn = document.createElement('div');
-            floatingAddBtn.className = `absolute bottom-3 right-3 z-40 floating-add-container edit-only ${editMode ? '' : 'hidden'}`;
+            floatingAddBtn.className = `absolute bottom-3 right-3 z-40 edit-only hidden`;
             floatingAddBtn.innerHTML = `
                 <label class="cursor-pointer bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-3 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1 shadow-xl">
                     <i class="fa-solid fa-plus"></i> <span>إضافة صوره</span>
-                    <input type="file" accept="image/*" class="hidden" onchange="uploadDashboardImage(this)">
+                    <input type="file" accept="image/*" class="hidden" onchange="uploadProjectImageInline(${projIdx}, this)">
                 </label>
             `;
             slider.appendChild(floatingAddBtn);
+        }
 
-            slider.setAttribute('data-current-index', 0);
-            wrapper.style.transform = `translateX(0%)`;
+        function renderAllTimelineHTML() {
+            const container = document.getElementById('timeline-container');
+            container.innerHTML = '';
+            localPortfolioData.timeline.forEach((item, idx) => {
+                const div = document.createElement('div');
+                div.className = "relative pr-8 group timeline-item";
+                div.innerHTML = `
+                    <button onclick="removeArrayElement('timeline', ${idx}, event)" class="absolute top-0 left-0 bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-md">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                    <span class="absolute right-0 top-1.5 -mr-[11px] w-5 h-5 rounded-full bg-sky-500 border-4 border-slate-950"></span>
+                    <span class="text-xs text-sky-400 font-bold block mb-1 DOM-date" data-editable>${item.date || ''}</span>
+                    <h3 class="text-xl font-bold text-white DOM-title" data-editable>${item.title || ''}</h3>
+                    <p class="text-sky-400/80 text-xs sm:text-sm mb-3 DOM-company" data-editable>${item.company || ''}</p>
+                    <p class="text-slate-300 text-sm leading-relaxed DOM-desc" data-editable>${item.desc || ''}</p>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function renderAllCertificatesHTML() {
+            const container = document.getElementById('certificates-container');
+            container.innerHTML = '';
+            localPortfolioData.certificates.forEach((cert, idx) => {
+                const div = document.createElement('div');
+                div.className = "glass-card p-6 rounded-2xl relative group";
+                div.innerHTML = `
+                    <button onclick="removeArrayElement('certificates', ${idx}, event)" class="absolute top-3 left-3 bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-[10px] opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-sm">✕</button>
+                    <span class="text-xs text-purple-400 font-bold block mb-1 DOM-date" data-editable>${cert.date || ''}</span>
+                    <h3 class="text-lg font-bold text-white mb-2 DOM-title" data-editable>${cert.title || ''}</h3>
+                    <p class="text-xs text-slate-400 mb-2 DOM-company" data-editable>${cert.company || ''}</p>
+                    <p class="text-xs text-slate-300 DOM-desc" data-editable>${cert.desc || ''}</p>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function renderAllSkillsHTML() {
+            const container = document.getElementById('skills-container');
+            container.innerHTML = '';
+            localPortfolioData.skills.forEach((skill, idx) => {
+                const span = document.createElement('span');
+                span.className = "bg-slate-900 border border-slate-800 text-sky-400 px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 group relative";
+                span.innerHTML = `
+                    <i class="fa-solid fa-code"></i> <span class="DOM-name" data-editable>${skill.name || ''}</span>
+                    <button onclick="removeArrayElement('skills', ${idx}, event)" class="absolute -top-2 -left-2 bg-red-600 text-white w-4 h-4 rounded-full flex items-center justify-center text-[8px] opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-sm">✕</button>
+                `;
+                container.appendChild(span);
+            });
+        }
+
+        window.uploadProjectImageInline = function(projIdx, inputElement) {
+            const file = inputElement.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if (!localPortfolioData.projects[projIdx].images) localPortfolioData.projects[projIdx].images = [];
+                    localPortfolioData.projects[projIdx].images.push(e.target.result);
+                    renderAllProjectsHTML();
+                    applyEditVisibility();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        window.removeInlineImage = function(projIdx, imgIdx, event) {
+            event.preventDefault();
+            event.stopPropagation();
+            localPortfolioData.projects[projIdx].images.splice(imgIdx, 1);
+            renderAllProjectsHTML();
+            applyEditVisibility();
+        }
+
+        window.removeArrayElement = function(key, idx, event) {
+            event.preventDefault();
+            event.stopPropagation();
+            localPortfolioData[key].splice(idx, 1);
+            if(key === 'projects') renderAllProjectsHTML();
+            if(key === 'timeline') renderAllTimelineHTML();
+            if(key === 'certificates') renderAllCertificatesHTML();
+            if(key === 'skills') renderAllSkillsHTML();
+            applyEditVisibility();
+        }
+
+        window.addNewProject = function() {
+            localPortfolioData.projects.push({ title: 'اسم المشروع الجديد', badge: 'الدور الوظيفي', date: '2026', desc: 'تفاصيل وشرح المشروع...', images: [] });
+            renderAllProjectsHTML();
+            applyEditVisibility();
+        }
+
+        window.addNewTimelineItem = function() {
+            localPortfolioData.timeline.push({ title: 'المسمى الوظيفي', company: 'اسم الشركة', date: '2026', desc: 'المهام والإنجازات...' });
+            renderAllTimelineHTML();
+            applyEditVisibility();
+        }
+
+        window.addNewCertificate = function() {
+            localPortfolioData.certificates.push({ title: 'الشهادة الأكاديمية الجديدة', company: 'الجهة المانحة', date: '2026', desc: 'التفاصيل والتقدير...' });
+            renderAllCertificatesHTML();
+            applyEditVisibility();
+        }
+
+        window.addNewSkill = function() {
+            localPortfolioData.skills.push({ name: 'مهارة تكنولوجية جديدة' });
+            renderAllSkillsHTML();
+            applyEditVisibility();
         }
 
         function applyEditVisibility() {
@@ -503,127 +523,64 @@
             const btnText = document.getElementById('edit-btn-text');
 
             if (editMode) {
-                btnText.innerText = "حفظ التغييرات الحالية";
+                btnText.innerText = "حفظ ومزامنة التغييرات";
                 applyEditVisibility();
             } else {
                 btnText.innerText = "تفعيل وضع التعديل";
-                applyEditVisibility();
 
-                let textsToSave = {};
+                // حفظ النصوص الثابتة أولاً
                 document.querySelectorAll('[data-editable]').forEach(el => {
-                    if (el.id) { textsToSave[el.id] = el.innerText; }
+                    if (el.id && !el.className.includes('DOM-')) {
+                        localPortfolioData.texts[el.id] = el.innerText;
+                    }
                 });
 
-                Promise.all([
-                    set(ref(db, 'portfolioTexts'), textsToSave),
-                    set(ref(db, 'projectImages'), projectImagesData)
-                ]).then(() => {
-                    alert('تمت المزامنة وحفظ كافة النصوص والصور اللحظية بنجاح! 🎉');
+                // قراءة وحفظ الكروت المضافة ديناميكياً لتحديث نصوصها المعدلة قبل الرفع
+                const projectCards = document.querySelectorAll('#projects-grid .project-item');
+                projectCards.forEach((card, idx) => {
+                    if(localPortfolioData.projects[idx]) {
+                        localPortfolioData.projects[idx].title = card.querySelector('.DOM-title').innerText;
+                        localPortfolioData.projects[idx].badge = card.querySelector('.DOM-badge').innerText;
+                        localPortfolioData.projects[idx].date = card.querySelector('.DOM-date').innerText;
+                        localPortfolioData.projects[idx].desc = card.querySelector('.DOM-desc').innerText;
+                    }
+                });
+
+                const timelineItems = document.querySelectorAll('#timeline-container .timeline-item');
+                timelineItems.forEach((item, idx) => {
+                    if(localPortfolioData.timeline[idx]) {
+                        localPortfolioData.timeline[idx].title = item.querySelector('.DOM-title').innerText;
+                        localPortfolioData.timeline[idx].company = item.querySelector('.DOM-company').innerText;
+                        localPortfolioData.timeline[idx].date = item.querySelector('.DOM-date').innerText;
+                        localPortfolioData.timeline[idx].desc = item.querySelector('.DOM-desc').innerText;
+                    }
+                });
+
+                const certItems = document.querySelectorAll('#certificates-container > div');
+                certItems.forEach((item, idx) => {
+                    if(localPortfolioData.certificates[idx]) {
+                        localPortfolioData.certificates[idx].title = item.querySelector('.DOM-title').innerText;
+                        localPortfolioData.certificates[idx].company = item.querySelector('.DOM-company').innerText;
+                        localPortfolioData.certificates[idx].date = item.querySelector('.DOM-date').innerText;
+                        localPortfolioData.certificates[idx].desc = item.querySelector('.DOM-desc').innerText;
+                    }
+                });
+
+                const skillItems = document.querySelectorAll('#skills-container > span');
+                skillItems.forEach((item, idx) => {
+                    if(localPortfolioData.skills[idx]) {
+                        localPortfolioData.skills[idx].name = item.querySelector('.DOM-name').innerText;
+                    }
+                });
+
+                applyEditVisibility();
+
+                // الرفع الموحد إلى قاعدة البيانات لضمان التحديث في اللحظة نفسها
+                set(ref(db, 'osamaPortfolioMaster'), localPortfolioData).then(() => {
+                    alert('تم الحفظ والمزامنة اللحظية الشاملة لكافة العناصر والصور بنجاح! 🎉');
                 }).catch((error) => {
                     alert('حدث خطأ أثناء المزامنة: ' + error.message);
                 });
-            }
-        }
-
-        window.addNewProject = function() {
-            const grid = document.getElementById('projects-grid');
-            const newId = 'project-' + Date.now();
-            const newCard = document.createElement('div');
-            newCard.className = "glass-card rounded-2xl overflow-hidden flex flex-col group project-item relative";
-            newCard.id = newId;
-            newCard.innerHTML = `
-                <button onclick="removeElement(this)" class="absolute top-4 left-4 z-50 bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs shadow-lg edit-only">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-                <div class="relative h-64 sm:h-72 bg-slate-900 overflow-hidden project-slider image-placeholder flex items-center justify-center" data-current-index="0">
-                    <div class="slider-wrapper flex w-full h-full transition-transform duration-500">
-                        <div class="w-full h-full flex flex-col items-center justify-center text-slate-500 no-images-notice">
-                            <i class="fa-regular fa-image text-4xl mb-2"></i>
-                            <span class="text-xs" data-editable id="${newId}-img-placeholder">لم يتم رفع صور لهذا المشروع بعد. فعل وضع التعديل للإضافة.</span>
-                        </div>
-                    </div>
-                    <button onclick="prevSlide(this, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-right"></i></button>
-                    <button onclick="nextSlide(this, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-left"></i></button>
-                    <div class="slider-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-30 hidden"></div>
-                    <span class="absolute top-4 right-4 bg-sky-500 text-slate-950 text-xs px-3 py-1.5 rounded-lg font-extrabold uppercase project-badge z-20" data-editable id="${newId}-badge">مسمى الدور الوظيفي الجديد</span>
-                    <div class="absolute inset-0 bg-slate-950/80 flex flex-col items-center justify-center z-20 edit-only upload-overlay">
-                        <label class="cursor-pointer bg-sky-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-2">
-                            <i class="fa-solid fa-cloud-arrow-up"></i> <span id="${newId}-upload-text">إضافة صورة لوحة التحكم</span>
-                            <input type="file" accept="image/*" class="hidden" onchange="uploadDashboardImage(this)">
-                        </label>
-                    </div>
-                </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold text-white group-hover:text-sky-400 transition" data-editable id="${newId}-title">اسم المشروع الجديد</h3>
-                            <span class="text-xs text-slate-500" data-editable id="${newId}-duration">الفترة الزمنية</span>
-                        </div>
-                        <p class="text-slate-300 text-sm mb-4 leading-relaxed" data-editable id="${newId}-desc">اكتب هنا تفاصيل وشرح المشروع الجديد...</p>
-                    </div>
-                </div>
-            `;
-            grid.appendChild(newCard);
-            applyEditVisibility();
-        }
-
-        window.addNewTimelineItem = function() {
-            const container = document.getElementById('timeline-container');
-            const newId = 'timeline-' + Date.now();
-            const newItem = document.createElement('div');
-            newItem.className = "relative pr-8 group timeline-item";
-            newItem.innerHTML = `
-                <button onclick="removeElement(this)" class="absolute top-0 left-0 bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs shadow-md edit-only">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-                <span class="absolute right-0 top-1.5 -mr-[11px] w-5 h-5 rounded-full bg-sky-500 border-4 border-slate-950"></span>
-                <span class="text-xs text-sky-400 font-bold block mb-1" data-editable id="${newId}-date">الفترة الزمنية</span>
-                <h3 class="text-xl font-bold text-white" data-editable id="${newId}-title">المسمى الوظيفي</h3>
-                <p class="text-sky-400/80 text-xs sm:text-sm mb-3" data-editable id="${newId}-company">اسم الشركة أو الجهة</p>
-                <p class="text-slate-300 text-sm leading-relaxed" data-editable id="${newId}-desc">اكتب هنا تفاصيل المهام والإنجازات المحققة...</p>
-            `;
-            container.appendChild(newItem);
-            applyEditVisibility();
-        }
-
-        window.addNewSkill = function() {
-            const container = document.getElementById('skills-container');
-            const newId = 'skill-' + Date.now();
-            const newSkill = document.createElement('span');
-            newSkill.className = "bg-slate-900 border border-slate-800 text-sky-400 px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 group relative";
-            newSkill.innerHTML = `
-                <i class="fa-solid fa-code"></i> <span data-editable id="${newId}-name">مهارة جديدة</span>
-                <button onclick="removeElement(this)" class="absolute -top-2 -left-2 bg-red-600 text-white w-4 h-4 rounded-full flex items-center justify-center text-[8px] edit-only">✕</button>
-            `;
-            container.appendChild(newSkill);
-            applyEditVisibility();
-        }
-
-        window.uploadDashboardImage = function(inputElement) {
-            const file = inputElement.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const projectCard = inputElement.closest('.project-item');
-                    const projectId = projectCard.id;
-
-                    if (!projectImagesData[projectId]) { projectImagesData[projectId] = []; }
-                    projectImagesData[projectId].push(e.target.result);
-                    renderProjectImages(projectCard, projectImagesData[projectId]);
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // تم إصلاح الدالة هنا قطعياً لمنع انبثاق شاشة الإضافة في الهواتف الذكية
-        window.removeProjectImage = function(projectId, imgIndex, event) {
-            if (event) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            if(projectImagesData[projectId]) {
-                projectImagesData[projectId].splice(imgIndex, 1);
-                renderProjectImages(document.getElementById(projectId), projectImagesData[projectId]);
             }
         }
 
@@ -662,7 +619,6 @@
 
         window.openLightbox = function(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.remove('hidden'); document.getElementById('lightbox').classList.add('flex'); }
         window.closeLightbox = function() { document.getElementById('lightbox').classList.add('hidden'); document.getElementById('lightbox').classList.remove('flex'); }
-        window.removeElement = function(btn) { btn.parentElement.remove(); }
     </script>
 </body>
 </html>
