@@ -14,48 +14,74 @@
         :root {
             --global-text-scale: 1rem;
             --card-width-scale: 100%;
+            
+            /* قيم الثيم الافتراضي (Cyber Midnight) */
+            --bg-main: #0b0f19;
+            --bg-card: rgba(30, 41, 59, 0.45);
+            --bg-nav: rgba(15, 23, 42, 0.8);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --gradient-1: rgba(56, 189, 248, 0.15);
+            --gradient-2: rgba(16, 185, 129, 0.1);
         }
+        
         body {
             font-family: 'Tajawal', 'Plus Jakarta Sans', sans-serif;
-            background-color: #0b0f19;
+            background-color: var(--bg-main);
+            color: var(--text-main);
             scroll-behavior: smooth;
             font-size: var(--global-text-scale);
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
+        
         .data-grid-bg {
             background-image: 
-                radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 45%),
-                linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.98));
+                radial-gradient(circle at 20% 30%, var(--gradient-1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, var(--gradient-2) 0%, transparent 45%);
         }
+        
         .glass-card {
-            background: rgba(30, 41, 59, 0.45);
+            background: var(--bg-card);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-color);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             width: var(--card-width-scale);
             max-width: 100%;
             margin: 0 auto;
         }
+        
         .glass-card:hover {
             border-color: rgba(56, 189, 248, 0.4);
             box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.2);
             transform: translateY(-4px);
         }
+        
         .edit-active {
             outline: 2px dashed #38bdf8 !important;
             outline-offset: 4px;
             background: rgba(56, 189, 248, 0.08) !important;
         }
+        
         .image-placeholder {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             border: 2px dashed rgba(56, 189, 248, 0.2);
         }
+
+        /* تحسينات الأنيميشن لقائمة الثيمات */
+        .theme-menu-animate {
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
-<body class="data-grid-bg text-slate-100 min-h-screen selection:bg-sky-500 selection:text-white">
+<body class="data-grid-bg min-h-screen selection:bg-sky-500 selection:text-white">
 
     <!-- شريط التنقل -->
-    <nav class="sticky top-0 z-40 backdrop-blur-md bg-slate-950/80 border-b border-slate-900">
+    <nav class="sticky top-0 z-40 backdrop-blur-md border-b" style="background-color: var(--bg-nav); border-color: var(--border-color);">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex items-center gap-3">
@@ -64,15 +90,15 @@
                     </div>
                     <div>
                         <span id="nav-name" class="text-lg font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400 block" data-editable>أُسَامَة حَاجِب</span>
-                        <span id="nav-title" class="text-[10px] text-slate-400 uppercase tracking-widest block" style="font-family: 'Plus Jakarta Sans'" data-editable>Data Analyst & BI Specialist</span>
+                        <span id="nav-title" class="text-[10px] uppercase tracking-widest block" style="font-family: 'Plus Jakarta Sans'; color: var(--text-muted);" data-editable>Data Analyst & BI Specialist</span>
                     </div>
                 </div>
                 <div class="hidden md:flex items-center space-x-reverse space-x-8 text-sm font-medium">
                     <a href="#hero" class="text-sky-400 hover:text-white transition">الرئيسية</a>
-                    <a href="#projects" class="text-slate-300 hover:text-sky-400 transition">المشاريع الإستراتيجية</a>
-                    <a href="#experience" class="text-slate-300 hover:text-sky-400 transition">الخبرة المهنية</a>
-                    <a href="#certificates" class="text-slate-300 hover:text-sky-400 transition">الشهادات الأكاديمية</a>
-                    <a href="#skills" class="text-slate-300 hover:text-sky-400 transition">المهارات</a>
+                    <a href="#projects" class="hover:text-sky-400 transition">المشاريع الإستراتيجية</a>
+                    <a href="#experience" class="hover:text-sky-400 transition">الخبرة المهنية</a>
+                    <a href="#certificates" class="hover:text-sky-400 transition">الشهادات الأكاديمية</a>
+                    <a href="#skills" class="hover:text-sky-400 transition">المهارات</a>
                     <a href="#contact" class="bg-sky-600/20 hover:bg-sky-600/40 text-sky-300 border border-sky-500/30 px-4 py-2 rounded-xl transition">تواصل معي</a>
                 </div>
             </div>
@@ -87,12 +113,12 @@
                 أخصائي نظم معلومات معتمد ومحلل بيانات محترف
             </div>
             
-            <h1 class="text-4xl sm:text-6xl font-extrabold text-white mb-6 leading-tight tracking-tight">
+            <h1 class="text-4xl sm:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
                 أهلاً بك، أنا <span id="hero-name" class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-teal-400 to-emerald-400" data-editable>أُسَامَة حَاجِب</span>
             </h1>
-            <h2 id="hero-subtitle" class="text-xl sm:text-2xl text-slate-300 font-medium mb-6" data-editable>محلل بيانات وأخصائي ذكاء الأعمال (Data Analyst & BI Specialist)</h2>
+            <h2 id="hero-subtitle" class="text-xl sm:text-2xl font-medium mb-6" style="color: var(--text-main);" data-editable>محلل بيانات وأخصائي ذكاء الأعمال (Data Analyst & BI Specialist)</h2>
             
-            <p id="hero-desc" class="max-w-3xl mx-auto text-base sm:text-lg text-slate-400 mb-10 leading-relaxed" data-editable>
+            <p id="hero-desc" class="max-w-3xl mx-auto text-base sm:text-lg mb-10 leading-relaxed" style="color: var(--text-muted);" data-editable>
                 خبير في تحويل مجموعات البيانات المعقدة إلى رؤى واستبصارات إستراتيجية قابلة للتطبيق. أمتلك سجل نجاح حافل في استخدام Python وPower BI وExcel لتحسين العمليات التجارية واستدامة القوى العاملة، إلى جانب بناء سير عمل مؤتمت يدعم اتخاذ القرارات الذكية.
             </p>
 
@@ -105,7 +131,7 @@
     </section>
 
     <!-- شريط مقاييس أداء وفهم الموقع (Web Analytics) -->
-    <section class="py-10 border-y border-slate-900 bg-slate-950/40">
+    <section class="py-10 border-y bg-slate-950/40" style="border-color: var(--border-color);">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="glass-card p-6 rounded-2xl text-center relative group">
@@ -137,8 +163,8 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
                 <div>
-                    <h2 class="text-3xl font-bold text-white mb-3">المشاريع الإستراتيجية وتحليل البيانات</h2>
-                    <p class="text-slate-400 text-sm sm:text-base">نماذج حية للمشاريع التي قمت بإدارتها وهندسة بياناتها بالكامل.</p>
+                    <h2 class="text-3xl font-bold mb-3">المشاريع الإستراتيجية وتحليل البيانات</h2>
+                    <p style="color: var(--text-muted);" class="text-sm sm:text-base">نماذج حية للمشاريع التي قمت بإدارتها وهندسة بياناتها بالكامل.</p>
                 </div>
                 <div>
                     <button onclick="addNewProject()" class="edit-only hidden bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1 transition">
@@ -154,25 +180,25 @@
     </section>
 
     <!-- قسم المسار المهني والخبرات -->
-    <section id="experience" class="py-20 bg-slate-950/30 border-y border-slate-900/60">
+    <section id="experience" class="py-20 bg-slate-950/10 border-y" style="border-color: var(--border-color);">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 relative">
-                <h2 class="text-3xl font-bold text-white mb-4">المسار المهني والخبرات الوظيفية (EXPERIENCE)</h2>
+                <h2 class="text-3xl font-bold mb-4">المسار المهني والخبرات الوظيفية (EXPERIENCE)</h2>
                 <button onclick="addNewTimelineItem()" class="edit-only hidden mt-4 mx-auto bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1 transition">
                     <i class="fa-solid fa-plus"></i> إضافة خبرة جديدة
                 </button>
             </div>
-            <div class="relative border-r-2 border-slate-800 mr-4 md:mr-8 space-y-12" id="timeline-container">
+            <div class="relative border-r-2 mr-4 md:mr-8 space-y-12" id="timeline-container" style="border-color: var(--border-color);">
                 <!-- توليد الخبرات ديناميكياً -->
             </div>
         </div>
     </section>
 
     <!-- قسم الشهادات والمؤهلات الأكاديمية -->
-    <section id="certificates" class="py-20 bg-slate-950/10">
+    <section id="certificates" class="py-20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 relative">
-                <h2 class="text-3xl font-bold text-white mb-4">الشهادات والمؤهلات الأكاديمية (Certificates)</h2>
+                <h2 class="text-3xl font-bold mb-4">الشهادات والمؤهلات الأكاديمية (Certificates)</h2>
                 <button onclick="addNewCertificate()" class="edit-only hidden mt-4 mx-auto bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1 transition">
                     <i class="fa-solid fa-plus"></i> إضافة شهادة جديدة
                 </button>
@@ -184,10 +210,10 @@
     </section>
 
     <!-- قسم المهارات والقدرات -->
-    <section id="skills" class="py-20 border-t border-slate-900/60">
+    <section id="skills" class="py-20 border-t" style="border-color: var(--border-color);">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-white mb-4">المهارات والقدرات (Skills & abilities)</h2>
+                <h2 class="text-3xl font-bold mb-4">المهارات والقدرات (Skills & abilities)</h2>
                 <button onclick="addNewSkill()" class="edit-only hidden mt-4 mx-auto bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1 transition">
                     <i class="fa-solid fa-plus"></i> إضافة مهارة جديدة
                 </button>
@@ -199,15 +225,15 @@
     </section>
 
     <!-- قسم تفاصيل التواصل -->
-    <section id="contact" class="py-20 border-t border-slate-900 bg-slate-950/20">
+    <section id="contact" class="py-20 border-t" style="border-color: var(--border-color);">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                 <div class="lg:col-span-5">
-                    <h2 class="text-3xl font-bold text-white mb-6">دعنا نناقش مشروعك القادم!</h2>
-                    <p class="text-slate-400 text-sm sm:text-base mb-8 leading-relaxed">تواصل معي مباشرة لمناقشة كيفية تحويل مجموعات البيانات المعقدة إلى استبصارات وقرارات ذكية مدفوعة بالأرقام.</p>
+                    <h2 class="text-3xl font-bold mb-6">دعنا نناقش مشروعك القادم!</h2>
+                    <p style="color: var(--text-muted);" class="text-sm sm:text-base mb-8 leading-relaxed">تواصل معي مباشرة لمناقشة كيفية تحويل مجموعات البيانات المعقدة إلى استبصارات وقرارات ذكية مدفوعة بالأرقام.</p>
                 </div>
                 <div class="lg:col-span-7">
-                    <form class="glass-card p-8 rounded-2xl border border-slate-800 space-y-6" onsubmit="event.preventDefault(); alert('تم الإرسال بنجاح!');">
+                    <form class="glass-card p-8 rounded-2xl space-y-6" onsubmit="event.preventDefault(); alert('تم الإرسال بنجاح!');">
                         <button id="form-submit-btn" type="submit" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-4 rounded-xl shadow-lg shadow-sky-500/10 transition duration-300">إرسال الرسالة <i class="fa-solid fa-paper-plane mr-2"></i></button>
                     </form>
                 </div>
@@ -216,14 +242,14 @@
     </section>
 
     <!-- التذييل -->
-    <footer class="bg-slate-950 py-8 border-t border-slate-900 text-center text-xs text-slate-500">
+    <footer class="py-8 border-t text-center text-xs" style="background-color: var(--bg-main); border-color: var(--border-color); color: var(--text-muted);">
         <div class="max-w-6xl mx-auto px-4">
-            <p>© 2026 جميع الحقوق محفوظة لـ <span id="footer-credit-name" class="text-slate-300 font-bold" data-editable>أُسَامَة حَاجِب</span>.</p>
+            <p>© 2026 جميع الحقوق محفوظة لـ <span id="footer-credit-name" class="font-bold" style="color: var(--text-main);" data-editable>أُسَامَة حَاجِب</span>.</p>
         </div>
     </footer>
 
     <!-- لوحة التحكم العائمة بالأحجام -->
-    <div id="size-control-panel" class="fixed bottom-24 right-6 z-50 bg-slate-900/95 border border-slate-800 p-4 rounded-2xl w-64 shadow-2xl backdrop-blur-md hidden transition-all">
+    <div id="size-control-panel" class="fixed bottom-24 left-24 z-50 bg-slate-900/95 border border-slate-800 p-4 rounded-2xl w-64 shadow-2xl backdrop-blur-md hidden transition-all">
         <div class="space-y-4">
             <div>
                 <label class="block text-[11px] text-slate-400 mb-1">حجم الخطوط العام</label>
@@ -232,11 +258,25 @@
         </div>
     </div>
 
-    <!-- أزرار التحكم الطافية -->
+    <!-- نافذة الثيمات العائمة الاحترافية -->
+    <div id="theme-selection-panel" class="fixed bottom-24 left-6 z-50 bg-slate-900/95 border border-slate-800 p-3 rounded-2xl w-64 shadow-2xl backdrop-blur-md hidden theme-menu-animate">
+        <div class="text-xs font-bold text-slate-400 mb-2 px-1 text-right">اختر مظهر الموقع الاحترافي:</div>
+        <div class="grid grid-cols-1 gap-1.5" id="themes-list-container">
+            <!-- سيتم توليد أزرار الثيمات ذكياً عبر الـ JS -->
+        </div>
+    </div>
+
+    <!-- أزرار التحكم الطافية أسفل اليسار -->
     <div class="fixed bottom-6 left-6 z-50 flex gap-2">
-        <button onclick="toggleSizePanel()" class="bg-slate-900 border border-slate-800 text-slate-300 px-4 py-3 rounded-full font-bold shadow-xl hover:bg-slate-800 transition flex items-center justify-center">
-            <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+        <!-- زر تبديل الثيمات -->
+        <button onclick="toggleThemePanel()" class="bg-slate-900 border border-slate-800 text-sky-400 w-12 h-12 rounded-full font-bold shadow-xl hover:bg-slate-800 transition flex items-center justify-center" title="تغيير مظهر وثيم الموقع">
+            <i class="fa-solid fa-palette text-lg"></i>
         </button>
+        <!-- زر التحكم بحجم الخط -->
+        <button onclick="toggleSizePanel()" class="bg-slate-900 border border-slate-800 text-slate-300 w-12 h-12 rounded-full font-bold shadow-xl hover:bg-slate-800 transition flex items-center justify-center" title="التحكم بحجم الخطوط">
+            <i class="fa-solid fa-text-height"></i>
+        </button>
+        <!-- زر وضع التعديل الرئيسي -->
         <button onclick="toggleEditMode()" id="edit-mode-btn" class="bg-gradient-to-tr from-sky-500 to-indigo-600 text-slate-950 px-5 py-3 rounded-full font-bold shadow-xl shadow-sky-500/20 hover:scale-105 transition flex items-center gap-2">
             <i class="fa-solid fa-pen-nib"></i> <span id="edit-btn-text">تفعيل وضع التعديل</span>
         </button>
@@ -271,62 +311,35 @@
         
         const editModeBtn = document.getElementById('edit-mode-btn');
         const sizeControlPanel = document.getElementById('size-control-panel');
+        const themeSelectionPanel = document.getElementById('theme-selection-panel');
         
+        // مصفوفة الثيمات الاحترافية الجاهزة UX المتكاملة
+        const siteThemes = {
+            cyber_midnight: { name: "الليل السيبراني (الافتراضي)", main: "#0b0f19", card: "rgba(30, 41, 59, 0.45)", nav: "rgba(15, 23, 42, 0.8)", border: "rgba(255, 255, 255, 0.08)", text: "#f8fafc", muted: "#94a3b8", g1: "rgba(56, 189, 248, 0.15)", g2: "rgba(16, 185, 129, 0.1)" },
+            oceanic_abyss: { name: "أزرق المحيط العميق", main: "#031424", card: "rgba(12, 34, 56, 0.5)", nav: "rgba(3, 20, 36, 0.85)", border: "rgba(56, 189, 248, 0.12)", text: "#f1f5f9", muted: "#7dd3fc", g1: "rgba(14, 165, 233, 0.2)", g2: "rgba(20, 184, 166, 0.15)" },
+            emerald_forest: { name: "الغابة الزمردية الداكنة", main: "#061411", card: "rgba(15, 37, 32, 0.5)", nav: "rgba(6, 20, 17, 0.85)", border: "rgba(52, 211, 153, 0.12)", text: "#f0fdf4", muted: "#a7f3d0", g1: "rgba(16, 185, 129, 0.2)", g2: "rgba(234, 179, 8, 0.1)" },
+            neon_cyberpunk: { name: "شروق النيون المثير", main: "#0f051d", card: "rgba(30, 11, 54, 0.45)", nav: "rgba(15, 5, 29, 0.85)", border: "rgba(236, 72, 153, 0.15)", text: "#fae8ff", muted: "#f472b6", g1: "rgba(168, 85, 247, 0.25)", g2: "rgba(236, 72, 153, 0.15)" },
+            pro_charcoal: { name: "الرمادي الاحترافي الكلاسيكي", main: "#1c1c1c", card: "rgba(44, 44, 44, 0.5)", nav: "rgba(28, 28, 28, 0.9)", border: "rgba(255, 255, 255, 0.1)", text: "#ffffff", muted: "#b3b3b3", g1: "rgba(255, 255, 255, 0.05)", g2: "rgba(255, 255, 255, 0.02)" },
+            pure_light: { name: "المظهر الفاتح النقي", main: "#f8fafc", card: "rgba(255, 255, 255, 0.9)", nav: "rgba(241, 245, 249, 0.85)", border: "rgba(15, 23, 42, 0.08)", text: "#0f172a", muted: "#475569", g1: "rgba(56, 189, 248, 0.1)", g2: "rgba(16, 185, 129, 0.08)" }
+        };
+
         const defaultPortfolioData = {
+            current_theme: "cyber_midnight",
             texts: {},
             projects: [
-                {
-                    title: "مشروع إستراتيجية أداء المبيعات والأرباح",
-                    badge: "أخصائي تحليل بيانات وذكاء الأعمال",
-                    date: "2025 - 2026",
-                    desc: "تم دمج وتنظيف وتصفية 6 مجموعات بيانات مختلفة باستخدام Power Query، وبناء مستودع بيانات ونموذج متكامل مع بطاقات أداء ذكية عبر لغة DAX وعلاقات مرنة لتحسين سرعة التقارير.",
-                    images: []
-                },
-                {
-                    title: "نظام مبيعات وحسابات سوبر ماركت البركة",
-                    badge: "مهندس ومطور نظم معلومات",
-                    date: "2026",
-                    desc: "تطوير وبناء نظام محاسبي ونقاط بيع متكامل (POS) لإدارة الجرد، سندات الصرف والقبض، والمبيعات اليومية مع ترحيل البيانات آلياً إلى مستودع مركزي.",
-                    images: []
-                }
+                { title: "مشروع إستراتيجية أداء المبيعات والأرباح", badge: "أخصائي تحليل بيانات وذكاء الأعمال", date: "2025 - 2026", desc: "تم دمج وتنظيف وتصفية 6 مجموعات بيانات مختلفة باستخدام Power Query، وبناء مستودع بيانات ونموذج متكامل مع بطاقات أداء ذكية عبر لغة DAX وعلاقات مرنة لتحسين سرعة التقارير.", images: [] },
+                { title: "نظام مبيعات وحسابات سوبر ماركت البركة", badge: "مهندس ومطور نظم معلومات", date: "2026", desc: "تطوير وبناء نظام محاسبي ونقاط بيع متكامل (POS) لإدارة الجرد، سندات الصرف والقبض، والمبيعات اليومية مع ترحيل البيانات آلياً إلى مستودع مركزي.", images: [] }
             ],
             timeline: [
-                {
-                    title: "أخصائي ذكاء الأعمال وتحليل البيانات",
-                    company: "سكاي سوفت - عمران",
-                    date: "2025 - الحاضر",
-                    desc: "المسؤول عن إدارة قواعد البيانات، تصميم لوحات تحكم تفاعلية للمبيعات والأرباح، وأتمتة سير العمل الداخلي لدعم اتخاذ القرار الذكي القائم على الأرقام."
-                },
-                {
-                    title: "مطور نظم ومسؤول إدارة المخزون",
-                    company: "سوبر ماركت البركة",
-                    date: "2026",
-                    desc: "تصميم وإدارة نموذج قواعد البيانات الخاص بالمبيعات والمخازن، وبناء واجهات مخصصة لإصدار السندات النقدية والتقارير المالية الدورية."
-                }
+                { title: "أخصائي ذكاء الأعمال وتحليل البيانات", company: "سكاي سوفت - عمران", date: "2025 - الحاضر", desc: "المسؤول عن إدارة قواعد البيانات، تصميم لوحات تحكم تفاعلية للمبيعات والأرباح، وأتمتة سير العمل الداخلي لدعم اتخاذ القرار الذكي القائم على الأرقام." },
+                { title: "مطور نظم ومسؤول إدارة المخزون", company: "سوبر ماركت البركة", date: "2026", desc: "تصميم وإدارة نموذج قواعد البيانات الخاص بالمبيعات والمخازن، وبناء واجهات مخصصة لإصدار السندات النقدية والتقارير المالية الدورية." }
             ],
             certificates: [
-                {
-                    title: "بكالوريوس نظم معلومات حاسوبية (CIS)",
-                    company: "جامعة عمران",
-                    date: "2025",
-                    desc: "التخصص الأكاديمي المعتمد في تحليل النظم وهندسة قواعد البيانات."
-                },
-                {
-                    title: "شهادة تحليل البيانات الاحترافية المعتمدة",
-                    company: "Data Analysis Professional",
-                    date: "2025",
-                    desc: "شهادة متقدمة في تقنيات ذكاء الأعمال (BI)، وتطوير نماذج البيانات المعقدة واستخلاص الاستبصارات الإستراتيجية."
-                }
+                { title: "بكالوريوس نظم معلومات حاسوبية (CIS)", company: "جامعة عمران", date: "2025", desc: "التخصص الأكاديمي المعتمد في تحليل النظم وهندسة قواعد البيانات." },
+                { title: "شهادة تحليل البيانات الاحترافية المعتمدة", company: "Data Analysis Professional", date: "2025", desc: "شهادة متقدمة في تقنيات ذكاء الأعمال (BI)، وتطوير نماذج البيانات المعقدة واستخلاص الاستبصارات الإستراتيجية." }
             ],
             skills: [
-                { name: "Power BI" },
-                { name: "DAX Formulas" },
-                { name: "Power Query" },
-                { name: "Python (pandas)" },
-                { name: "SQL Server" },
-                { name: "PostgreSQL" },
-                { name: "ETL Pipelines" },
-                { name: "Excel Advanced" }
+                { name: "Power BI" }, { name: "DAX Formulas" }, { name: "Power Query" }, { name: "Python (pandas)" }, { name: "SQL Server" }, { name: "PostgreSQL" }, { name: "ETL Pipelines" }, { name: "Excel Advanced" }
             ]
         };
 
@@ -340,13 +353,70 @@
                 if (editModeBtn) editModeBtn.classList.add('hidden');
                 if (sizeControlPanel) sizeControlPanel.classList.add('hidden');
             }
+            renderThemesMenuButtonsHTML();
         });
 
         window.toggleSizePanel = function() {
+            if (themeSelectionPanel) themeSelectionPanel.classList.add('hidden');
             document.getElementById('size-control-panel').classList.toggle('hidden');
         }
+
+        window.toggleThemePanel = function() {
+            if (sizeControlPanel) sizeControlPanel.classList.add('hidden');
+            document.getElementById('theme-selection-panel').classList.toggle('hidden');
+        }
+
         window.changeGlobalTextSize = function(val) {
             document.documentElement.style.setProperty('--global-text-scale', val + 'px');
+        }
+
+        // دالة تطبيق ألوان وتأثيرات الثيم المختار لحظياً وسلساً
+        window.applyThemeStyles = function(themeKey) {
+            const theme = siteThemes[themeKey] || siteThemes.cyber_midnight;
+            const root = document.documentElement;
+            
+            root.style.setProperty('--bg-main', theme.main);
+            root.style.setProperty('--bg-card', theme.card);
+            root.style.setProperty('--bg-nav', theme.nav);
+            root.style.setProperty('--border-color', theme.border);
+            root.style.setProperty('--text-main', theme.text);
+            root.style.setProperty('--text-muted', theme.muted);
+            root.style.setProperty('--gradient-1', theme.g1);
+            root.style.setProperty('--gradient-2', theme.g2);
+            
+            localPortfolioData.current_theme = themeKey;
+
+            // تحديث تصميم البوردر أو الظلال الفرعية لتتوافق مع وضع الفاتح/الداكن تلقائياً
+            if (themeKey === 'pure_light') {
+                document.querySelectorAll('.glass-card').forEach(c => c.style.boxShadow = "0 4px 20px rgba(0,0,0,0.05)");
+            } else {
+                document.querySelectorAll('.glass-card').forEach(c => c.style.boxShadow = "none");
+            }
+        }
+
+        function renderThemesMenuButtonsHTML() {
+            const container = document.getElementById('themes-list-container');
+            if (!container) return;
+            container.innerHTML = '';
+            
+            Object.keys(siteThemes).forEach(key => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-right text-xs font-semibold text-slate-200 hover:text-white p-2 rounded-xl bg-slate-800/50 hover:bg-sky-600/30 border border-slate-700/40 hover:border-sky-500/50 transition flex items-center justify-between";
+                btn.onclick = () => {
+                    applyThemeStyles(key);
+                    // إذا كان المستخدم داخل وضع التعديل، سيقوم بالحفظ التلقائي أو المزامنة عند الضغط على الحفظ الإجمالي
+                };
+                
+                // إضافة مؤشر لوني صغير بجانب اسم الثيم في القائمة للتوضيح البصري UX
+                btn.innerHTML = `
+                    <span>${siteThemes[key].name}</span>
+                    <div class="flex gap-1">
+                        <span class="w-2 h-2 rounded-full" style="background-color: ${siteThemes[key].main}"></span>
+                        <span class="w-2 h-2 rounded-full" style="background-color: ${siteThemes[key].muted}"></span>
+                    </div>
+                `;
+                container.appendChild(btn);
+            });
         }
 
         onValue(ref(db, 'osamaPortfolioMaster'), (snapshot) => {
@@ -359,6 +429,7 @@
                 if (!localPortfolioData.certificates || localPortfolioData.certificates.length === 0) localPortfolioData.certificates = defaultPortfolioData.certificates;
                 if (!localPortfolioData.skills || localPortfolioData.skills.length === 0) localPortfolioData.skills = defaultPortfolioData.skills;
                 if (!localPortfolioData.texts) localPortfolioData.texts = {};
+                if (!localPortfolioData.current_theme) localPortfolioData.current_theme = "cyber_midnight";
             } else {
                 localPortfolioData = JSON.parse(JSON.stringify(defaultPortfolioData));
             }
@@ -368,6 +439,7 @@
                 if (el) el.innerText = localPortfolioData.texts[id];
             });
 
+            applyThemeStyles(localPortfolioData.current_theme);
             renderAllProjectsHTML();
             renderAllTimelineHTML();
             renderAllCertificatesHTML();
@@ -402,10 +474,10 @@
                     <div class="p-6 flex-grow flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-center mb-3">
-                                <h3 class="text-xl font-bold text-white group-hover:text-sky-400 transition DOM-title" data-editable>${proj.title || ''}</h3>
-                                <span class="text-xs text-slate-500 DOM-date" data-editable>${proj.date || ''}</span>
+                                <h3 class="text-xl font-bold group-hover:text-sky-400 transition DOM-title" data-editable>${proj.title || ''}</h3>
+                                <span class="text-xs DOM-date" style="color: var(--text-muted);" data-editable>${proj.date || ''}</span>
                             </div>
-                            <p class="text-slate-300 text-sm mb-4 leading-relaxed DOM-desc" data-editable>${proj.desc || ''}</p>
+                            <p class="text-sm mb-4 leading-relaxed DOM-desc" style="color: var(--text-main);" data-editable>${proj.desc || ''}</p>
                         </div>
                     </div>
                 `;
@@ -474,11 +546,11 @@
                     <button onclick="removeArrayElement('timeline', ${idx}, event)" class="absolute top-0 left-0 bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-md">
                         <i class="fa-solid fa-trash"></i>
                     </button>
-                    <span class="absolute right-0 top-1.5 -mr-[11px] w-5 h-5 rounded-full bg-sky-500 border-4 border-slate-950"></span>
-                    <span class="text-xs text-sky-400 font-bold block mb-1 DOM-date" data-editable>${item.date || ''}</span>
-                    <h3 class="text-xl font-bold text-white DOM-title" data-editable>${item.title || ''}</h3>
-                    <p class="text-sky-400/80 text-xs sm:text-sm mb-3 DOM-company" data-editable>${item.company || ''}</p>
-                    <p class="text-slate-300 text-sm leading-relaxed DOM-desc" data-editable>${item.desc || ''}</p>
+                    <span class="absolute right-0 top-1.5 -mr-[11px] w-5 h-5 rounded-full bg-sky-500 border-4" style="border-color: var(--bg-main);"></span>
+                    <span class="text-xs font-bold block mb-1 DOM-date" style="color: var(--text-muted);" data-editable>${item.date || ''}</span>
+                    <h3 class="text-xl font-bold DOM-title" style="color: var(--text-main);">${item.title || ''}</h3>
+                    <p class="text-xs sm:text-sm mb-3 DOM-company" style="color: var(--text-muted);" data-editable>${item.company || ''}</p>
+                    <p class="text-sm leading-relaxed DOM-desc" style="color: var(--text-main);" data-editable>${item.desc || ''}</p>
                 `;
                 container.appendChild(div);
             });
@@ -493,10 +565,10 @@
                 div.className = "glass-card p-6 rounded-2xl relative group";
                 div.innerHTML = `
                     <button onclick="removeArrayElement('certificates', ${idx}, event)" class="absolute top-3 left-3 bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-[10px] opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-sm">✕</button>
-                    <span class="text-xs text-purple-400 font-bold block mb-1 DOM-date" data-editable>${cert.date || ''}</span>
-                    <h3 class="text-lg font-bold text-white mb-2 DOM-title" data-editable>${cert.title || ''}</h3>
-                    <p class="text-xs text-slate-400 mb-2 DOM-company" data-editable>${cert.company || ''}</p>
-                    <p class="text-xs text-slate-300 DOM-desc" data-editable>${cert.desc || ''}</p>
+                    <span class="text-xs font-bold block mb-1 DOM-date" style="color: var(--text-muted);" data-editable>${cert.date || ''}</span>
+                    <h3 class="text-lg font-bold mb-2 DOM-title" style="color: var(--text-main);" data-editable>${cert.title || ''}</h3>
+                    <p class="text-xs mb-2 DOM-company" style="color: var(--text-muted);" data-editable>${cert.company || ''}</p>
+                    <p class="text-xs DOM-desc" style="color: var(--text-main);" data-editable>${cert.desc || ''}</p>
                 `;
                 container.appendChild(div);
             });
@@ -508,7 +580,9 @@
             container.innerHTML = '';
             localPortfolioData.skills.forEach((skill, idx) => {
                 const span = document.createElement('span');
-                span.className = "bg-slate-900 border border-slate-800 text-sky-400 px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 group relative";
+                span.className = "border text-sky-400 px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 group relative";
+                span.style.backgroundColor = "var(--bg-main)";
+                span.style.borderColor = "var(--border-color)";
                 span.innerHTML = `
                     <i class="fa-solid fa-code"></i> <span class="DOM-name" data-editable>${skill.name || ''}</span>
                     <button onclick="removeArrayElement('skills', ${idx}, event)" class="absolute -top-2 -left-2 bg-red-600 text-white w-4 h-4 rounded-full flex items-center justify-center text-[8px] opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-sm">✕</button>
@@ -642,7 +716,7 @@
                 applyEditVisibility();
 
                 set(ref(db, 'osamaPortfolioMaster'), localPortfolioData).then(() => {
-                    alert('تم الحفظ والمزامنة اللحظية الشاملة لكافة العناصر والصور بنجاح! 🎉');
+                    alert('تم الحفظ والمزامنة اللحظية الشاملة لكافة العناصر والثيم المختار بنجاح! 🎉');
                 }).catch((error) => {
                     alert('حدث خطأ أثناء المزامنة: ' + error.message);
                 });
