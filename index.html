@@ -9,52 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-      <style>
-        :root {
-            --global-text-scale: 1rem;
-            --card-width-scale: 100%;
-        }
-        body {
-            font-family: 'Tajawal', 'Plus Jakarta Sans', sans-serif;
-            background-color: #0b0f19;
-            scroll-behavior: smooth;
-            font-size: var(--global-text-scale);
-        }
-        .data-grid-bg {
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 45%),
-                linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.98));
-        }
-                  /* تنسيق قسم التواصل الجديد */
-        .contact-section-container { max-width: 750px; margin: 40px auto; padding: 25px; border-radius: 16px; border: 1px solid var(--border-color); background: var(--bg-card); }
-        .social-links-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 20px; }
-        .social-item { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 30px; font-size: 0.85rem; color: white !important; transition: 0.3s; text-decoration: none; }
-        .social-item:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-        .email { background: #ea4335; } .whatsapp { background: #25d366; } .telegram { background: #0088cc; }
-        .x-twitter { background: #000; } .linkedin { background: #0077b5; } .instagram { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); }
-        .snapchat { background: #fffc00; color: #000 !important; } .facebook { background: #1877f2; } .youtube { background: #ff0000; }
-        .glass-card {
-            background: rgba(30, 41, 59, 0.45);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            width: var(--card-width-scale);
-            max-width: 100%;
-            margin: 0 auto;
-        }
-        .glass-card:hover {
-            border-color: rgba(56, 189, 248, 0.4);
-            box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.2);
-            transform: translateY(-4px);
-        }
-        .edit-active {
-            outline: 2px dashed #38bdf8 !important;
-            outline-offset: 4px;
-            background: rgba(56, 189, 248, 0.08) !important;
-        }
-          
-    </style>
     <style>
         :root {
             --global-text-scale: 1rem;
@@ -85,6 +39,15 @@
                 radial-gradient(circle at 20% 30%, var(--gradient-1) 0%, transparent 40%),
                 radial-gradient(circle at 80% 70%, var(--gradient-2) 0%, transparent 45%);
         }
+                  
+        /* تنسيق قسم التواصل */
+        .contact-section-container { max-width: 750px; margin: 40px auto; padding: 25px; border-radius: 16px; border: 1px solid var(--border-color); background: var(--bg-card); }
+        .social-links-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 20px; }
+        .social-item { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 30px; font-size: 0.85rem; color: white !important; transition: 0.3s; text-decoration: none; }
+        .social-item:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .email { background: #ea4335; } .whatsapp { background: #25d366; } .telegram { background: #0088cc; }
+        .x-twitter { background: #000; } .linkedin { background: #0077b5; } .instagram { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); }
+        .snapchat { background: #fffc00; color: #000 !important; } .facebook { background: #1877f2; } .youtube { background: #ff0000; }
         
         .glass-card {
             background: var(--bg-card);
@@ -113,7 +76,6 @@
             border: 2px dashed rgba(56, 189, 248, 0.2);
         }
 
-        /* تحسينات الأنيميشن لقائمة الثيمات */
         .theme-menu-animate {
             animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -125,7 +87,6 @@
 </head>
 <body class="data-grid-bg min-h-screen selection:bg-sky-500 selection:text-white">
 
-    <!-- شريط التنقل -->
     <nav class="sticky top-0 z-40 backdrop-blur-md border-b" style="background-color: var(--bg-nav); border-color: var(--border-color);">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -150,7 +111,6 @@
         </div>
     </nav>
 
-    <!-- واجهة الهيرو -->
     <section id="hero" class="relative py-20 md:py-28 overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div id="hero-tag" class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 px-3.5 py-1.5 rounded-full text-sky-400 text-xs sm:text-sm font-medium mb-8" data-editable>
@@ -161,7 +121,7 @@
             <h1 class="text-4xl sm:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
                 أهلاً بك، أنا <span id="hero-name" class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-teal-400 to-emerald-400" data-editable>أُسَامَة حَاجِب</span>
             </h1>
-            <h2 id="hero-subtitle" class="text-xl sm:text-2xl font-medium mb-6" style="color: var(--text-main);" data-editable>محلل بيانات وأخصائي ذكاء الأعمال (Data Analyst & BI Specialist)</h2>
+            <p id="hero-subtitle" class="text-xl sm:text-2xl font-medium mb-6" style="color: var(--text-main);" data-editable>محلل بيانات وأخصائي ذكاء الأعمال (Data Analyst & BI Specialist)</p>
             
             <p id="hero-desc" class="max-w-3xl mx-auto text-base sm:text-lg mb-10 leading-relaxed" style="color: var(--text-muted);" data-editable>
                 خبير في تحويل مجموعات البيانات المعقدة إلى رؤى واستبصارات إستراتيجية قابلة للتطبيق. أمتلك سجل نجاح حافل في استخدام Python وPower BI وExcel لتحسين العمليات التجارية واستدامة القوى العاملة، إلى جانب بناء سير عمل مؤتمت يدعم اتخاذ القرارات الذكية.
@@ -175,7 +135,6 @@
         </div>
     </section>
 
-    <!-- شريط مقاييس أداء وفهم الموقع (Web Analytics) -->
     <section class="py-10 border-y bg-slate-950/40" style="border-color: var(--border-color);">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -203,7 +162,6 @@
         </div>
     </section>
 
-    <!-- قسم المشاريع الإستراتيجية -->
     <section id="projects" class="py-20">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
@@ -219,12 +177,10 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="projects-grid">
-                <!-- توليد المشاريع ديناميكياً -->
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- قسم المسار المهني والخبرات -->
     <section id="experience" class="py-20 bg-slate-950/10 border-y" style="border-color: var(--border-color);">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 relative">
@@ -234,12 +190,10 @@
                 </button>
             </div>
             <div class="relative border-r-2 mr-4 md:mr-8 space-y-12" id="timeline-container" style="border-color: var(--border-color);">
-                <!-- توليد الخبرات ديناميكياً -->
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- قسم الشهادات والمؤهلات الأكاديمية -->
     <section id="certificates" class="py-20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 relative">
@@ -249,12 +203,10 @@
                 </button>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="certificates-container">
-                <!-- توليد الشهادات ديناميكياً -->
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- قسم المهارات والقدرات -->
     <section id="skills" class="py-20 border-t" style="border-color: var(--border-color);">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -264,12 +216,10 @@
                 </button>
             </div>
             <div class="flex flex-wrap justify-center gap-3" id="skills-container">
-                <!-- توليد المهارات ديناميكياً -->
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- قسم اتصل بنا وتفاصيل التواصل -->
     <section id="contact" class="py-20 border-t border-slate-900 bg-slate-950/20">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -283,7 +233,7 @@
                             </div>
                             <div>
                                 <span class="text-[10px] text-slate-500 block uppercase font-bold">البريد الإلكتروني</span>
-                             <a id="contact-email" href="mailto:osamahajeb6@gmail.com" class="text-slate-200 hover:text-sky-400 transition font-medium" data-editable>osamahajeb6@gmail.com</a>
+                                <a id="contact-email" href="mailto:osamahajeb6@gmail.com" class="text-slate-200 hover:text-sky-400 transition font-medium" data-editable>osamahajeb6@gmail.com</a>
                             </div>
                         </div>
                         <div class="flex items-center gap-4">
@@ -292,7 +242,7 @@
                             </div>
                             <div>
                                 <span class="text-[10px] text-slate-500 block uppercase font-bold">رقم الهاتف / واتساب</span>
-                              <a id="contact-whatsapp" href="https://wa.me/967775326898" target="_blank" class="text-slate-200 hover:text-emerald-400 transition font-medium" dir="ltr" data-editable>+967 775326898</a>
+                                <a id="contact-whatsapp" href="https://wa.me/967775326898" target="_blank" class="text-slate-200 hover:text-emerald-400 transition font-medium" dir="ltr" data-editable>+967 775326898</a>
                             </div>
                         </div>
                         <div class="flex items-center gap-4">
@@ -327,34 +277,28 @@
                             <textarea required rows="4" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-sky-500 transition" placeholder="اشرح قليلاً عن حجم ومصادر بياناتك..."></textarea>
                         </div>
                         <button type="submit" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-4 rounded-xl shadow-lg shadow-sky-500/10 transition duration-300">إرسال الرسالة <i class="fa-solid fa-paper-plane mr-2"></i></button>
-                           <!-- أزرار التواصل -->
-        <h3 class="text-center text-sm text-slate-400 mb-4">أو عبر المنصات الاجتماعية</h3>
-        <div class="social-links-grid">
-         <!--   <a href="mailto:osamahajeb6@gmail.com" class="social-item email"><i class="fas fa-envelope"></i><span>الايميل</span></a>-->
-           <!-- <a href="https://wa.me/967775326898" class="social-item whatsapp"><i class="fab fa-whatsapp"></i><span>واتساب</span></a>-->
-            <a href="https://t.me/your_username" class="social-item telegram"><i class="fab fa-telegram-plane"></i><span>تلجرام</span></a>
-            <a href="https://x.com/your_username" class="social-item x-twitter"><i class="fab fa-x-twitter"></i><span>منصة X</span></a>
-          <!--  <a href="https://linkedin.com/in/your_username" class="social-item linkedin"><i class="fab fa-linkedin-in"></i><span>لينكد إن</span></a>-->
-            <a href="https://instagram.com/your_username" class="social-item instagram"><i class="fab fa-instagram"></i><span>إنستغرام</span></a>
-            <a href="https://www.snapchat.com/add/your_username" class="social-item snapchat"><i class="fab fa-snapchat-ghost"></i><span>سناب</span></a>
-            <a href="https://facebook.com/your_username" class="social-item facebook"><i class="fab fa-facebook-f"></i><span>فيسبوك</span></a>
-            <a href="https://youtube.com/@your_channel" class="social-item youtube"><i class="fab fa-youtube"></i><span>يوتيوب</span></a>
-        </div>
-    </section>
+                        
+                        <h3 class="text-center text-sm text-slate-400 mb-4 pt-4 border-t border-slate-800">أو عبر المنصات الاجتماعية</h3>
+                        <div class="social-links-grid">
+                            <a href="https://t.me/your_username" class="social-item telegram"><i class="fab fa-telegram-plane"></i><span>تلجرام</span></a>
+                            <a href="https://x.com/your_username" class="social-item x-twitter"><i class="fab fa-x-twitter"></i><span>منصة X</span></a>
+                            <a href="https://instagram.com/your_username" class="social-item instagram"><i class="fab fa-instagram"></i><span>إنستغرام</span></a>
+                            <a href="https://www.snapchat.com/add/your_username" class="social-item snapchat"><i class="fab fa-snapchat-ghost"></i><span>سناب</span></a>
+                            <a href="https://facebook.com/your_username" class="social-item facebook"><i class="fab fa-facebook-f"></i><span>فيسبوك</span></a>
+                            <a href="https://youtube.com/@your_channel" class="social-item youtube"><i class="fab fa-youtube"></i><span>يوتيوب</span></a>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- التذييل -->
     <footer class="py-8 border-t text-center text-xs" style="background-color: var(--bg-main); border-color: var(--border-color); color: var(--text-muted);">
         <div class="max-w-6xl mx-auto px-4">
             <p>© 2026 جميع الحقوق محفوظة لـ <span id="footer-credit-name" class="font-bold" style="color: var(--text-main);" data-editable>أُسَامَة حَاجِب</span>.</p>
         </div>
     </footer>
 
-    <!-- لوحة التحكم العائمة بالأحجام -->
     <div id="size-control-panel" class="fixed bottom-24 left-24 z-50 bg-slate-900/95 border border-slate-800 p-4 rounded-2xl w-64 shadow-2xl backdrop-blur-md hidden transition-all">
         <div class="space-y-4">
             <div>
@@ -364,32 +308,24 @@
         </div>
     </div>
 
-
-    <!-- نافذة الثيمات العائمة الاحترافية -->
     <div id="theme-selection-panel" class="fixed bottom-24 left-6 z-50 bg-slate-900/95 border border-slate-800 p-3 rounded-2xl w-64 shadow-2xl backdrop-blur-md hidden theme-menu-animate">
         <div class="text-xs font-bold text-slate-400 mb-2 px-1 text-right">اختر مظهر الموقع الاحترافي:</div>
         <div class="grid grid-cols-1 gap-1.5" id="themes-list-container">
-            <!-- سيتم توليد أزرار الثيمات ذكياً عبر الـ JS -->
-        </div>
+            </div>
     </div>
 
-    <!-- أزرار التحكم الطافية أسفل اليسار -->
     <div class="fixed bottom-6 left-6 z-50 flex gap-2">
-        <!-- زر تبديل الثيمات -->
         <button onclick="toggleThemePanel()" class="bg-slate-900 border border-slate-800 text-sky-400 w-12 h-12 rounded-full font-bold shadow-xl hover:bg-slate-800 transition flex items-center justify-center" title="تغيير مظهر وثيم الموقع">
             <i class="fa-solid fa-palette text-lg"></i>
         </button>
-        <!-- زر التحكم بحجم الخط -->
         <button onclick="toggleSizePanel()" class="bg-slate-900 border border-slate-800 text-slate-300 w-12 h-12 rounded-full font-bold shadow-xl hover:bg-slate-800 transition flex items-center justify-center" title="التحكم بحجم الخطوط">
             <i class="fa-solid fa-text-height"></i>
         </button>
-        <!-- زر وضع التعديل الرئيسي -->
         <button onclick="toggleEditMode()" id="edit-mode-btn" class="bg-gradient-to-tr from-sky-500 to-indigo-600 text-slate-950 px-5 py-3 rounded-full font-bold shadow-xl shadow-sky-500/20 hover:scale-105 transition flex items-center gap-2">
             <i class="fa-solid fa-pen-nib"></i> <span id="edit-btn-text">تفعيل وضع التعديل</span>
         </button>
     </div>
 
-    <!-- الـ Lightbox -->
     <div id="lightbox" class="fixed inset-0 z-50 bg-slate-950/95 hidden flex-col items-center justify-center p-4" onclick="closeLightbox()">
         <img id="lightbox-img" src="" class="max-w-full max-h-[85vh] rounded-xl object-contain border border-slate-800 shadow-2xl">
     </div>
@@ -420,7 +356,6 @@
         const sizeControlPanel = document.getElementById('size-control-panel');
         const themeSelectionPanel = document.getElementById('theme-selection-panel');
         
-        // مصفوفة الثيمات الاحترافية الجاهزة UX المتكاملة
         const siteThemes = {
             cyber_midnight: { name: "الليل السيبراني (الافتراضي)", main: "#0b0f19", card: "rgba(30, 41, 59, 0.45)", nav: "rgba(15, 23, 42, 0.8)", border: "rgba(255, 255, 255, 0.08)", text: "#f8fafc", muted: "#94a3b8", g1: "rgba(56, 189, 248, 0.15)", g2: "rgba(16, 185, 129, 0.1)" },
             oceanic_abyss: { name: "أزرق المحيط العميق", main: "#031424", card: "rgba(12, 34, 56, 0.5)", nav: "rgba(3, 20, 36, 0.85)", border: "rgba(56, 189, 248, 0.12)", text: "#f1f5f9", muted: "#7dd3fc", g1: "rgba(14, 165, 233, 0.2)", g2: "rgba(20, 184, 166, 0.15)" },
@@ -477,7 +412,6 @@
             document.documentElement.style.setProperty('--global-text-scale', val + 'px');
         }
 
-        // دالة تطبيق ألوان وتأثيرات الثيم المختار لحظياً وسلساً
         window.applyThemeStyles = function(themeKey) {
             const theme = siteThemes[themeKey] || siteThemes.cyber_midnight;
             const root = document.documentElement;
@@ -493,7 +427,6 @@
             
             localPortfolioData.current_theme = themeKey;
 
-            // تحديث تصميم البوردر أو الظلال الفرعية لتتوافق مع وضع الفاتح/الداكن تلقائياً
             if (themeKey === 'pure_light') {
                 document.querySelectorAll('.glass-card').forEach(c => c.style.boxShadow = "0 4px 20px rgba(0,0,0,0.05)");
             } else {
@@ -509,12 +442,8 @@
             Object.keys(siteThemes).forEach(key => {
                 const btn = document.createElement('button');
                 btn.className = "w-full text-right text-xs font-semibold text-slate-200 hover:text-white p-2 rounded-xl bg-slate-800/50 hover:bg-sky-600/30 border border-slate-700/40 hover:border-sky-500/50 transition flex items-center justify-between";
-                btn.onclick = () => {
-                    applyThemeStyles(key);
-                    // إذا كان المستخدم داخل وضع التعديل، سيقوم بالحفظ التلقائي أو المزامنة عند الضغط على الحفظ الإجمالي
-                };
+                btn.onclick = () => { applyThemeStyles(key); };
                 
-                // إضافة مؤشر لوني صغير بجانب اسم الثيم في القائمة للتوضيح البصري UX
                 btn.innerHTML = `
                     <span>${siteThemes[key].name}</span>
                     <div class="flex gap-1">
@@ -655,7 +584,7 @@
                     </button>
                     <span class="absolute right-0 top-1.5 -mr-[11px] w-5 h-5 rounded-full bg-sky-500 border-4" style="border-color: var(--bg-main);"></span>
                     <span class="text-xs font-bold block mb-1 DOM-date" style="color: var(--text-muted);" data-editable>${item.date || ''}</span>
-                    <h3 class="text-xl font-bold DOM-title" style="color: var(--text-main);">${item.title || ''}</h3>
+                    <h3 class="text-xl font-bold DOM-title" style="color: var(--text-main);" data-editable>${item.title || ''}</h3>
                     <p class="text-xs sm:text-sm mb-3 DOM-company" style="color: var(--text-muted);" data-editable>${item.company || ''}</p>
                     <p class="text-sm leading-relaxed DOM-desc" style="color: var(--text-main);" data-editable>${item.desc || ''}</p>
                 `;
@@ -738,7 +667,7 @@
         }
 
         window.addNewTimelineItem = function() {
-            localPortfolioData.timeline.push({ title: 'المسمى الوظيفي', company: 'اسم الشركة', date: '2026', desc: 'المهام والإنجازات...' });
+            localPortfolioData.timeline.push({ title: 'المسمى الوظيفي الجديد', company: 'اسم الشركة', date: '2026', desc: 'المهام والإنجازات...' });
             renderAllTimelineHTML();
             applyEditVisibility();
         }
@@ -756,13 +685,20 @@
         }
 
         function applyEditVisibility() {
-            const editables = document.querySelectorAll('[data-editable]');
+            const editables = document.querySelectorAll('[data-editable], .DOM-title, .DOM-company, .DOM-desc, .DOM-date, .DOM-badge, .DOM-name');
             const editOnlyElements = document.querySelectorAll('.edit-only');
+            
             if (editMode) {
-                editables.forEach(el => { el.setAttribute('contenteditable', 'true'); el.classList.add('edit-active'); });
+                editables.forEach(el => { 
+                    el.setAttribute('contenteditable', 'true'); 
+                    el.classList.add('edit-active'); 
+                });
                 editOnlyElements.forEach(el => el.classList.remove('hidden'));
             } else {
-                editables.forEach(el => { el.removeAttribute('contenteditable'); el.classList.remove('edit-active'); });
+                editables.forEach(el => { 
+                    el.removeAttribute('contenteditable'); 
+                    el.classList.remove('edit-active'); 
+                });
                 editOnlyElements.forEach(el => el.classList.add('hidden'));
             }
         }
