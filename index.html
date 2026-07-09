@@ -83,104 +83,6 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        /* --- تحسينات الأزرار العائمة الاحترافية الحصرية --- */
-        .fab-container {
-            position: fixed;
-            bottom: 24px;
-            left: 24px;
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 14px;
-        }
-        .fab-sub-buttons {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(20px) scale(0.85);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .fab-container.menu-open .fab-sub-buttons {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0) scale(1);
-        }
-        .fab-btn {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #f8fafc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            cursor: pointer;
-        }
-        .fab-btn:hover {
-            transform: scale(1.08) translateY(-2px);
-            color: #38bdf8;
-            border-color: rgba(56, 189, 248, 0.4);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3), 0 12px 28px rgba(0, 0, 0, 0.4);
-        }
-        .fab-btn-main {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #38bdf8 0%, #4f46e5 100%);
-            color: #0f172a;
-            border: none;
-        }
-        .fab-btn-main:hover {
-            color: #ffffff;
-            transform: scale(1.05) rotate(45deg);
-            box-shadow: 0 0 25px rgba(79, 70, 229, 0.5), 0 12px 32px rgba(0, 0, 0, 0.45);
-        }
-        .fab-container.menu-open .fab-btn-main {
-            transform: scale(1) rotate(135deg);
-            background: linear-gradient(135deg, #ef4444 0%, #991b1b 100%);
-            color: #ffffff;
-        }
-        /* تصميم الـ Tooltip الاحترافي للتعريف بالأزرار */
-        .fab-tooltip {
-            position: absolute;
-            right: 68px;
-            background: rgba(15, 23, 42, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: #f8fafc;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transform: translateX(-10px);
-            transition: all 0.25s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-        .fab-tooltip::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 100%;
-            transform: translateY(-50%);
-            border-width: 5px;
-            border-style: solid;
-            border-color: transparent transparent transparent rgba(15, 23, 42, 0.95);
-        }
-        .fab-btn:hover .fab-tooltip {
-            opacity: 1;
-            transform: translateX(0);
-        }
     </style>
 </head>
 <body class="data-grid-bg min-h-screen selection:bg-sky-500 selection:text-white">
@@ -412,23 +314,15 @@
             </div>
     </div>
 
-    <div class="fab-container" id="global-fab-container">
-        <div class="fab-sub-buttons">
-            <button onclick="toggleThemePanel()" class="fab-btn">
-                <i class="fa-solid fa-palette text-base"></i>
-                <span class="fab-tooltip">تغيير مظهر وثيم الموقع</span>
-            </button>
-            <button onclick="toggleSizePanel()" class="fab-btn">
-                <i class="fa-solid fa-text-height text-base"></i>
-                <span class="fab-tooltip">التحكم بحجم الخطوط</span>
-            </button>
-            <button onclick="toggleEditMode()" id="edit-mode-btn" class="fab-btn edit-only hidden" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #0f172a;">
-                <i class="fa-solid fa-pen-nib text-base"></i>
-                <span class="fab-tooltip" id="edit-btn-text">تفعيل وضع التعديل</span>
-            </button>
-        </div>
-        <button onclick="document.getElementById('global-fab-container').classList.toggle('menu-open')" class="fab-btn fab-btn-main shadow-xl" title="لوحة التحكم السريعة">
-            <i class="fa-solid fa-ellipsis-vertical text-xl transition-transform duration-300"></i>
+    <div class="fixed bottom-6 left-6 z-50 flex gap-2">
+        <button onclick="toggleThemePanel()" class="bg-slate-900 border border-slate-800 text-sky-400 w-12 h-12 rounded-full font-bold shadow-xl hover:bg-slate-800 transition flex items-center justify-center" title="تغيير مظهر وثيم الموقع">
+            <i class="fa-solid fa-palette text-lg"></i>
+        </button>
+        <button onclick="toggleSizePanel()" class="bg-slate-900 border border-slate-800 text-slate-300 w-12 h-12 rounded-full font-bold shadow-xl hover:bg-slate-800 transition flex items-center justify-center" title="التحكم بحجم الخطوط">
+            <i class="fa-solid fa-text-height"></i>
+        </button>
+        <button onclick="toggleEditMode()" id="edit-mode-btn" class="bg-gradient-to-tr from-sky-500 to-indigo-600 text-slate-950 px-5 py-3 rounded-full font-bold shadow-xl shadow-sky-500/20 hover:scale-105 transition flex items-center gap-2">
+            <i class="fa-solid fa-pen-nib"></i> <span id="edit-btn-text">تفعيل وضع التعديل</span>
         </button>
     </div>
 
