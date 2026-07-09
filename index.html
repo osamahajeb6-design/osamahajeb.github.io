@@ -149,7 +149,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="projects-grid">
                 
                 <div class="glass-card rounded-2xl overflow-hidden flex flex-col group project-item relative" id="project-sales">
-                    <button onclick="removeElement(this)" class="absolute top-4 left-4 z-30 bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-lg">
+                    <button onclick="removeElement(this)" class="absolute top-4 left-4 z-50 bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-lg">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                     
@@ -160,12 +160,13 @@
                                 <span id="project-sales-placeholder-text" class="text-xs" data-editable>لم يتم رفع صور لوحة التحكم لهذا المشروع بعد. شغل وضع التعديل لرفع الصور.</span>
                             </div>
                         </div>
-                        <button onclick="prevSlide(this, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-25 hidden"><i class="fa-solid fa-chevron-right"></i></button>
-                        <button onclick="nextSlide(this, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-25 hidden"><i class="fa-solid fa-chevron-left"></i></button>
-                        <div class="slider-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-25 hidden"></div>
+                        <button onclick="prevSlide(this, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-right"></i></button>
+                        <button onclick="nextSlide(this, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div class="slider-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-30 hidden"></div>
                         
                         <span id="project-sales-badge" class="absolute top-4 right-4 bg-sky-500 text-slate-950 text-xs px-3 py-1.5 rounded-lg font-extrabold uppercase project-badge z-20" data-editable>محلل بيانات رئيسي (Lead Data Analyst)</span>
-                        <div class="absolute inset-0 bg-slate-950/80 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition duration-300 edit-only hidden z-20">
+                        
+                        <div class="absolute inset-0 bg-slate-950/80 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition duration-300 edit-only hidden z-20 upload-overlay">
                             <label class="cursor-pointer bg-sky-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-2">
                                 <i class="fa-solid fa-cloud-arrow-up"></i> <span id="project-sales-upload-lbl" data-editable>إضافة صورة لوحة التحكم</span>
                                 <input type="file" accept="image/*" class="hidden" onchange="uploadDashboardImage(this)">
@@ -179,17 +180,17 @@
                                 <h3 id="project-sales-title" class="text-xl font-bold text-white group-hover:text-sky-400 transition" data-editable>مشروع إستراتيجية أداء المبيعات</h3>
                                 <span id="project-sales-date" class="text-xs text-slate-500" data-editable>2025 - 2026</span>
                             </div>
-                            <p id="project-sales-desc" class="text-slate-300 text-sm mb-4 leading-relaxed" data-editable>قمت بدمج وتطهير 6 مجموعات بيانات منفصلة (العملاء، المنتجات، المبيعات، طرق الدفع، العلامات التجارية، والفروع) باستخدام Power Query لضمان سلامة البيانات بنسبة 100%. نفذت عمليات ETL متقدمة في Excel، تضمنت استخدام الأعمدة الشرطية (Conditional Columns) لتصنيف الفواتير، وتقسيم البيانات (Data Splitting) لتحليل النصوص المعقدة، ووظائف التعبئة (Fill functions) لمعالجة الفجوات الهيكلية. قمت ببناء نموذج بيانات علاقي في Power Pivot واستخدام صيغ DAX المتقدمة (بما في ذلك CALCULATE ودوال ذكاء الوقت Time Intelligence) لاستخراج مؤشرات الأداء السنوية (YoY).</p>
+                            <p id="project-sales-desc" class="text-slate-300 text-sm mb-4 leading-relaxed" data-editable>قمت بدمج وتطهير 6 مجموعات بيانات منفصلة (العملاء، المنتجات، المبيعات، طرق الدفع، العلامات التجارية، والفروع) باستخدام Power Query لضمان سلامة البيانات بنسبة 100%. نفذت عمليات ETL متقدمة في Excel، تضمنت استخدام الأعمدة الشرطية (Conditional Columns) لتصنيف الفواتير، وتقسيم البيانات (Data Splitting) لتحليل النصوص المعقدة، ووظائف التعبئة (Fill functions) لمعالجة الفجوات الهيكلية.</p>
                         </div>
                         <div class="bg-slate-950/50 p-4 rounded-xl border border-slate-900 text-xs space-y-1">
                             <span id="project-sales-result-title" class="font-bold text-sky-400 block" data-editable><i class="fa-solid fa-circle-check"></i> النتائج والرؤى الإستراتيجية:</span>
-                            <p id="project-sales-result-desc" data-editable>تطوير داشبورد Power BI عالي الأثر أظهر إجمالي مبيعات بقيمة 1.92 مليون دولار وصافي أرباح بلغت 224 ألف دولار. تم تحديد قطاع "الشركات" (Corporate) كمحرك الإيرادات الأساسي بمبلغ 658 ألف دولار، وتحسين العمليات اللوجستية بعد كشف أن 51.45% من عمليات الشحن تمت عبر "الشحن الجوي العادي".</p>
+                            <p id="project-sales-result-desc" data-editable>تطوير داشبورد Power BI عالي الأثر أظهر إجمالي مبيعات بقيمة 1.92 مليون دولار وصافي أرباح بلغت 224 ألف دولار.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="glass-card rounded-2xl overflow-hidden flex flex-col group project-item relative" id="project-hr">
-                    <button onclick="removeElement(this)" class="absolute top-4 left-4 z-30 bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-lg">
+                    <button onclick="removeElement(this)" class="absolute top-4 left-4 z-50 bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-lg">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                     
@@ -200,12 +201,13 @@
                                 <span id="project-hr-placeholder-text" class="text-xs" data-editable>لم يتم رفع صور لوحة التحكم لهذا المشروع بعد. شغل وضع التعديل لرفع الصور.</span>
                             </div>
                         </div>
-                        <button onclick="prevSlide(this, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-25 hidden"><i class="fa-solid fa-chevron-right"></i></button>
-                        <button onclick="nextSlide(this, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-25 hidden"><i class="fa-solid fa-chevron-left"></i></button>
-                        <div class="slider-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-25 hidden"></div>
+                        <button onclick="prevSlide(this, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-right"></i></button>
+                        <button onclick="nextSlide(this, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div class="slider-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-30 hidden"></div>
                         
                         <span id="project-hr-badge" class="absolute top-4 right-4 bg-emerald-500 text-slate-950 text-xs px-3 py-1.5 rounded-lg font-extrabold uppercase project-badge z-20" data-editable>مشروع بيانات الموارد البشرية (HR Data Project)</span>
-                        <div class="absolute inset-0 bg-slate-950/80 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition duration-300 edit-only hidden z-20">
+                        
+                        <div class="absolute inset-0 bg-slate-950/80 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition duration-300 edit-only hidden z-20 upload-overlay">
                             <label class="cursor-pointer bg-emerald-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-2">
                                 <i class="fa-solid fa-cloud-arrow-up"></i> <span id="project-hr-upload-lbl" data-editable>إضافة صورة لوحة التحكم</span>
                                 <input type="file" accept="image/*" class="hidden" onchange="uploadDashboardImage(this)">
@@ -219,11 +221,11 @@
                                 <h3 id="project-hr-title" class="text-xl font-bold text-white group-hover:text-emerald-400 transition" data-editable>تحليلات استقرار القوى العاملة واستبقاء الموظفين</h3>
                                 <span id="project-hr-date" class="text-xs text-slate-500" data-editable>2024 - 2025</span>
                             </div>
-                            <p id="project-hr-desc" class="text-slate-300 text-sm mb-4 leading-relaxed" data-editable>أجريت تحليلاً شاملاً لمعدلات التسرب والاقصاء الوظيفي لقوة عامة قوامها 800 موظف (665 موظف نشط، و135 حالة ترك عمل) بالاعتماد على لغة Python وبرنامج Excel. تم تحديد معدل دوران العمل عند 17%، ووظفت تقنيات سرد البيانات (Data Storytelling) لربط وتفسير اتجاهات التغيير بمتوسط رضا الموظفين الذي بلغ 2.78 من 5.</p>
+                            <p id="project-hr-desc" class="text-slate-300 text-sm mb-4 leading-relaxed" data-editable>أجريت تحليلاً شاملاً لمعدلات التسرب والاقصاء الوظيفي لقوة عامة قوامها 800 موظف (665 موظف نشط، و135 حالة ترك عمل) بالاعتماد على لغة Python وبرنامج Excel.</p>
                         </div>
                         <div class="bg-slate-950/50 p-4 rounded-xl border border-slate-900 text-xs">
                             <span id="project-hr-result-title" class="font-bold text-emerald-400 block mb-1" data-editable><i class="fa-solid fa-circle-check"></i> المخرجات:</span>
-                            <span id="project-hr-result-desc" data-editable>تقديم خارطة طريق استباقية وتطوير حزمة متكاملة من لوحات التحكم (Power BI Visualizations) لقيادة الموارد البشرية بهدف تقليل تسرب الموظفين وتعزيز الاستقرار التنظيمي.</span>
+                            <span id="project-hr-result-desc" data-editable>تقديم خارطة طريق استباقية وتطوير حزمة متكاملة من لوحات التحكم (Power BI Visualizations) لقيادة الموارد البشرية.</span>
                         </div>
                     </div>
                 </div>
@@ -242,7 +244,6 @@
             </div>
             
             <div class="relative border-r-2 border-slate-800 mr-4 md:mr-8 space-y-12" id="timeline-container">
-                
                 <div class="relative pr-8 group timeline-item">
                     <button onclick="removeElement(this)" class="absolute top-0 left-0 bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-md">
                         <i class="fa-solid fa-trash"></i>
@@ -251,20 +252,8 @@
                     <span id="exp-sky-date" class="text-xs text-sky-400 font-bold block mb-1" style="font-family: 'Plus Jakarta Sans'" data-editable>2022 – 2025</span>
                     <h3 id="exp-sky-title" class="text-xl font-bold text-white" data-editable>أخصائي نظم تكنولوجيا المعلومات (IT Systems Specialist)</h3>
                     <p id="exp-sky-company" class="text-sky-400/80 text-xs sm:text-sm mb-3" data-editable>سكاي سوفت عمران (Sky Soft Amran)</p>
-                    <p id="exp-sky-desc" class="text-slate-300 text-sm leading-relaxed" data-editable>صممت وأشرفت على الدورة الكاملة لتنفيذ وصيانة الأنظمة التقنية الحيوية لدعم البنية التحتية للمؤسسة. تعاونت مع فرق العمل المشتركة لتشغيل وأتمتة تقارير سير العمل بالاعتماد على Power BI وExcel. (النتيجة: تحقيق استقرار الأنظمة وجاهزيتها بنسبة 100% مع رفع كفاءة التشغيل من خلال تقديم تدريب تقني متخصص وموجه للموظفين).</p>
+                    <p id="exp-sky-desc" class="text-slate-300 text-sm leading-relaxed" data-editable>صممت وأشرفت على الدورة الكاملة لتنفيذ وصيانة الأنظمة التقنية الحيوية لدعم البنية التحتية للمؤسسة.</p>
                 </div>
-
-                <div class="relative pr-8 group timeline-item">
-                    <button onclick="removeElement(this)" class="absolute top-0 left-0 bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-md">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                    <span class="absolute right-0 top-1.5 -mr-[11px] w-5 h-5 rounded-full bg-emerald-500 border-4 border-slate-950"></span>
-                    <span id="exp-pantheros-date" class="text-xs text-emerald-400 font-bold block mb-1" style="font-family: 'Plus Jakarta Sans'" data-editable>2019 – 2021</span>
-                    <h3 id="exp-pantheros-title" class="text-xl font-bold text-white" data-editable>عالم بيانات جونيور (Junior Data Scientist)</h3>
-                    <p id="exp-pantheros-company" class="text-emerald-400/80 text-xs sm:text-sm mb-3" data-editable>مختبرات بانثيروس (Pantheros Labs)</p>
-                    <p id="exp-pantheros-desc" class="text-slate-300 text-sm leading-relaxed" data-editable>طبقت التحليلات المتقدمة ومنهجيات اختبار A/B باستخدام لغة Python وحزم (SciPy/Pandas) لتحسين تفاعل العملاء وتطوير بروتوكولات الأمان. بنيت خطوط أنابيب مراقبة مؤتمتة للكشف عن الأنماط غير الطبيعية وسلوكيات الاحتيال في المعاملات. (النتيجة: زيادة معدل استبقاء العملاء بنسبة 20% وتقليل الأنشطة الاحتيالية بنسبة 50% عبر أنظمة التحليل الذكي والتحسين المستمر).</p>
-                </div>
-
             </div>
         </div>
     </section>
@@ -274,27 +263,12 @@
             <div class="text-center mb-16 relative">
                 <h2 id="certificates-section-title" class="text-3xl font-bold text-white mb-4" data-editable>الشهادات والمؤهلات الأكاديمية (Certificates)</h2>
             </div>
-            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="certificates-container">
                 <div class="glass-card p-6 rounded-2xl relative group">
                     <span id="cert-un-date" class="text-xs text-purple-400 font-bold block mb-1" data-editable>2023</span>
                     <h3 id="cert-un-title" class="text-lg font-bold text-white mb-2" data-editable>بكالوريوس نظم معلومات حاسوبية</h3>
                     <p id="cert-un-company" class="text-xs text-slate-400 mb-2" data-editable>جامعة عمران (Amran University)</p>
                     <p id="cert-un-desc" class="text-xs text-slate-300" data-editable>التخصص: نظم معلومات حاسوبية | التقدير: ممتاز</p>
-                </div>
-
-                <div class="glass-card p-6 rounded-2xl relative group">
-                    <span id="cert-sky-date" class="text-xs text-purple-400 font-bold block mb-1" data-editable>2022</span>
-                    <h3 id="cert-sky-title" class="text-lg font-bold text-white mb-2" data-editable>شهادة تصميم أنظمة تكنولوجيا المعلومات</h3>
-                    <p id="cert-sky-company" class="text-xs text-slate-400 mb-2" data-editable>مكتب سكاي سوفت عمران</p>
-                    <p id="cert-sky-desc" class="text-xs text-slate-300" data-editable>التركيز: تطوير الأنظمة وصيانتها | تدريب عملي تطبيقي</p>
-                </div>
-
-                <div class="glass-card p-6 rounded-2xl relative group">
-                    <span id="cert-eng-date" class="text-xs text-purple-400 font-bold block mb-1" data-editable>2017</span>
-                    <h3 id="cert-eng-title" class="text-lg font-bold text-white mb-2" data-editable>دبلوم في اللغة الإنجليزية</h3>
-                    <p id="cert-eng-company" class="text-xs text-slate-400 mb-2" data-editable>المعهد الأكاديمي البريطاني</p>
-                    <p id="cert-eng-desc" class="text-xs text-slate-300" data-editable>التركيز: كفاءة اللغة المتقدمة والتواصل الأكاديمي</p>
                 </div>
             </div>
         </div>
@@ -308,22 +282,9 @@
                     <i class="fa-solid fa-plus"></i> إضافة مهارة جديدة
                 </button>
             </div>
-            
             <div class="flex flex-wrap justify-center gap-3" id="skills-container">
                 <span class="bg-slate-900 border border-slate-800 text-sky-400 px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 group relative">
                     <i class="fa-brands fa-python"></i> <span id="skill-py-text" data-editable>Python (SciPy / Pandas)</span>
-                    <button onclick="removeElement(this)" class="absolute -top-2 -left-2 bg-red-600 text-white w-4 h-4 rounded-full flex items-center justify-center text-[8px] opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-sm">✕</button>
-                </span>
-                <span class="bg-slate-900 border border-slate-800 text-emerald-400 px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 group relative">
-                    <i class="fa-solid fa-chart-column"></i> <span id="skill-bi-text" data-editable>Power BI & Power Pivot (DAX & Time Intelligence)</span>
-                    <button onclick="removeElement(this)" class="absolute -top-2 -left-2 bg-red-600 text-white w-4 h-4 rounded-full flex items-center justify-center text-[8px] opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-sm">✕</button>
-                </span>
-                <span class="bg-slate-900 border border-slate-800 text-teal-400 px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 group relative">
-                    <i class="fa-regular fa-file-excel"></i> <span id="skill-ex-text" data-editable>Advanced Excel & ETL Processes (Power Query)</span>
-                    <button onclick="removeElement(this)" class="absolute -top-2 -left-2 bg-red-600 text-white w-4 h-4 rounded-full flex items-center justify-center text-[8px] opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-sm">✕</button>
-                </span>
-                <span class="bg-slate-900 border border-slate-800 text-purple-400 px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 group relative">
-                    <i class="fa-solid fa-gears"></i> <span id="skill-mgmt-text" data-editable>الإدارة والتنظيم (Management)</span>
                     <button onclick="removeElement(this)" class="absolute -top-2 -left-2 bg-red-600 text-white w-4 h-4 rounded-full flex items-center justify-center text-[8px] opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-sm">✕</button>
                 </span>
             </div>
@@ -336,39 +297,9 @@
                 <div class="lg:col-span-5">
                     <h2 id="contact-section-title" class="text-3xl font-bold text-white mb-6" data-editable>دعنا نناقش مشروعك القادم!</h2>
                     <p id="contact-section-desc" class="text-slate-400 text-sm sm:text-base mb-8 leading-relaxed" data-editable>تواصل معي مباشرة لمناقشة كيفية تحويل مجموعات البيانات المعقدة إلى استبصارات وقرارات ذكية مدفوعة بالأرقام.</p>
-                    <div class="space-y-6">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-sky-400 text-lg">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div>
-                                <span id="contact-email-lbl" class="text-[10px] text-slate-500 block uppercase font-bold" data-editable>البريد الإلكتروني</span>
-                                <a id="contact-email" href="mailto:osamahajeb6@gmail.com" class="text-slate-200 hover:text-sky-400 transition font-medium" data-editable>osamahajeb6@gmail.com</a>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-400 text-lg">
-                                <i class="fa-brands fa-whatsapp"></i>
-                            </div>
-                            <div>
-                                <span id="contact-whatsapp-lbl" class="text-[10px] text-slate-500 block uppercase font-bold" data-editable>رقم الهاتف / واتساب</span>
-                                <a id="contact-whatsapp" href="https://wa.me/967775326898" target="_blank" class="text-slate-200 hover:text-emerald-400 transition font-medium" dir="ltr" data-editable>+967 775326898</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="lg:col-span-7">
                     <form class="glass-card p-8 rounded-2xl border border-slate-800 space-y-6" onsubmit="event.preventDefault(); alert('تم محاكاة إرسال الاستمارة بنجاح!');">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label id="form-name-lbl" class="block text-xs font-semibold text-slate-400 mb-2 uppercase" data-editable>الاسم الكامل</label>
-                                <input required type="text" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-sky-500 transition" placeholder="أحمد علي">
-                            </div>
-                            <div>
-                                <label id="form-email-lbl" class="block text-xs font-semibold text-slate-400 mb-2 uppercase" data-editable>البريد الإلكتروني</label>
-                                <input required type="email" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-sky-500 transition" placeholder="name@domain.com">
-                            </div>
-                        </div>
                         <button id="form-submit-btn" type="submit" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-4 rounded-xl shadow-lg shadow-sky-500/10 transition duration-300" data-editable>إرسال الرسالة <i class="fa-solid fa-paper-plane mr-2"></i></button>
                     </form>
                 </div>
@@ -383,7 +314,6 @@
     </footer>
 
     <div id="size-control-panel" class="fixed bottom-24 right-6 z-50 bg-slate-900/95 border border-slate-800 p-4 rounded-2xl w-64 shadow-2xl backdrop-blur-md hidden transition-all">
-        <h4 class="text-xs font-bold text-sky-400 mb-3 border-b border-slate-800 pb-2"><i class="fa-solid fa-sliders mr-1"></i> التحكم بأحجام المكونات</h4>
         <div class="space-y-4">
             <div>
                 <label class="block text-[11px] text-slate-400 mb-1">حجم الخطوط العام</label>
@@ -450,7 +380,6 @@
             document.documentElement.style.setProperty('--global-text-scale', val + 'px');
         }
 
-        // المزامنة الحقيقية اللحظية للنصوص
         onValue(ref(db, 'portfolioTexts'), (snapshot) => {
             const data = snapshot.val();
             if (data) {
@@ -461,7 +390,6 @@
             }
         });
 
-        // المزامنة الحقيقية اللحظية لمصفوفة صور المشاريع
         onValue(ref(db, 'projectImages'), (snapshot) => {
             const data = snapshot.val();
             if (data) {
@@ -475,23 +403,26 @@
             }
         });
 
+        // رندر احترافي للمزامنة الفورية وإلغاء حظر الأزرار
         function renderProjectImages(projectCard, imagesArray) {
             const slider = projectCard.querySelector('.project-slider');
             const wrapper = slider.querySelector('.slider-wrapper');
             const dotsContainer = slider.querySelector('.slider-dots');
             const prevBtn = slider.querySelector('button[onclick*="prevSlide"]');
             const nextBtn = slider.querySelector('button[onclick*="nextSlide"]');
+            const uploadOverlay = slider.querySelector('.upload-overlay');
             
             if (!imagesArray || imagesArray.length === 0) {
                 slider.classList.add('image-placeholder');
                 wrapper.innerHTML = `
                     <div class="w-full h-full flex flex-col items-center justify-center text-slate-500 no-images-notice">
                         <i class="fa-regular fa-image text-4xl mb-2"></i>
-                        <span class="text-xs" data-editable>لم يتم رفع صور لهذا المشروع بعد. فعل وضع التعديل للإضافة.</span>
+                        <span class="text-xs">لم يتم رفع صور لهذا المشروع بعد. فعل وضع التعديل للإضافة.</span>
                     </div>`;
                 if(dotsContainer) dotsContainer.classList.add('hidden');
                 if(prevBtn) prevBtn.classList.add('hidden');
                 if(nextBtn) nextBtn.classList.add('hidden');
+                if(uploadOverlay) uploadOverlay.classList.remove('hidden'); // إظهار الزر الرئيسي الكبير للمشروع الفارغ
                 return;
             }
 
@@ -500,13 +431,15 @@
             if(dotsContainer) { dotsContainer.innerHTML = ''; dotsContainer.classList.remove('hidden'); }
             if(prevBtn) prevBtn.classList.remove('hidden');
             if(nextBtn) nextBtn.classList.remove('hidden');
+            if(uploadOverlay) uploadOverlay.classList.add('hidden'); // إخفاء الطبقة الشاملة كي لا تحجب أزرار الحذف
 
             imagesArray.forEach((imgSrc, index) => {
                 const imgContainer = document.createElement('div');
                 imgContainer.className = "relative w-full h-full flex-shrink-0 project-img-container";
+                // جعل z-50 لزر الحذف ليكون أعلى طبقة ويستجيب للمس الفوري في الجوال
                 imgContainer.innerHTML = `
                     <img src="${imgSrc}" class="w-full h-full object-cover cursor-pointer" onclick="openLightbox(this.src)">
-                    <button onclick="removeProjectImage('${projectCard.id}', ${index}, event)" class="absolute top-2 right-2 bg-red-600/90 hover:bg-red-700 text-white w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold z-30 ${editMode ? '' : 'hidden'} edit-only">✕</button>
+                    <button onclick="removeProjectImage('${projectCard.id}', ${index}, event)" class="absolute top-3 right-3 bg-red-600 hover:bg-red-700 text-white w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold z-50 shadow-xl ${editMode ? '' : 'hidden'} edit-only">✕</button>
                 `;
                 wrapper.appendChild(imgContainer);
 
@@ -514,6 +447,20 @@
                 dot.className = index === 0 ? "slider-dot w-5 h-2 rounded-full bg-sky-400 transition-all" : "slider-dot w-2 h-2 rounded-full bg-white/40 transition-all";
                 if(dotsContainer) dotsContainer.appendChild(dot);
             });
+
+            // إضافة زر عائم صغير وأنيق لإضافة صور جديدة دون حجب الأزرار الحالية
+            const floatingAddBtn = document.createElement('div');
+            floatingAddBtn.className = `absolute bottom-3 right-3 z-40 edit-only ${editMode ? '' : 'hidden'}`;
+            floatingAddBtn.innerHTML = `
+                <label class="cursor-pointer bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-3 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1 shadow-lg">
+                    <i class="fa-solid fa-plus"></i> <span>إضافة صوره</span>
+                    <input type="file" accept="image/*" class="hidden" onchange="uploadDashboardImage(this)">
+                </label>
+            `;
+            // مسح أي زر عائم قديم لمنع التكرار
+            const oldFloat = slider.querySelector('.absolute.bottom-3.right-3.z-40');
+            if(oldFloat) oldFloat.remove();
+            slider.appendChild(floatingAddBtn);
 
             slider.setAttribute('data-current-index', 0);
             wrapper.style.transform = `translateX(0%)`;
@@ -544,12 +491,9 @@
 
                 let textsToSave = {};
                 document.querySelectorAll('[data-editable]').forEach(el => {
-                    if (el.id) {
-                        textsToSave[el.id] = el.innerText;
-                    }
+                    if (el.id) { textsToSave[el.id] = el.innerText; }
                 });
 
-                // مزامنة فورية متوازية للنصوص والصور بكفاءة تناهية وسرعة فائقة
                 Promise.all([
                     set(ref(db, 'portfolioTexts'), textsToSave),
                     set(ref(db, 'projectImages'), projectImagesData)
@@ -568,7 +512,7 @@
             newCard.className = "glass-card rounded-2xl overflow-hidden flex flex-col group project-item relative";
             newCard.id = newId;
             newCard.innerHTML = `
-                <button onclick="removeElement(this)" class="absolute top-4 left-4 z-30 bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs shadow-lg edit-only">
+                <button onclick="removeElement(this)" class="absolute top-4 left-4 z-50 bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs shadow-lg edit-only">
                     <i class="fa-solid fa-trash"></i>
                 </button>
                 <div class="relative h-64 sm:h-72 bg-slate-900 overflow-hidden project-slider image-placeholder flex items-center justify-center" data-current-index="0">
@@ -578,13 +522,13 @@
                             <span class="text-xs" data-editable id="${newId}-img-placeholder">لم يتم رفع صور لهذا المشروع بعد. فعل وضع التعديل للإضافة.</span>
                         </div>
                     </div>
-                    <button onclick="prevSlide(this, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-25 hidden"><i class="fa-solid fa-chevron-right"></i></button>
-                    <button onclick="nextSlide(this, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-25 hidden"><i class="fa-solid fa-chevron-left"></i></button>
-                    <div class="slider-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-25 hidden"></div>
+                    <button onclick="prevSlide(this, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button onclick="nextSlide(this, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="slider-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-30 hidden"></div>
                     <span class="absolute top-4 right-4 bg-sky-500 text-slate-950 text-xs px-3 py-1.5 rounded-lg font-extrabold uppercase project-badge z-20" data-editable id="${newId}-badge">مسمى الدور الوظيفي الجديد</span>
-                    <div class="absolute inset-0 bg-slate-950/80 flex flex-col items-center justify-center z-20 edit-only">
+                    <div class="absolute inset-0 bg-slate-950/80 flex flex-col items-center justify-center z-20 edit-only upload-overlay">
                         <label class="cursor-pointer bg-sky-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-2">
-                            <i class="fa-solid fa-cloud-arrow-up"></i> <span data-editable id="${newId}-upload-text">إضافة صورة لوحة التحكم</span>
+                            <i class="fa-solid fa-cloud-arrow-up"></i> <span id="${newId}-upload-text">إضافة صورة لوحة التحكم</span>
                             <input type="file" accept="image/*" class="hidden" onchange="uploadDashboardImage(this)">
                         </label>
                     </div>
@@ -643,9 +587,7 @@
                     const projectCard = inputElement.closest('.project-item');
                     const projectId = projectCard.id;
 
-                    if (!projectImagesData[projectId]) {
-                        projectImagesData[projectId] = [];
-                    }
+                    if (!projectImagesData[projectId]) { projectImagesData[projectId] = []; }
                     projectImagesData[projectId].push(e.target.result);
                     renderProjectImages(projectCard, projectImagesData[projectId]);
                 };
@@ -654,7 +596,7 @@
         }
 
         window.removeProjectImage = function(projectId, imgIndex, event) {
-            event.stopPropagation();
+            event.stopPropagation(); // منع انتقال الحدث إلى الصور أو طبقة الإضافة
             if(confirm('هل أنت متأكد من حذف هذه الصورة؟')) {
                 if(projectImagesData[projectId]) {
                     projectImagesData[projectId].splice(imgIndex, 1);
