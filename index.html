@@ -1,99 +1,103 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>أسامة حاجب | معرض أعمال تفاعلي وتحليل البيانات</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أسامة حاجب | معرض أعمال تفاعلي وتحليل البيانات</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    :root {
-      --global-text-scale: 1rem;
-      --card-width-scale: 100%;
-      /* قيم الثيم الافتراضي (Cyber Midnight) */
-      --bg-main: #0b0f19;
-      --bg-card: rgba(30, 41, 59, 0.45);
-      --bg-nav: rgba(15, 23, 42, 0.8);
-      --border-color: rgba(255, 255, 255, 0.08);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --gradient-1: rgba(56, 189, 248, 0.15);
-      --gradient-2: rgba(16, 185, 129, 0.1);
-    }
-    
-    body {
-      font-family: 'Cairo', sans-serif;
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      scroll-behavior: smooth;
-      font-size: var(--global-text-scale);
-      transition: background-color 0.5s ease, color 0.5s ease;
-    }
-    
-    .animate-spin-slow {
-      animation: spin 8s linear infinite;
-    }
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    
-    .data-grid-bg {
-      background-image: 
-        radial-gradient(circle at 20% 30%, var(--gradient-1) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, var(--gradient-2) 0%, transparent 45%);
-    }
-              
-    /* تنسيق قسم التواصل */
-    .contact-section-container { max-width: 750px; margin: 40px auto; padding: 25px; border-radius: 16px; border: 1px solid var(--border-color); background: var(--bg-card); }
-    .social-links-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 20px; }
-    .social-item { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 30px; font-size: 0.85rem; color: white !important; transition: 0.3s; text-decoration: none; }
-    .social-item:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-    .email { background: #ea4335; } .whatsapp { background: #25d366; } .telegram { background: #0088cc; }
-    .x-twitter { background: #000; } .linkedin { background: #0077b5; } .instagram { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); }
-    .snapchat { background: #fffc00; color: #000 !important; } .facebook { background: #1877f2; } .youtube { background: #ff0000; }
-    
-    .glass-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--border-color);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      width: var(--card-width-scale);
-      max-width: 100%;
-      margin: 0 auto;
-    }
-    
-    .glass-card:hover {
-      border-color: rgba(56, 189, 248, 0.4);
-      box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.2);
-      transform: translateY(-4px);
-    }
-    
-    .edit-active {
-      outline: 2px dashed #38bdf8 !important;
-      outline-offset: 4px;
-      background: rgba(56, 189, 248, 0.08) !important;
-    }
-    
-    .image-placeholder {
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      border: 2px dashed rgba(56, 189, 248, 0.2);
-    }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --global-text-scale: 1rem;
+            --card-width-scale: 100%;
+            
+            /* قيم الثيم الافتراضي (Cyber Midnight) */
+            --bg-main: #0b0f19;
+            --bg-card: rgba(30, 41, 59, 0.45);
+            --bg-nav: rgba(15, 23, 42, 0.8);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --gradient-1: rgba(56, 189, 248, 0.15);
+            --gradient-2: rgba(16, 185, 129, 0.1);
+        }
+        
+        body {
+            font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+            font-size: var(--global-text-scale);
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
 
-    .theme-menu-animate {
-      animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+        .animate-spin-slow {
+            animation: spin 8s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .data-grid-bg {
+            background-image: 
+                radial-gradient(circle at 20% 30%, var(--gradient-1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, var(--gradient-2) 0%, transparent 45%);
+        }
+                  
+        /* تنسيق قسم التواصل الاجتماعي */
+        .contact-section-container { max-width: 750px; margin: 40px auto; padding: 25px; border-radius: 16px; border: 1px solid var(--border-color); background: var(--bg-card); }
+        .social-links-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 20px; }
+        .social-item { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 30px; font-size: 0.85rem; color: white !important; transition: 0.3s; text-decoration: none; }
+        .social-item:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .email { background: #ea4335; } .whatsapp { background: #25d366; } .telegram { background: #0088cc; }
+        .x-twitter { background: #000; } .linkedin { background: #0077b5; } .instagram { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); }
+        .snapchat { background: #fffc00; color: #000 !important; } .facebook { background: #1877f2; } .youtube { background: #ff0000; }
+        
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            width: var(--card-width-scale);
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.2);
+            transform: translateY(-4px);
+        }
+        
+        .edit-active {
+            outline: 2px dashed #38bdf8 !important;
+            outline-offset: 4px;
+            background: rgba(56, 189, 248, 0.08) !important;
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 2px dashed rgba(56, 189, 248, 0.2);
+        }
+
+        .theme-menu-animate {
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body class="data-grid-bg min-h-screen selection:bg-sky-500 selection:text-white pb-24">
 
+    <!-- شريط التنقل العلوي -->
     <nav class="sticky top-0 z-40 backdrop-blur-md border-b" style="background-color: var(--bg-nav); border-color: var(--border-color);">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -118,6 +122,7 @@
         </div>
     </nav>
 
+    <!-- واجهة الترحيب العلوية Hero Section -->
     <section id="hero" class="relative py-20 md:py-28 overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div id="hero-tag" class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 px-3.5 py-1.5 rounded-full text-sky-400 text-xs sm:text-sm font-medium mb-8" data-editable>
@@ -131,7 +136,7 @@
             <p id="hero-subtitle" class="text-xl sm:text-2xl font-medium mb-6" style="color: var(--text-main);" data-editable>محلل بيانات وأخصائي ذكاء الأعمال (Data Analyst & BI Specialist)</p>
             
             <p id="hero-desc" class="max-w-3xl mx-auto text-base sm:text-lg mb-10 leading-relaxed" style="color: var(--text-muted);" data-editable>
-                خبير في تحويل مجموعات البيانات المعقدة إلى رؤى واستبصارات إستراتيجية قابلة للتطبيق. أمتلك سجل نجاح حافل في استخدام Python وPower BI ...
+                خبير في تحويل مجموعات البيانات المعقدة إلى رؤى واستبصارات إستراتيجية قابلة للتطبيق. أمتلك سجل نجاح حافل في استخدام Python وPower BI وExcel لتحسين العمليات التجارية واستدامة القوى العاملة، إلى جانب بناء سير عمل مؤتمت يدعم اتخاذ القرارات الذكية.
             </p>
 
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
@@ -142,6 +147,7 @@
         </div>
     </section>
 
+    <!-- إحصائيات الأداء والمؤشرات الحيوية KPIs -->
     <section class="py-10 border-y bg-slate-950/40" style="border-color: var(--border-color);">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -169,6 +175,7 @@
         </div>
     </section>
 
+    <!-- قسم المشاريع الاستراتيجية وعرض التقارير لوحات التحكم -->
     <section id="projects" class="py-20">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
@@ -182,10 +189,12 @@
                     </button>
                 </div>
             </div>
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="projects-grid"></div>
         </div>
     </section>
 
+    <!-- قسم المسار المهني والخبرات -->
     <section id="experience" class="py-20 bg-slate-950/10 border-y" style="border-color: var(--border-color);">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 relative">
@@ -198,6 +207,7 @@
         </div>
     </section>
 
+    <!-- قسم الشهادات والمؤهلات الأكاديمية -->
     <section id="certificates" class="py-20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 relative">
@@ -210,6 +220,7 @@
         </div>
     </section>
 
+    <!-- قسم المهارات والقدرات الفنية -->
     <section id="skills" class="py-20 border-t" style="border-color: var(--border-color);">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -222,6 +233,7 @@
         </div>
     </section>
 
+    <!-- قسم التواصل وقنوات الاتصال وبوابات المراسلة -->
     <section id="contact" class="py-20 border-t border-slate-900 bg-slate-950/20">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -247,6 +259,15 @@
                                 <a id="contact-whatsapp" href="https://wa.me/967775326898" target="_blank" class="text-slate-200 hover:text-emerald-400 transition font-medium" dir="ltr" data-editable>+967 775326898</a>
                             </div>
                         </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-blue-400 text-lg">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-slate-500 block uppercase font-bold">LinkedIn</span>
+                                <a href="https://www.linkedin.com/in/en-osama-hajb-29a440331?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="text-slate-200 hover:text-blue-400 transition font-medium" data-editable>linkedin.com/in/Osamah Jeb</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="lg:col-span-7">
@@ -261,6 +282,14 @@
                                 <input required type="email" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-sky-500 transition" placeholder="name@domain.com">
                             </div>
                         </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-2 uppercase">الموضوع</label>
+                            <input required type="text" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-sky-500 transition" placeholder="استشارة بخصوص بناء داشبورد">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-2 uppercase">تفاصيل المشروع</label>
+                            <textarea required rows="4" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-slate-100 focus:outline-none focus:border-sky-500 transition" placeholder="اشرح قليلاً عن حجم ومصادر بياناتك..."></textarea>
+                        </div>
                         <button type="submit" class="w-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold py-4 rounded-xl shadow-lg shadow-sky-500/10 transition duration-300">إرسال الرسالة <i class="fa-solid fa-paper-plane mr-2"></i></button>
                         
                         <h3 class="text-center text-sm text-slate-400 mb-4 pt-4 border-t border-slate-800">أو عبر المنصات الاجتماعية</h3>
@@ -268,6 +297,9 @@
                             <a href="https://t.me/your_username" class="social-item telegram"><i class="fab fa-telegram-plane"></i><span>تلجرام</span></a>
                             <a href="https://x.com/your_username" class="social-item x-twitter"><i class="fab fa-x-twitter"></i><span>منصة X</span></a>
                             <a href="https://instagram.com/your_username" class="social-item instagram"><i class="fab fa-instagram"></i><span>إنستغرام</span></a>
+                            <a href="https://www.snapchat.com/add/your_username" class="social-item snapchat"><i class="fab fa-snapchat-ghost"></i><span>سناب</span></a>
+                            <a href="https://facebook.com/your_username" class="social-item facebook"><i class="fab fa-facebook-f"></i><span>فيسبوك</span></a>
+                            <a href="https://youtube.com/@your_channel" class="social-item youtube"><i class="fab fa-youtube"></i><span>يوتيوب</span></a>
                         </div>
                     </form>
                 </div>
@@ -275,12 +307,14 @@
         </div>
     </section>
 
+    <!-- ذيل الصفحة Footer -->
     <footer class="py-8 border-t text-center text-xs" style="background-color: var(--bg-main); border-color: var(--border-color); color: var(--text-muted);">
         <div class="max-w-6xl mx-auto px-4">
             <p>© 2026 جميع الحقوق محفوظة لـ <span id="footer-credit-name" class="font-bold" style="color: var(--text-main);" data-editable>أُسَامَة حَاجِب</span>.</p>
         </div>
     </footer>
 
+    <!-- لوحة تحكم حجم الخطوط العام لقابلية القراءة السهلة -->
     <div id="size-control-panel" class="fixed bottom-24 left-24 z-50 bg-slate-900/95 border border-slate-800 p-4 rounded-2xl w-64 shadow-2xl backdrop-blur-md hidden transition-all">
         <div class="space-y-4">
             <div>
@@ -290,39 +324,36 @@
         </div>
     </div>
 
+    <!-- لوحة اختيار الثيمات الذكية للموقع ومظهر الألوان المستجيب -->
     <div id="theme-selection-panel" class="fixed bottom-24 left-6 z-50 bg-slate-900/95 border border-slate-800 p-3 rounded-2xl w-64 shadow-2xl backdrop-blur-md hidden theme-menu-animate">
         <div class="text-xs font-bold text-slate-400 mb-2 px-1 text-right">اختر مظهر الموقع الاحترافي:</div>
         <div class="grid grid-cols-1 gap-1.5" id="themes-list-container"></div>
     </div>
 
+    <!-- القائمة العائمة السحرية المتكاملة والذكية لتجربة مستخدم (FAB Center) تفاعلية خرافية -->
     <div class="fixed bottom-6 left-6 z-50 flex flex-col items-center gap-3.5" id="fab-container">
-        
         <div id="fab-options" class="flex flex-col items-center gap-3 transition-all duration-300 transform translate-y-10 opacity-0 pointer-events-none">
-          
-          <button onclick="toggleEditMode()" id="edit-mode-btn" class="w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-amber-400 transition-all transform hover:scale-110 active:scale-95 hidden" title="تفعيل / حفظ التعديلات">
+          <button onclick="toggleEditMode()" id="edit-mode-btn" class="w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-amber-400 transition-all transform hover:scale-110 active:scale-95 hidden" title="تفعيل / حفظ ومزامنة التعديلات">
             <i class="fa-solid fa-pen-nib text-base"></i>
           </button>
-
           <button onclick="toggleThemePanel(); event.stopPropagation();" class="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-purple-500 transition-all transform hover:scale-110 active:scale-95" title="تغيير مظهر وثيم الموقع">
             <i class="fa-solid fa-palette text-base"></i>
           </button>
-
           <button onclick="toggleSizePanel(); event.stopPropagation();" class="w-12 h-12 bg-slate-700 text-slate-200 rounded-full flex items-center justify-center shadow-lg hover:bg-slate-600 transition-all transform hover:scale-110 active:scale-95" title="التحكم بحجم الخطوط">
             <i class="fa-solid fa-text-height text-base"></i>
           </button>
-
         </div>
-
         <button id="fab-main-btn" class="w-14 h-14 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-blue-500 transition-all duration-300 transform active:scale-90 focus:outline-none ring-4 ring-blue-600/20">
           <i id="fab-icon" class="fas fa-cog text-xl animate-spin-slow"></i>
         </button>
-        
     </div>
 
+    <!-- نافذة لايت بوكس لعرض صور التقارير ولوحات التحكم مكبرة -->
     <div id="lightbox" class="fixed inset-0 z-50 bg-slate-950/95 hidden flex-col items-center justify-center p-4" onclick="closeLightbox()">
         <img id="lightbox-img" src="" class="max-w-full max-h-[85vh] rounded-xl object-contain border border-slate-800 shadow-2xl">
     </div>
 
+    <!-- محرك العمليات الشامل والكامل من الكود الأول لربط Firebase ومزامنة عناصر DOM وتفعيل السلايدر -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -366,23 +397,26 @@
             current_theme: "cyber_midnight",
             texts: {},
             projects: [
-                { title: "مشروع إستراتيجية أداء المبيعات والأرباح", badge: "أخصائي تحليل بيانات وذكاء الأعمال", date: "2025 - 2026", desc: "تم دمج وتنظيف وتصفية 6 مجموعات بيانات مختلفة باستخدام Power Query...", images: [] },
-                { title: "نظام مبيعات وحسابات سوبر ماركت البركة", badge: "مهندس ومطور نظم معلومات", date: "2026", desc: "تطوير وبناء نظام محاسبي ونقاط بيع متكامل (POS)...", images: [] }
+                { title: "مشروع إستراتيجية أداء المبيعات والأرباح", badge: "أخصائي تحليل بيانات وذكاء الأعمال", date: "2025 - 2026", desc: "تم دمج وتنظيف وتصفية 6 مجموعات بيانات مختلفة باستخدام Power Query، وبناء مستودع بيانات ونموذج متكامل مع بطاقات أداء ذكية عبر لغة DAX وعلاقات مرنة لتحسين سرعة التقارير.", images: [] },
+                { title: "نظام مبيعات وحسابات سوبر ماركت البركة", badge: "مهندس ومطور نظم معلومات", date: "2026", desc: "تطوير وبناء نظام محاسبي ونقاط بيع متكامل (POS) لإدارة الجرد، سندات الصرف والقبض، والمبيعات اليومية مع ترحيل البيانات آلياً إلى مستودع مركزي.", images: [] }
             ],
             timeline: [
-                { title: "أخصائي ذكاء الأعمال وتحليل البيانات", company: "سكاي سوفت - عمران", date: "2025 - الحاضر", desc: "المسؤول عن إدارة قواعد البيانات، تصميم لوحات تحكم تفاعلية للمبيعات والأرباح..." },
-                { title: "مطور نظم ومسؤول إدارة المخزون", company: "سوبر ماركت البركة", date: "2026", desc: "تصميم وإدارة نموذج قواعد البيانات الخاص بالمبيعات والمخازن..." }
+                { title: "أخصائي ذكاء الأعمال وتحليل البيانات", company: "سكاي سوفت - عمران", date: "2025 - الحاضر", desc: "المسؤول عن إدارة قواعد البيانات، تصميم لوحات تحكم تفاعلية للمبيعات والأرباح، وأتمتة سير العمل الداخلي لدعم اتخاذ القرار الذكي القائم على الأرقام." },
+                { title: "مطور نظم ومسؤول إدارة المخزون", company: "سوبر ماركت البركة", date: "2026", desc: "تصميم وإدارة نموذج قواعد البيانات الخاص بالمبيعات والمخازن، وبناء واجهات مخصصة لإصدار السندات النقدية والتقارير المالية الدورية." }
             ],
             certificates: [
-                { title: "بكالوريوس نظم معلومات حاسوبية (CIS)", company: "جامعة عمران", date: "2025", desc: "التخصص الأكاديمي المعتمد في تحليل النظم وهندسة قواعد البيانات." }
+                { title: "بكالوريوس نظم معلومات حاسوبية (CIS)", company: "جامعة عمران", date: "2025", desc: "التخصص الأكاديمي المعتمد في تحليل النظم وهندسة قواعد البيانات." },
+                { title: "شهادة تحليل البيانات الاحترافية المعتمدة", company: "Data Analysis Professional", date: "2025", desc: "شهادة متقدمة في تقنيات ذكاء الأعمال (BI)، وتطوير نماذج البيانات المعقدة واستخلاص الاستبصارات الإستراتيجية." }
             ],
-            skills: [{ name: "Power BI" }, { name: "DAX Formulas" }, { name: "Python" }, { name: "SQL Server" }]
+            skills: [
+                { name: "Power BI" }, { name: "DAX Formulas" }, { name: "Power Query" }, { name: "Python (pandas)" }, { name: "SQL Server" }, { name: "PostgreSQL" }, { name: "ETL Pipelines" }, { name: "Excel Advanced" }
+            ]
         };
 
         let localPortfolioData = JSON.parse(JSON.stringify(defaultPortfolioData));
         let editMode = false;
 
-        // دالة فتح القائمة العائمة (FAB Open)
+        // دالة فتح فتح القائمة العائمة (FAB Open)
         const openFAB = () => {
           fabOptions.classList.remove('translate-y-10', 'opacity-0', 'pointer-events-none');
           fabOptions.classList.add('translate-y-0', 'opacity-100');
@@ -413,14 +447,14 @@
             renderThemesMenuButtonsHTML();
         });
 
-        // النقر على الزر الرئيسي العائم
+        // النقر على زر التحكم العائم الرئيسي
         fabMainBtn.addEventListener('click', (e) => {
           e.stopPropagation();
           const isOpen = fabOptions.classList.contains('opacity-100');
           if (isOpen) { closeFAB(); } else { openFAB(); }
         });
 
-        // ميزة الـ UX الكبرى: النقر على أي مكان في الشاشة يغلق القائمة ويرد الأزرار لمكانها
+        // النقر خارج الـ FAB لإغلاقه تلقائياً لتحسين تجربة المستخدم
         document.addEventListener('click', (e) => {
           if (!fabContainer.contains(e.target)) {
             closeFAB();
@@ -444,6 +478,7 @@
         window.applyThemeStyles = function(themeKey) {
             const theme = siteThemes[themeKey] || siteThemes.cyber_midnight;
             const root = document.documentElement;
+            
             root.style.setProperty('--bg-main', theme.main);
             root.style.setProperty('--bg-card', theme.card);
             root.style.setProperty('--bg-nav', theme.nav);
@@ -452,37 +487,58 @@
             root.style.setProperty('--text-muted', theme.muted);
             root.style.setProperty('--gradient-1', theme.g1);
             root.style.setProperty('--gradient-2', theme.g2);
+            
             localPortfolioData.current_theme = themeKey;
+
+            if (themeKey === 'pure_light') {
+                document.querySelectorAll('.glass-card').forEach(c => c.style.boxShadow = "0 4px 20px rgba(0,0,0,0.05)");
+            } else {
+                document.querySelectorAll('.glass-card').forEach(c => c.style.boxShadow = "none");
+            }
         }
 
         function renderThemesMenuButtonsHTML() {
             const container = document.getElementById('themes-list-container');
             if (!container) return;
             container.innerHTML = '';
+            
             Object.keys(siteThemes).forEach(key => {
                 const btn = document.createElement('button');
                 btn.className = "w-full text-right text-xs font-semibold text-slate-200 hover:text-white p-2 rounded-xl bg-slate-800/50 hover:bg-sky-600/30 border border-slate-700/40 hover:border-sky-500/50 transition flex items-center justify-between";
                 btn.onclick = () => { applyThemeStyles(key); };
-                btn.innerHTML = `<span>${siteThemes[key].name}</span><div class="flex gap-1"><span class="w-2 h-2 rounded-full" style="background-color: ${siteThemes[key].main}"></span><span class="w-2 h-2 rounded-full" style="background-color: ${siteThemes[key].muted}"></span></div>`;
+                
+                btn.innerHTML = `
+                    <span>${siteThemes[key].name}</span>
+                    <div class="flex gap-1">
+                        <span class="w-2 h-2 rounded-full" style="background-color: ${siteThemes[key].main}"></span>
+                        <span class="w-2 h-2 rounded-full" style="background-color: ${siteThemes[key].muted}"></span>
+                    </div>
+                `;
                 container.appendChild(btn);
             });
         }
 
         onValue(ref(db, 'osamaPortfolioMaster'), (snapshot) => {
             const data = snapshot.val();
+            
             if (data) {
                 localPortfolioData = data;
-                if (!localPortfolioData.projects) localPortfolioData.projects = defaultPortfolioData.projects;
-                if (!localPortfolioData.timeline) localPortfolioData.timeline = defaultPortfolioData.timeline;
-                if (!localPortfolioData.certificates) localPortfolioData.certificates = defaultPortfolioData.certificates;
-                if (!localPortfolioData.skills) localPortfolioData.skills = defaultPortfolioData.skills;
+                if (!localPortfolioData.projects || localPortfolioData.projects.length === 0) localPortfolioData.projects = defaultPortfolioData.projects;
+                if (!localPortfolioData.timeline || localPortfolioData.timeline.length === 0) localPortfolioData.timeline = defaultPortfolioData.timeline;
+                if (!localPortfolioData.certificates || localPortfolioData.certificates.length === 0) localPortfolioData.certificates = defaultPortfolioData.certificates;
+                if (!localPortfolioData.skills || localPortfolioData.skills.length === 0) localPortfolioData.skills = defaultPortfolioData.skills;
                 if (!localPortfolioData.texts) localPortfolioData.texts = {};
+                if (!localPortfolioData.current_theme) localPortfolioData.current_theme = "cyber_midnight";
+            } else {
+                localPortfolioData = JSON.parse(JSON.stringify(defaultPortfolioData));
             }
+
             Object.keys(localPortfolioData.texts).forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.innerText = localPortfolioData.texts[id];
             });
-            applyThemeStyles(localPortfolioData.current_theme || "cyber_midnight");
+
+            applyThemeStyles(localPortfolioData.current_theme);
             renderAllProjectsHTML();
             renderAllTimelineHTML();
             renderAllCertificatesHTML();
@@ -492,7 +548,8 @@
 
         function renderAllProjectsHTML() {
             const grid = document.getElementById('projects-grid');
-            if(!grid) return; grid.innerHTML = '';
+            if(!grid) return;
+            grid.innerHTML = '';
             localPortfolioData.projects.forEach((proj, idx) => {
                 const card = document.createElement('div');
                 card.className = "glass-card rounded-2xl overflow-hidden flex flex-col group project-item relative";
@@ -500,6 +557,9 @@
                     <button onclick="removeArrayElement('projects', ${idx}, event)" class="absolute top-4 left-4 z-50 bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-lg">✕</button>
                     <div class="relative h-64 sm:h-72 bg-slate-900 overflow-hidden project-slider flex items-center justify-center" data-current-index="0">
                         <div class="slider-wrapper flex w-full h-full transition-transform duration-500"></div>
+                        <button onclick="prevSlide(this, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-right"></i></button>
+                        <button onclick="nextSlide(this, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div class="slider-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-30 hidden"></div>
                         <span class="absolute top-4 right-4 bg-sky-500 text-slate-950 text-xs px-3 py-1.5 rounded-lg font-extrabold uppercase z-20 DOM-badge" data-editable>${proj.badge || 'محلل بيانات'}</span>
                         <div class="absolute inset-0 bg-slate-950/80 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition duration-300 edit-only hidden z-20 upload-overlay">
                             <label class="cursor-pointer bg-sky-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-2">
@@ -509,19 +569,73 @@
                         </div>
                     </div>
                     <div class="p-6 flex-grow flex flex-col justify-between">
-                        <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-xl font-bold DOM-title" data-editable>${proj.title || ''}</h3>
-                            <span class="text-xs DOM-date" style="color: var(--text-muted);" data-editable>${proj.date || ''}</span>
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-xl font-bold group-hover:text-sky-400 transition DOM-title" data-editable>${proj.title || ''}</h3>
+                                <span class="text-xs DOM-date" style="color: var(--text-muted);" data-editable>${proj.date || ''}</span>
+                            </div>
+                            <p class="text-sm mb-4 leading-relaxed DOM-desc" style="color: var(--text-main);" data-editable>${proj.desc || ''}</p>
                         </div>
-                        <p class="text-sm leading-relaxed DOM-desc" style="color: var(--text-main);" data-editable>${proj.desc || ''}</p>
-                    </div>`;
+                    </div>
+                `;
                 grid.appendChild(card);
+                renderProjectImagesInsideSlider(card.querySelector('.project-slider'), proj.images || [], idx);
             });
+        }
+
+        function renderProjectImagesInsideSlider(slider, imagesArray, projIdx) {
+            const wrapper = slider.querySelector('.slider-wrapper');
+            const dotsContainer = slider.querySelector('.slider-dots');
+            const prevBtn = slider.querySelector('button[onclick*="prevSlide"]');
+            const nextBtn = slider.querySelector('button[onclick*="nextSlide"]');
+            const uploadOverlay = slider.querySelector('.upload-overlay');
+            
+            if (!imagesArray || imagesArray.length === 0) {
+                slider.classList.add('image-placeholder');
+                wrapper.innerHTML = `
+                    <div class="w-full h-full flex flex-col items-center justify-center text-slate-500">
+                        <i class="fa-regular fa-image text-4xl mb-2"></i>
+                        <span class="text-xs">لم يتم رفع لوحات تحكم. تفعيل التعديل للإضافة.</span>
+                    </div>`;
+                if(uploadOverlay) uploadOverlay.style.display = 'flex';
+                return;
+            }
+
+            slider.classList.remove('image-placeholder');
+            if(uploadOverlay) uploadOverlay.style.display = 'none';
+            if(dotsContainer) dotsContainer.classList.remove('hidden');
+            if(prevBtn) prevBtn.classList.remove('hidden');
+            if(nextBtn) nextBtn.classList.remove('hidden');
+
+            imagesArray.forEach((imgSrc, imgIdx) => {
+                const imgContainer = document.createElement('div');
+                imgContainer.className = "relative w-full h-full flex-shrink-0 project-img-container";
+                imgContainer.innerHTML = `
+                    <img src="${imgSrc}" class="w-full h-full object-cover cursor-pointer" onclick="openLightbox(this.src)">
+                    <button onclick="removeInlineImage(${projIdx}, ${imgIdx}, event)" class="absolute top-4 right-4 bg-red-600 hover:bg-red-700 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold z-50 shadow-2xl edit-only hidden">✕</button>
+                `;
+                wrapper.appendChild(imgContainer);
+
+                const dot = document.createElement('span');
+                dot.className = imgIdx === 0 ? "slider-dot w-5 h-2 rounded-full bg-sky-400 transition-all" : "slider-dot w-2 h-2 rounded-full bg-white/40 transition-all";
+                if(dotsContainer) dotsContainer.appendChild(dot);
+            });
+
+            const floatingAddBtn = document.createElement('div');
+            floatingAddBtn.className = `absolute bottom-3 right-3 z-40 edit-only hidden`;
+            floatingAddBtn.innerHTML = `
+                <label class="cursor-pointer bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-3 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1 shadow-xl">
+                    <i class="fa-solid fa-plus"></i> <span>إضافة صورة</span>
+                    <input type="file" accept="image/*" class="hidden" onchange="uploadProjectImageInline(${projIdx}, this)">
+                </label>
+            `;
+            slider.appendChild(floatingAddBtn);
         }
 
         function renderAllTimelineHTML() {
             const container = document.getElementById('timeline-container');
-            if(!container) return; container.innerHTML = '';
+            if(!container) return;
+            container.innerHTML = '';
             localPortfolioData.timeline.forEach((item, idx) => {
                 const div = document.createElement('div');
                 div.className = "relative pr-8 group timeline-item";
@@ -529,32 +643,36 @@
                     <button onclick="removeArrayElement('timeline', ${idx}, event)" class="absolute top-0 left-0 bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-md">✕</button>
                     <span class="absolute right-0 top-1.5 -mr-[11px] w-5 h-5 rounded-full bg-sky-500 border-4" style="border-color: var(--bg-main);"></span>
                     <span class="text-xs font-bold block mb-1 DOM-date" style="color: var(--text-muted);" data-editable>${item.date || ''}</span>
-                    <h3 class="text-xl font-bold DOM-title" data-editable>${item.title || ''}</h3>
+                    <h3 class="text-xl font-bold DOM-title" style="color: var(--text-main);" data-editable>${item.title || ''}</h3>
                     <p class="text-xs sm:text-sm mb-3 DOM-company" style="color: var(--text-muted);" data-editable>${item.company || ''}</p>
-                    <p class="text-sm leading-relaxed DOM-desc" data-editable>${item.desc || ''}</p>`;
+                    <p class="text-sm leading-relaxed DOM-desc" style="color: var(--text-main);" data-editable>${item.desc || ''}</p>
+                `;
                 container.appendChild(div);
             });
         }
 
         function renderAllCertificatesHTML() {
             const container = document.getElementById('certificates-container');
-            if(!container) return; container.innerHTML = '';
+            if(!container) return;
+            container.innerHTML = '';
             localPortfolioData.certificates.forEach((cert, idx) => {
                 const div = document.createElement('div');
                 div.className = "glass-card p-6 rounded-2xl relative group";
                 div.innerHTML = `
                     <button onclick="removeArrayElement('certificates', ${idx}, event)" class="absolute top-3 left-3 bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-[10px] opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-sm">✕</button>
                     <span class="text-xs font-bold block mb-1 DOM-date" style="color: var(--text-muted);" data-editable>${cert.date || ''}</span>
-                    <h3 class="text-lg font-bold mb-2 DOM-title" data-editable>${cert.title || ''}</h3>
+                    <h3 class="text-lg font-bold mb-2 DOM-title" style="color: var(--text-main);" data-editable>${cert.title || ''}</h3>
                     <p class="text-xs mb-2 DOM-company" style="color: var(--text-muted);" data-editable>${cert.company || ''}</p>
-                    <p class="text-xs DOM-desc" data-editable>${cert.desc || ''}</p>`;
+                    <p class="text-xs DOM-desc" style="color: var(--text-main);" data-editable>${cert.desc || ''}</p>
+                `;
                 container.appendChild(div);
             });
         }
 
         function renderAllSkillsHTML() {
             const container = document.getElementById('skills-container');
-            if(!container) return; container.innerHTML = '';
+            if(!container) return;
+            container.innerHTML = '';
             localPortfolioData.skills.forEach((skill, idx) => {
                 const span = document.createElement('span');
                 span.className = "border text-sky-400 px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 group relative";
@@ -562,13 +680,37 @@
                 span.style.borderColor = "var(--border-color)";
                 span.innerHTML = `
                     <i class="fa-solid fa-code"></i> <span class="DOM-name" data-editable>${skill.name || ''}</span>
-                    <button onclick="removeArrayElement('skills', ${idx}, event)" class="absolute -top-2 -left-2 bg-red-600 text-white w-4 h-4 rounded-full flex items-center justify-center text-[8px] opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-sm">✕</button>`;
+                    <button onclick="removeArrayElement('skills', ${idx}, event)" class="absolute -top-2 -left-2 bg-red-600 text-white w-4 h-4 rounded-full flex items-center justify-center text-[8px] opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-sm">✕</button>
+                `;
                 container.appendChild(span);
             });
         }
 
+        window.uploadProjectImageInline = function(projIdx, inputElement) {
+            const file = inputElement.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if (!localPortfolioData.projects[projIdx].images) localPortfolioData.projects[projIdx].images = [];
+                    localPortfolioData.projects[projIdx].images.push(e.target.result);
+                    renderAllProjectsHTML();
+                    applyEditVisibility();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        window.removeInlineImage = function(projIdx, imgIdx, event) {
+            event.preventDefault();
+            event.stopPropagation();
+            localPortfolioData.projects[projIdx].images.splice(imgIdx, 1);
+            renderAllProjectsHTML();
+            applyEditVisibility();
+        }
+
         window.removeArrayElement = function(key, idx, event) {
-            event.preventDefault(); event.stopPropagation();
+            event.preventDefault();
+            event.stopPropagation();
             localPortfolioData[key].splice(idx, 1);
             if(key === 'projects') renderAllProjectsHTML();
             if(key === 'timeline') renderAllTimelineHTML();
@@ -579,47 +721,62 @@
 
         window.addNewProject = function() {
             localPortfolioData.projects.push({ title: 'اسم المشروع الجديد', badge: 'الدور الوظيفي', date: '2026', desc: 'تفاصيل وشرح المشروع...', images: [] });
-            renderAllProjectsHTML(); applyEditVisibility();
+            renderAllProjectsHTML();
+            applyEditVisibility();
         }
 
         window.addNewTimelineItem = function() {
             localPortfolioData.timeline.push({ title: 'المسمى الوظيفي الجديد', company: 'اسم الشركة', date: '2026', desc: 'المهام والإنجازات...' });
-            renderAllTimelineHTML(); applyEditVisibility();
+            renderAllTimelineHTML();
+            applyEditVisibility();
         }
 
         window.addNewCertificate = function() {
             localPortfolioData.certificates.push({ title: 'الشهادة الأكاديمية الجديدة', company: 'الجهة المانحة', date: '2026', desc: 'التفاصيل والتقدير...' });
-            renderAllCertificatesHTML(); applyEditVisibility();
+            renderAllCertificatesHTML();
+            applyEditVisibility();
         }
 
         window.addNewSkill = function() {
             localPortfolioData.skills.push({ name: 'مهارة جديدة' });
-            renderAllSkillsHTML(); applyEditVisibility();
+            renderAllSkillsHTML();
+            applyEditVisibility();
         }
 
         function applyEditVisibility() {
             const editables = document.querySelectorAll('[data-editable], .DOM-title, .DOM-company, .DOM-desc, .DOM-date, .DOM-badge, .DOM-name');
             const editOnlyElements = document.querySelectorAll('.edit-only');
+            
             if (editMode) {
-                editables.forEach(el => { el.setAttribute('contenteditable', 'true'); el.classList.add('edit-active'); });
+                editables.forEach(el => { 
+                    el.setAttribute('contenteditable', 'true'); 
+                    el.classList.add('edit-active'); 
+                });
                 editOnlyElements.forEach(el => el.classList.remove('hidden'));
             } else {
-                editables.forEach(el => { el.removeAttribute('contenteditable'); el.classList.remove('edit-active'); });
+                editables.forEach(el => { 
+                    el.removeAttribute('contenteditable'); 
+                    el.classList.remove('edit-active'); 
+                });
                 editOnlyElements.forEach(el => el.classList.add('hidden'));
             }
         }
 
         window.toggleEditMode = function() {
             editMode = !editMode;
+
             if (editMode) {
                 applyEditVisibility();
-                alert('وضع التعديل نشط الآن! اضغط على أي نص لتعديله مباشرة.');
+                alert('وضع التعديل نشط الآن! اضغط على أي نص لتعديله مباشرة ثم اضغط على نفس الزر لحفظ المزامنة.');
             } else {
                 document.querySelectorAll('[data-editable]').forEach(el => {
-                    if (el.id && !el.className.includes('DOM-')) { localPortfolioData.texts[el.id] = el.innerText; }
+                    if (el.id && !el.className.includes('DOM-')) {
+                        localPortfolioData.texts[el.id] = el.innerText;
+                    }
                 });
 
-                document.querySelectorAll('#projects-grid .project-item').forEach((card, idx) => {
+                const projectCards = document.querySelectorAll('#projects-grid .project-item');
+                projectCards.forEach((card, idx) => {
                     if(localPortfolioData.projects[idx]) {
                         localPortfolioData.projects[idx].title = card.querySelector('.DOM-title').innerText;
                         localPortfolioData.projects[idx].badge = card.querySelector('.DOM-badge').innerText;
@@ -628,7 +785,8 @@
                     }
                 });
 
-                document.querySelectorAll('#timeline-container .timeline-item').forEach((item, idx) => {
+                const timelineItems = document.querySelectorAll('#timeline-container .timeline-item');
+                timelineItems.forEach((item, idx) => {
                     if(localPortfolioData.timeline[idx]) {
                         localPortfolioData.timeline[idx].title = item.querySelector('.DOM-title').innerText;
                         localPortfolioData.timeline[idx].company = item.querySelector('.DOM-company').innerText;
@@ -637,13 +795,64 @@
                     }
                 });
 
+                const certItems = document.querySelectorAll('#certificates-container > div');
+                certItems.forEach((item, idx) => {
+                    if(localPortfolioData.certificates[idx]) {
+                        localPortfolioData.certificates[idx].title = item.querySelector('.DOM-title').innerText;
+                        localPortfolioData.certificates[idx].company = item.querySelector('.DOM-company').innerText;
+                        localPortfolioData.certificates[idx].date = item.querySelector('.DOM-date').innerText;
+                        localPortfolioData.certificates[idx].desc = item.querySelector('.DOM-desc').innerText;
+                    }
+                });
+
+                const skillItems = document.querySelectorAll('#skills-container > span');
+                skillItems.forEach((item, idx) => {
+                    if(localPortfolioData.skills[idx]) {
+                        localPortfolioData.skills[idx].name = item.querySelector('.DOM-name').innerText;
+                    }
+                });
+
                 applyEditVisibility();
+
                 set(ref(db, 'osamaPortfolioMaster'), localPortfolioData).then(() => {
-                    alert('تم الحفظ والمزامنة الشاملة مع Firebase بنجاح! 🎉');
+                    alert('تم الحفظ والمزامنة اللحظية الشاملة لكافة العناصر والثيم المختار بنجاح! 🎉');
                 }).catch((error) => {
                     alert('حدث خطأ أثناء المزامنة: ' + error.message);
                 });
             }
+        }
+
+        window.updateSliderPosition = function(sliderContainer) {
+            const index = parseInt(sliderContainer.getAttribute('data-current-index')) || 0;
+            const wrapper = sliderContainer.querySelector('.slider-wrapper');
+            wrapper.style.transform = `translateX(${index * 100}%)`;
+            const dots = sliderContainer.querySelectorAll('.slider-dot');
+            dots.forEach((dot, dIdx) => {
+                if (dIdx === index) { dot.className = "slider-dot w-5 h-2 rounded-full bg-sky-400 transition-all"; }
+                else { dot.className = "slider-dot w-2 h-2 rounded-full bg-white/40 transition-all"; }
+            });
+        }
+
+        window.nextSlide = function(btn, e) {
+            e.stopPropagation();
+            const slider = btn.closest('.project-slider');
+            const totalSlides = slider.querySelectorAll('.slider-wrapper .project-img-container').length;
+            if (totalSlides <= 1) return;
+            let index = (parseInt(slider.getAttribute('data-current-index')) || 0) + 1;
+            index = index % totalSlides;
+            slider.setAttribute('data-current-index', index);
+            updateSliderPosition(slider);
+        }
+
+        window.prevSlide = function(btn, e) {
+            e.stopPropagation();
+            const slider = btn.closest('.project-slider');
+            const totalSlides = slider.querySelectorAll('.slider-wrapper .project-img-container').length;
+            if (totalSlides <= 1) return;
+            let index = (parseInt(slider.getAttribute('data-current-index')) || 0) - 1;
+            if (index < 0) index = totalSlides - 1;
+            slider.setAttribute('data-current-index', index);
+            updateSliderPosition(slider);
         }
 
         window.openLightbox = function(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.remove('hidden'); document.getElementById('lightbox').classList.add('flex'); }
