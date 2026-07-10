@@ -215,12 +215,10 @@
             <h1 class="text-4xl sm:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
                 أهلاً بك، أنا <span id="hero-name" class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-teal-400 to-emerald-400" data-editable>أُسَامَة حَاجِب</span>
             </h1>
-            <!-- <p id="hero-subtitle" class="text-xl sm:text-2xl font-medium mb-6" style="color: var(--text-main);" data-editable>محلل بيانات وأخصائي ذكاء الأعمال (Data Analyst & BI Specialist)</p> -->
-           <p id="hero-subtitle" class="text-xl sm:text-2xl font-medium mb-6" style="color: #ffffff;" data-editable>محلل بيانات وأخصائي ذكاء الأعمال (Data Analyst & BI Specialist)</p> -->
+            <p id="hero-subtitle" class="text-xl sm:text-2xl font-medium mb-6 text-white" data-editable>محلل بيانات وأخصائي ذكاء الأعمال (Data Analyst & BI Specialist)</p>
             
-            <p id="hero-subtitle" class="text-xl sm:text-2xl font-medium mb-6 text-white" style="color: #ffffff !important;" data-editable>
             <p id="hero-desc" class="max-w-3xl mx-auto text-base sm:text-lg mb-10 leading-relaxed" style="color: var(--text-muted);" data-editable>
-                خبير معتمد في نظم المعلومات وتحليل البيانات مع سجل حافل بالنجاح في تحويل مجموعات البيانات المعقدة إلى رؤى استبصارية استراتيجية. متفوق في استخدام Python وPower BI وExcel لأتمتة تدفقات العمل وبناء لوحات معلومات مهنية تدعم القرارات التشغيلية المستندة للبيانات واستبقاء الكفاءات الوظيفية.
+                خبير معتمد في نظم معلومات وتحليل البيانات مع سجل حافل بالنجاح في تحويل مجموعات البيانات المعقدة إلى رؤى استبصارية استراتيجية. متفوق في استخدام Python وPower BI وExcel لأتمتة تدفقات العمل وبناء لوحات معلومات مهنية تدعم القرارات التشغيلية المستندة للبيانات واستبقاء الكفاءات الوظيفية.
             </p>
 
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
@@ -593,7 +591,6 @@
             }, 3500);
         }
 
-        // دالة فتح وإظهار الخيارات مع تفعيل علامة الـ X واللون الأحمر الناري للزر لجذب التفات المستخدم
         const openFAB = () => {
           fabOptions.classList.remove('translate-y-10', 'opacity-0', 'pointer-events-none');
           fabOptions.classList.add('translate-y-0', 'opacity-100');
@@ -613,7 +610,6 @@
           }
         };
 
-        // دالة إغلاق الخيارات وإعادة الشعار إلى الأسطر الثلاثة واللون الأزرق الكلاسيكي
         const closeFAB = () => {
           fabOptions.classList.add('translate-y-10', 'opacity-0', 'pointer-events-none');
           fabOptions.classList.remove('translate-y-0', 'opacity-100');
@@ -639,14 +635,12 @@
             renderThemesMenuButtonsHTML();
         });
 
-        // مراقب حدث الضغط على الزر الرئيسي
         fabMainBtn.addEventListener('click', (e) => {
           e.stopPropagation();
           const isOpen = fabOptions.classList.contains('opacity-100');
           if (isOpen) { closeFAB(); } else { openFAB(); }
         });
 
-        // مراقب حدث الضغط خارج النطاق للإغلاق الذكي المصلح
         document.addEventListener('click', (e) => {
           if (!fabContainer.contains(e.target)) {
             closeFAB();
@@ -963,63 +957,69 @@
                 return;
             }
 
-            editMode = !editMode;
-
-            if (editMode) {
+            // إذا لم نكن في وضع التعديل، نقوم بتفعيله فوراً
+            if (!editMode) {
+                editMode = true;
                 applyEditVisibility();
                 showCustomToast('وضع التعديل نشط! انقر على النصوص والبيانات لتحديثها مباشرة ثم احفظ.', 'info');
-            } else {
-                document.querySelectorAll('[data-editable]').forEach(el => {
-                    if (el.id && !el.className.includes('DOM-')) {
-                        localPortfolioData.texts[el.id] = el.innerText;
-                    }
-                });
-
-                const projectCards = document.querySelectorAll('#projects-grid .project-item');
-                projectCards.forEach((card, idx) => {
-                    if(localPortfolioData.projects[idx]) {
-                        localPortfolioData.projects[idx].title = card.querySelector('.DOM-title').innerText;
-                        localPortfolioData.projects[idx].badge = card.querySelector('.DOM-badge').innerText;
-                        localPortfolioData.projects[idx].date = card.querySelector('.DOM-date').innerText;
-                        localPortfolioData.projects[idx].desc = card.querySelector('.DOM-desc').innerText;
-                    }
-                });
-
-                const timelineItems = document.querySelectorAll('#timeline-container .timeline-item');
-                timelineItems.forEach((item, idx) => {
-                    if(localPortfolioData.timeline[idx]) {
-                        localPortfolioData.timeline[idx].title = item.querySelector('.DOM-title').innerText;
-                        localPortfolioData.timeline[idx].company = item.querySelector('.DOM-company').innerText;
-                        localPortfolioData.timeline[idx].date = item.querySelector('.DOM-date').innerText;
-                        localPortfolioData.timeline[idx].desc = item.querySelector('.DOM-desc').innerText;
-                    }
-                });
-
-                const certItems = document.querySelectorAll('#certificates-container > div');
-                certItems.forEach((item, idx) => {
-                    if(localPortfolioData.certificates[idx]) {
-                        localPortfolioData.certificates[idx].title = item.querySelector('.DOM-title').innerText;
-                        localPortfolioData.certificates[idx].company = item.querySelector('.DOM-company').innerText;
-                        localPortfolioData.certificates[idx].date = item.querySelector('.DOM-date').innerText;
-                        localPortfolioData.certificates[idx].desc = item.querySelector('.DOM-desc').innerText;
-                    }
-                });
-
-                const skillItems = document.querySelectorAll('#skills-container > span');
-                skillItems.forEach((item, idx) => {
-                    if(localPortfolioData.skills[idx]) {
-                        localPortfolioData.skills[idx].name = item.querySelector('.DOM-name').innerText;
-                    }
-                });
-
-                applyEditVisibility();
-
-                set(ref(db, 'osamaPortfolioMaster'), localPortfolioData).then(() => {
-                    showCustomToast('تم الحفظ والمزامنة اللحظية لكافة البيانات بنجاح! 🎉', 'success');
-                }).catch((error) => {
-                    showCustomToast('حدث خطأ أثناء المزامنة: ' + error.message, 'error');
-                });
+                return;
             }
+
+            // إذا كنا في وضع التعديل والآن ضغطنا لإنهاء التعديل والحفظ والمزامنة السحابية
+            // 1. نقوم أولاً بجمع البيانات المكتوبة حالياً من الشاشة والصفحة ما زالت في وضع التعديل
+            document.querySelectorAll('[data-editable]').forEach(el => {
+                if (el.id && !el.className.includes('DOM-')) {
+                    localPortfolioData.texts[el.id] = el.innerText;
+                }
+            });
+
+            const projectCards = document.querySelectorAll('#projects-grid .project-item');
+            projectCards.forEach((card, idx) => {
+                if(localPortfolioData.projects[idx]) {
+                    localPortfolioData.projects[idx].title = card.querySelector('.DOM-title').innerText;
+                    localPortfolioData.projects[idx].badge = card.querySelector('.DOM-badge').innerText;
+                    localPortfolioData.projects[idx].date = card.querySelector('.DOM-date').innerText;
+                    localPortfolioData.projects[idx].desc = card.querySelector('.DOM-desc').innerText;
+                }
+            });
+
+            const timelineItems = document.querySelectorAll('#timeline-container .timeline-item');
+            timelineItems.forEach((item, idx) => {
+                if(localPortfolioData.timeline[idx]) {
+                    localPortfolioData.timeline[idx].title = item.querySelector('.DOM-title').innerText;
+                    localPortfolioData.timeline[idx].company = item.querySelector('.DOM-company').innerText;
+                    localPortfolioData.timeline[idx].date = item.querySelector('.DOM-date').innerText;
+                    localPortfolioData.timeline[idx].desc = item.querySelector('.DOM-desc').innerText;
+                }
+            });
+
+            const certItems = document.querySelectorAll('#certificates-container > div');
+            certItems.forEach((item, idx) => {
+                if(localPortfolioData.certificates[idx]) {
+                    localPortfolioData.certificates[idx].title = item.querySelector('.DOM-title').innerText;
+                    localPortfolioData.certificates[idx].company = item.querySelector('.DOM-company').innerText;
+                    localPortfolioData.certificates[idx].date = item.querySelector('.DOM-date').innerText;
+                    localPortfolioData.certificates[idx].desc = item.querySelector('.DOM-desc').innerText;
+                }
+            });
+
+            const skillItems = document.querySelectorAll('#skills-container > span');
+            skillItems.forEach((item, idx) => {
+                if(localPortfolioData.skills[idx]) {
+                    localPortfolioData.skills[idx].name = item.querySelector('.DOM-name').innerText;
+                }
+            });
+
+            // 2. نقوم بمزامنة ورفع البيانات إلى Firebase أولاً لضمان تخزينها وثباتها
+            set(ref(db, 'osamaPortfolioMaster'), localPortfolioData).then(() => {
+                showCustomToast('تم الحفظ والمزامنة اللحظية لكافة البيانات بنجاح! 🎉', 'success');
+                
+                // 3. بعد نجاح المزامنة، نغلق وضع التعديل بسلام دون الخوف من تضارب الـ Listener
+                editMode = false;
+                applyEditVisibility();
+            }).catch((error) => {
+                showCustomToast('حدث خطأ أثناء المزامنة: ' + error.message, 'error');
+            });
         }
 
         window.updateSliderPosition = function(sliderContainer) {
