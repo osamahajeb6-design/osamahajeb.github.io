@@ -1,3 +1,4 @@
+ner = document.
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -149,6 +150,34 @@
         #theme-selection-panel {
             bottom: 250px !important;
             left: 24px;
+        }
+
+        /* تأثير الأنيميشن والتحول للشعارات الثلاث شرطات وعلامة X داخل الزر الأحمر الدائري */
+        .hamburger-icon-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 22px;
+            height: 16px;
+            cursor: pointer;
+        }
+        .hamburger-bar {
+            width: 100%;
+            height: 2.5px;
+            background-color: white;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        /* وضع التحويل لعلامة X عند الفتح */
+        .hamburger-icon-wrapper.open .hamburger-bar:nth-child(1) {
+            transform: translateY(6.5px) rotate(45deg);
+        }
+        .hamburger-icon-wrapper.open .hamburger-bar:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+        .hamburger-icon-wrapper.open .hamburger-bar:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
         }
     </style>
 </head>
@@ -404,8 +433,13 @@
 
         </div>
 
-        <button id="fab-main-btn" class="w-14 h-14 bg-blue-600 hover:bg-blue-500 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 transform active:scale-90 focus:outline-none ring-4 ring-blue-600/20">
-          <i id="fab-icon" class="fas fa-cog text-xl text-white animate-spin-slow"></i>
+        <button id="fab-main-btn" class="relative w-14 h-14 bg-blue-600 hover:bg-blue-500 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 transform active:scale-90 focus:outline-none ring-4 ring-blue-600/20">
+          <span class="absolute inset-0 rounded-full bg-blue-600/30 animate-ping opacity-75 pointer-events-none" id="fab-ping-glow"></span>
+          <div class="hamburger-icon-wrapper" id="hamburger-icon-toggle">
+              <span class="hamburger-bar"></span>
+              <span class="hamburger-bar"></span>
+              <span class="hamburger-bar"></span>
+          </div>
         </button>
     </div>
 
@@ -441,7 +475,8 @@
         const fabContainer = document.getElementById('fab-container');
         const fabMainBtn = document.getElementById('fab-main-btn');
         const fabOptions = document.getElementById('fab-options');
-        const fabIcon = document.getElementById('fab-icon');
+        const hamburgerToggle = document.getElementById('hamburger-icon-toggle');
+        const fabPingGlow = document.getElementById('fab-ping-glow');
         
         const siteThemes = {
             cyber_midnight: { name: "الليل السيبراني (الافتراضي)", main: "#0b0f19", card: "rgba(30, 41, 59, 0.45)", nav: "rgba(15, 23, 42, 0.8)", border: "rgba(255, 255, 255, 0.08)", text: "#f8fafc", muted: "#94a3b8", g1: "rgba(56, 189, 248, 0.15)", g2: "rgba(16, 185, 129, 0.1)" },
@@ -509,12 +544,18 @@
             }, 3500);
         }
 
-        // دالة فتح وإظهار الخيارات العائمة بأمان كامل مع تعليق الأيقونة التفاعلية واللون الأحمر العاكس للوظيفة
+        // دالة فتح وإظهار الخيارات مع تفعيل علامة الـ X واللون الأحمر الناري للزر لجذب التفات المستخدم
         const openFAB = () => {
           fabOptions.classList.remove('translate-y-10', 'opacity-0', 'pointer-events-none');
           fabOptions.classList.add('translate-y-0', 'opacity-100');
-          fabIcon.className = "fas fa-times text-xl text-white"; // تغيير الأيقونة لإكس (X) تعكس وظيفة الإغلاق
-          fabMainBtn.className = "w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 transform rotate-90 bg-red-600 ring-4 ring-red-600/20 text-white"; // تحويل فوري للزر الأحمر الذكي
+          
+          if(hamburgerToggle) hamburgerToggle.classList.add('open');
+          fabMainBtn.classList.remove('bg-blue-600', 'hover:bg-blue-500', 'ring-blue-600/20');
+          fabMainBtn.classList.add('bg-red-600', 'hover:bg-red-500', 'ring-red-600/20');
+          if(fabPingGlow) {
+              fabPingGlow.classList.remove('bg-blue-600/30');
+              fabPingGlow.classList.add('bg-red-600/30');
+          }
           
           if (userPassword === SECRET_PASSWORD) {
               if (editModeBtn) editModeBtn.classList.remove('hidden');
@@ -523,14 +564,19 @@
           }
         };
 
-        // دالة الإغلاق المصححة والمضمونة لإعادة الأزرار العائمة لحالتها الأصلية دون تلف
+        // دالة إغلاق الخيارات وإعادة الشعار إلى الأسطر الثلاثة واللون الأزرق الكلاسيكي
         const closeFAB = () => {
           fabOptions.classList.add('translate-y-10', 'opacity-0', 'pointer-events-none');
           fabOptions.classList.remove('translate-y-0', 'opacity-100');
-          fabIcon.className = "fas fa-cog text-xl text-white animate-spin-slow"; // إرجاع مظهر كير الترس واللف
-          fabMainBtn.className = "w-14 h-14 bg-blue-600 hover:bg-blue-500 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 transform active:scale-90 focus:outline-none ring-4 ring-blue-600/20";
           
-          // إغلاق اللوحات الفرعية المفتوحة فوراً لمنع التداخل البصري
+          if(hamburgerToggle) hamburgerToggle.classList.remove('open');
+          fabMainBtn.classList.remove('bg-red-600', 'hover:bg-red-500', 'ring-red-600/20');
+          fabMainBtn.classList.add('bg-blue-600', 'hover:bg-blue-500', 'ring-blue-600/20');
+          if(fabPingGlow) {
+              fabPingGlow.classList.remove('bg-red-600/30');
+              fabPingGlow.classList.add('bg-blue-600/30');
+          }
+          
           if (sizeControlPanel) sizeControlPanel.classList.add('hidden');
           if (themeSelectionPanel) themeSelectionPanel.classList.add('hidden');
         };
