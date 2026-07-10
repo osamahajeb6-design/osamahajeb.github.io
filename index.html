@@ -94,13 +94,29 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* حركات التنبيهات الاحترافية الممركزة أعلى وسط الشاشة */
         @keyframes toastInTopCenter {
             from { transform: translateY(-20px) scale(0.9); opacity: 0; }
             to { transform: translateY(0) scale(1); opacity: 1; }
         }
         .animate-toast-top {
             animation: toastInTopCenter 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        /* أنماط مخصصة تضمن ظهور وثبات قائمة الخيارات العائمة والشعارات دون أي تداخل */
+        #fab-options {
+            display: flex;
+            flex-col: column;
+            align-items: flex-end;
+            gap: 12px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(20px) scale(0.95);
+            pointer-events: none;
+        }
+        #fab-options.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
         }
     </style>
 </head>
@@ -330,26 +346,27 @@
 
     <div id="toast-container" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-3 pointer-events-none p-4 max-w-md w-full"></div>
 
+    <!-- القائمة العائمة المصححة (FAB Container) - تم استبدال الصور التالفة بأيقونات خطية ثابتة وشعارات صحيحة -->
     <div class="fixed bottom-6 left-6 z-50 flex flex-col items-end gap-4" id="fab-container">
-        <div id="fab-options" class="flex flex-col items-end gap-3.5 transition-all duration-300 transform scale-90 opacity-0 hidden">
+        <div id="fab-options">
           
           <button onclick="toggleEditMode()" id="edit-mode-btn" class="edit-only hidden flex items-center gap-3 bg-slate-900/95 hover:bg-slate-800 border border-amber-500/30 pl-5 pr-2 py-2 rounded-full shadow-2xl transition-all transform hover:scale-105 active:scale-95 focus:outline-none group">
-            <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-400 flex items-center justify-center shadow-md shadow-amber-500/20 shrink-0">
-              <img src="https://cdn-icons-png.flaticon.com/512/1160/1160515.png" class="w-5 h-5 object-contain block mx-auto">
+            <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-400 flex items-center justify-center shadow-md shadow-amber-500/20 shrink-0 text-slate-950">
+              <i class="fa-solid fa-pen-to-square text-base"></i>
             </div>
             <span class="text-xs font-bold text-amber-400 whitespace-nowrap">وضع التعديل والمزامنة</span>
           </button>
 
           <button onclick="toggleThemePanel(); event.stopPropagation();" class="flex items-center gap-3 bg-slate-900/95 hover:bg-slate-800 border border-purple-500/30 pl-5 pr-2 py-2 rounded-full shadow-2xl transition-all transform hover:scale-105 active:scale-95 focus:outline-none group">
-            <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-600 to-fuchsia-400 flex items-center justify-center shadow-md shadow-purple-600/20 shrink-0">
-              <img src="https://cdn-icons-png.flaticon.com/512/3659/3659899.png" class="w-5 h-5 object-contain block mx-auto">
+            <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-600 to-fuchsia-400 flex items-center justify-center shadow-md shadow-purple-600/20 shrink-0 text-white">
+              <i class="fa-solid fa-palette text-base"></i>
             </div>
             <span class="text-xs font-bold text-purple-400 whitespace-nowrap">مظهر وألوان الموقع</span>
           </button>
 
           <button onclick="toggleSizePanel(); event.stopPropagation();" class="flex items-center gap-3 bg-slate-900/95 hover:bg-slate-800 border border-slate-700/50 pl-5 pr-2 py-2 rounded-full shadow-2xl transition-all transform hover:scale-105 active:scale-95 focus:outline-none group">
-            <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-400 flex items-center justify-center shadow-md shadow-cyan-500/20 shrink-0">
-              <img src="https://cdn-icons-png.flaticon.com/512/2921/2921210.png" class="w-5 h-5 object-contain block mx-auto">
+            <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-400 flex items-center justify-center shadow-md shadow-cyan-500/20 shrink-0 text-slate-950">
+              <i class="fa-solid fa-font text-base"></i>
             </div>
             <span class="text-xs font-bold text-slate-300 whitespace-nowrap">التحكم بحجم الخطوط</span>
           </button>
@@ -461,37 +478,26 @@
             }, 3500);
         }
 
-        // تحسين دالة فتح وإغلاق القائمة العائمة لتفادي مشاكل الحجب برمجياً
-        const openFAB = () => {
-          fabOptions.classList.remove('hidden');
-          setTimeout(() => {
-              fabOptions.classList.remove('scale-90', 'opacity-0');
-              fabOptions.classList.add('scale-100', 'opacity-100');
-          }, 10);
-          fabIcon.classList.remove('fa-cog', 'animate-spin-slow');
-          fabIcon.classList.add('fa-times');
-          fabMainBtn.classList.add('rotate-90', 'bg-red-600', 'ring-red-600/20');
-          fabMainBtn.classList.remove('bg-blue-600', 'ring-blue-600/20');
-          
-          if (userPassword === SECRET_PASSWORD) {
-              if (editModeBtn) editModeBtn.classList.remove('hidden');
+        // كود تفتيح وإغلاق القائمة العائمة مع جلب الشعارات التفاعلية الصحيحة بنسبة 100%
+        const toggleFABMenu = () => {
+          const isShown = fabOptions.classList.contains('show');
+          if (isShown) {
+              fabOptions.classList.remove('show');
+              fabIcon.className = "fas fa-cog text-xl text-white animate-spin-slow";
+              fabMainBtn.className = "w-14 h-14 bg-blue-600 hover:bg-blue-500 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 transform active:scale-90 focus:outline-none ring-4 ring-blue-600/20";
+              if (sizeControlPanel) sizeControlPanel.classList.add('hidden');
+              if (themeSelectionPanel) themeSelectionPanel.classList.add('hidden');
           } else {
-              if (editModeBtn) editModeBtn.classList.add('hidden');
+              fabOptions.classList.add('show');
+              fabIcon.className = "fas fa-times text-xl text-white";
+              fabMainBtn.className = "w-14 h-14 bg-red-600 hover:bg-red-500 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 transform active:scale-90 focus:outline-none ring-4 ring-red-600/20";
+              
+              if (userPassword === SECRET_PASSWORD) {
+                  if (editModeBtn) editModeBtn.classList.remove('hidden');
+              } else {
+                  if (editModeBtn) editModeBtn.classList.add('hidden');
+              }
           }
-        };
-
-        const closeFAB = () => {
-          fabOptions.classList.remove('scale-100', 'opacity-100');
-          fabOptions.classList.add('scale-90', 'opacity-0');
-          setTimeout(() => {
-              fabOptions.classList.add('hidden');
-          }, 300);
-          fabIcon.classList.remove('fa-times');
-          fabIcon.classList.add('fa-cog', 'animate-spin-slow');
-          fabMainBtn.classList.remove('rotate-90', 'bg-red-600', 'ring-red-600/20');
-          fabMainBtn.classList.add('bg-blue-600', 'ring-blue-600/20');
-          if (sizeControlPanel) sizeControlPanel.classList.add('hidden');
-          if (themeSelectionPanel) themeSelectionPanel.classList.add('hidden');
         };
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -505,17 +511,19 @@
 
         fabMainBtn.addEventListener('click', (e) => {
           e.stopPropagation();
-          const isOpen = !fabOptions.classList.contains('hidden') && fabOptions.classList.contains('opacity-100');
-          if (isOpen) { closeFAB(); } else { openFAB(); }
+          toggleFABMenu();
         });
 
         document.addEventListener('click', (e) => {
           if (!fabContainer.contains(e.target)) {
-            closeFAB();
+              fabOptions.classList.remove('show');
+              fabIcon.className = "fas fa-cog text-xl text-white animate-spin-slow";
+              fabMainBtn.className = "w-14 h-14 bg-blue-600 hover:bg-blue-500 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 transform active:scale-90 focus:outline-none ring-4 ring-blue-600/20";
+              if (sizeControlPanel) sizeControlPanel.classList.add('hidden');
+              if (themeSelectionPanel) themeSelectionPanel.classList.add('hidden');
           }
         });
 
-        // ربط الدوال بالنطاق العالمي لضمان استجابة أزرار الموديول
         window.toggleSizePanel = function() {
             if (themeSelectionPanel) themeSelectionPanel.classList.add('hidden');
             document.getElementById('size-control-panel').classList.toggle('hidden');
@@ -681,4 +689,245 @@
             floatingAddBtn.innerHTML = `
                 <label class="cursor-pointer bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-3 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1 shadow-xl">
                     <i class="fa-solid fa-plus"></i> <span>إضافة صورة</span>
-                    <input type="file" accept="
+                    <input type="file" accept="image/*" class="hidden" onchange="uploadProjectImageInline(${projIdx}, this)">
+                </label>
+            `;
+            slider.appendChild(floatingAddBtn);
+        }
+
+        function renderAllTimelineHTML() {
+            const container = document.getElementById('timeline-container');
+            if(!container) return;
+            container.innerHTML = '';
+            localPortfolioData.timeline.forEach((item, idx) => {
+                const div = document.createElement('div');
+                div.className = "relative pr-8 group timeline-item";
+                div.innerHTML = `
+                    <button onclick="removeArrayElement('timeline', ${idx}, event)" class="absolute top-0 left-0 bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-md">✕</button>
+                    <span class="absolute right-0 top-1.5 -mr-[11px] w-5 h-5 rounded-full bg-sky-500 border-4" style="border-color: var(--bg-main);"></span>
+                    <span class="text-xs font-bold block mb-1 DOM-date" style="color: var(--text-muted);" data-editable>${item.date || ''}</span>
+                    <h3 class="text-xl font-bold DOM-title" style="color: var(--text-main);" data-editable>${item.title || ''}</h3>
+                    <p class="text-xs sm:text-sm mb-3 DOM-company" style="color: var(--text-muted);" data-editable>${item.company || ''}</p>
+                    <p class="text-sm leading-relaxed DOM-desc" style="color: var(--text-main);" data-editable>${item.desc || ''}</p>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function renderAllCertificatesHTML() {
+            const container = document.getElementById('certificates-container');
+            if(!container) return;
+            container.innerHTML = '';
+            localPortfolioData.certificates.forEach((cert, idx) => {
+                const div = document.createElement('div');
+                div.className = "glass-card p-6 rounded-2xl relative group";
+                div.innerHTML = `
+                    <button onclick="removeArrayElement('certificates', ${idx}, event)" class="absolute top-3 left-3 bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-[10px] opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-sm">✕</button>
+                    <span class="text-xs font-bold block mb-1 DOM-date" style="color: var(--text-muted);" data-editable>${cert.date || ''}</span>
+                    <h3 class="text-lg font-bold mb-2 DOM-title" style="color: var(--text-main);" data-editable>${cert.title || ''}</h3>
+                    <p class="text-xs mb-2 DOM-company" style="color: var(--text-muted);" data-editable>${cert.company || ''}</p>
+                    <p class="text-xs DOM-desc" style="color: var(--text-main);" data-editable>${cert.desc || ''}</p>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function renderAllSkillsHTML() {
+            const container = document.getElementById('skills-container');
+            if(!container) return;
+            container.innerHTML = '';
+            localPortfolioData.skills.forEach((skill, idx) => {
+                const span = document.createElement('span');
+                span.className = "border text-sky-400 px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 group relative";
+                span.style.backgroundColor = "var(--bg-main)";
+                span.style.borderColor = "var(--border-color)";
+                span.innerHTML = `
+                    <i class="fa-solid fa-code"></i> <span class="DOM-name" data-editable>${skill.name || ''}</span>
+                    <button onclick="removeArrayElement('skills', ${idx}, event)" class="absolute -top-2 -left-2 bg-red-600 text-white w-4 h-4 rounded-full flex items-center justify-center text-[8px] opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-sm">✕</button>
+                `;
+                container.appendChild(span);
+            });
+        }
+
+        window.uploadProjectImageInline = function(projIdx, inputElement) {
+            const file = inputElement.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if (!localPortfolioData.projects[projIdx].images) localPortfolioData.projects[projIdx].images = [];
+                    localPortfolioData.projects[projIdx].images.push(e.target.result);
+                    renderAllProjectsHTML();
+                    applyEditVisibility();
+                    showCustomToast('تم إدراج صورة لوحة التحكم بنجاح! الحفظ معلق حتى تضغط زر الإنهاء.', 'info');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        window.removeInlineImage = function(projIdx, imgIdx, event) {
+            event.preventDefault();
+            event.stopPropagation();
+            localPortfolioData.projects[projIdx].images.splice(imgIdx, 1);
+            renderAllProjectsHTML();
+            applyEditVisibility();
+            showCustomToast('تم حذف الصبورة من السلايدر.', 'info');
+        }
+
+        window.removeArrayElement = function(key, idx, event) {
+            event.preventDefault();
+            event.stopPropagation();
+            localPortfolioData[key].splice(idx, 1);
+            if(key === 'projects') renderAllProjectsHTML();
+            if(key === 'timeline') renderAllTimelineHTML();
+            if(key === 'certificates') renderAllCertificatesHTML();
+            if(key === 'skills') renderAllSkillsHTML();
+            applyEditVisibility();
+            showCustomToast('تم حذف العنصر محلياً.', 'info');
+        }
+
+        window.addNewProject = function() {
+            localPortfolioData.projects.push({ title: 'اسم المشروع الجديد', badge: 'الدور الوظيفي', date: '2026', desc: 'تفاصيل وشرح المشروع...', images: [] });
+            renderAllProjectsHTML();
+            applyEditVisibility();
+        }
+
+        window.addNewTimelineItem = function() {
+            localPortfolioData.timeline.push({ title: 'المسمى الوظيفي الجديد', company: 'اسم الشركة', date: '2026', desc: 'المهام والإنجازات...' });
+            renderAllTimelineHTML();
+            applyEditVisibility();
+        }
+
+        window.addNewCertificate = function() {
+            localPortfolioData.certificates.push({ title: 'الشهادة الأكاديمية الجديدة', company: 'الجهة المانحة', date: '2026', desc: 'التفاصيل والتقدير...' });
+            renderAllCertificatesHTML();
+            applyEditVisibility();
+        }
+
+        window.addNewSkill = function() {
+            localPortfolioData.skills.push({ name: 'مهارة جديدة' });
+            renderAllSkillsHTML();
+            applyEditVisibility();
+        }
+
+        function applyEditVisibility() {
+            const editables = document.querySelectorAll('[data-editable], .DOM-title, .DOM-company, .DOM-desc, .DOM-date, .DOM-badge, .DOM-name');
+            const editOnlyElements = document.querySelectorAll('.edit-only');
+            
+            if (editMode && userPassword === SECRET_PASSWORD) {
+                editables.forEach(el => { 
+                    el.setAttribute('contenteditable', 'true'); 
+                    el.classList.add('edit-active'); 
+                });
+                editOnlyElements.forEach(el => el.classList.remove('hidden'));
+            } else {
+                editables.forEach(el => { 
+                    el.removeAttribute('contenteditable'); 
+                    el.classList.remove('edit-active'); 
+                });
+                editOnlyElements.forEach(el => el.classList.add('hidden'));
+            }
+        }
+
+        window.toggleEditMode = function() {
+            if (userPassword !== SECRET_PASSWORD) {
+                showCustomToast('عذراً، لا تمتلك صلاحية تعديل هذا نظام.', 'error');
+                return;
+            }
+
+            editMode = !editMode;
+
+            if (editMode) {
+                applyEditVisibility();
+                showCustomToast('وضع التعديل نشط! انقر على النصوص والبيانات لتحديثها مباشرة ثم احفظ.', 'info');
+            } else {
+                document.querySelectorAll('[data-editable]').forEach(el => {
+                    if (el.id && !el.className.includes('DOM-')) {
+                        localPortfolioData.texts[el.id] = el.innerText;
+                    }
+                });
+
+                const projectCards = document.querySelectorAll('#projects-grid .project-item');
+                projectCards.forEach((card, idx) => {
+                    if(localPortfolioData.projects[idx]) {
+                        localPortfolioData.projects[idx].title = card.querySelector('.DOM-title').innerText;
+                        localPortfolioData.projects[idx].badge = card.querySelector('.DOM-badge').innerText;
+                        localPortfolioData.projects[idx].date = card.querySelector('.DOM-date').innerText;
+                        localPortfolioData.projects[idx].desc = card.querySelector('.DOM-desc').innerText;
+                    }
+                });
+
+                const timelineItems = document.querySelectorAll('#timeline-container .timeline-item');
+                timelineItems.forEach((item, idx) => {
+                    if(localPortfolioData.timeline[idx]) {
+                        localPortfolioData.timeline[idx].title = item.querySelector('.DOM-title').innerText;
+                        localPortfolioData.timeline[idx].company = item.querySelector('.DOM-company').innerText;
+                        localPortfolioData.timeline[idx].date = item.querySelector('.DOM-date').innerText;
+                        localPortfolioData.timeline[idx].desc = item.querySelector('.DOM-desc').innerText;
+                    }
+                });
+
+                const certItems = document.querySelectorAll('#certificates-container > div');
+                certItems.forEach((item, idx) => {
+                    if(localPortfolioData.certificates[idx]) {
+                        localPortfolioData.certificates[idx].title = item.querySelector('.DOM-title').innerText;
+                        localPortfolioData.certificates[idx].company = item.querySelector('.DOM-company').innerText;
+                        localPortfolioData.certificates[idx].date = item.querySelector('.DOM-date').innerText;
+                        localPortfolioData.certificates[idx].desc = item.querySelector('.DOM-desc').innerText;
+                    }
+                });
+
+                const skillItems = document.querySelectorAll('#skills-container > span');
+                skillItems.forEach((item, idx) => {
+                    if(localPortfolioData.skills[idx]) {
+                        localPortfolioData.skills[idx].name = item.querySelector('.DOM-name').innerText;
+                    }
+                });
+
+                applyEditVisibility();
+
+                set(ref(db, 'osamaPortfolioMaster'), localPortfolioData).then(() => {
+                    showCustomToast('تم الحفظ والمزامنة اللحظية لكافة البيانات بنجاح! 🎉', 'success');
+                }).catch((error) => {
+                    showCustomToast('حدث خطأ أثناء المزامنة: ' + error.message, 'error');
+                });
+            }
+        }
+
+        window.updateSliderPosition = function(sliderContainer) {
+            const index = parseInt(sliderContainer.getAttribute('data-current-index')) || 0;
+            const wrapper = sliderContainer.querySelector('.slider-wrapper');
+            wrapper.style.transform = `translateX(${index * 100}%)`;
+            const dots = sliderContainer.querySelectorAll('.slider-dot');
+            dots.forEach((dot, dIdx) => {
+                if (dIdx === index) { dot.className = "slider-dot w-5 h-2 rounded-full bg-sky-400 transition-all"; }
+                else { dot.className = "slider-dot w-2 h-2 rounded-full bg-white/40 transition-all"; }
+            });
+        }
+
+        window.nextSlide = function(btn, e) {
+            e.stopPropagation();
+            const slider = btn.closest('.project-slider');
+            const totalSlides = slider.querySelectorAll('.slider-wrapper .project-img-container').length;
+            if (totalSlides <= 1) return;
+            let index = (parseInt(slider.getAttribute('data-current-index')) || 0) + 1;
+            index = index % totalSlides;
+            slider.setAttribute('data-current-index', index);
+            updateSliderPosition(slider);
+        }
+
+        window.prevSlide = function(btn, e) {
+            e.stopPropagation();
+            const slider = btn.closest('.project-slider');
+            const totalSlides = slider.querySelectorAll('.slider-wrapper .project-img-container').length;
+            if (totalSlides <= 1) return;
+            let index = (parseInt(slider.getAttribute('data-current-index')) || 0) - 1;
+            if (index < 0) index = totalSlides - 1;
+            slider.setAttribute('data-current-index', index);
+            updateSliderPosition(slider);
+        }
+
+        window.openLightbox = function(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.remove('hidden'); document.getElementById('lightbox').classList.add('flex'); }
+        window.closeLightbox = function() { document.getElementById('lightbox').classList.add('hidden'); document.getElementById('lightbox').classList.remove('flex'); }
+    </script>
+</body>
+</html>
