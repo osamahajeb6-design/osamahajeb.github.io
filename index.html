@@ -102,44 +102,6 @@
         .animate-toast-top {
             animation: toastInTopCenter 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
-
-        /* تحسينات وتنسيقات الأسهم الاحترافية العائمة للسلايدر */
-        .custom-slider-btn {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(6px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #38bdf8;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-            transition: all 0.25s ease;
-        }
-        .custom-slider-btn:hover {
-            background: #38bdf8;
-            color: #0f172a;
-            border-color: #38bdf8;
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
-        }
-
-        /* زر الحذف الاحترافي البارز */
-        .custom-delete-btn {
-            background: rgba(239, 68, 68, 0.9);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
-            transition: all 0.2s ease;
-        }
-        .custom-delete-btn:hover {
-            background: #dc2626;
-            transform: scale(1.15);
-            box-shadow: 0 0 18px rgba(239, 68, 68, 0.6);
-        }
-
-        /* نص فوق الكارت متناسق وواضح مع تغير الثيمات */
-        .theme-responsive-text {
-            color: var(--text-main);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
-        }
     </style>
 </head>
 <body class="data-grid-bg min-h-screen selection:bg-sky-500 selection:text-white pb-24">
@@ -181,7 +143,7 @@
             <p id="hero-subtitle" class="text-xl sm:text-2xl font-medium mb-6" style="color: var(--text-main);" data-editable>محلل بيانات وأخصائي ذكاء الأعمال (Data Analyst & BI Specialist)</p>
             
             <p id="hero-desc" class="max-w-3xl mx-auto text-base sm:text-lg mb-10 leading-relaxed" style="color: var(--text-muted);" data-editable>
-                خبير في تحويل مجموعات البيانات المعقبلة إلى رؤى واستبصارات إستراتيجية قابلة للتطبيق. أمتلك سجل نجاح حافل في استخدام Python وPower BI وExcel لتحسين العمليات التجارية واستدامة القوى العاملة، إلى جانب بناء سير عمل مؤتمت يدعم اتخاذ القرارات الذكية.
+                خبير في تحويل مجموعات البيانات المعقدة إلى رؤى واستبصارات إستراتيجية قابلة للتطبيق. أمتلك سجل نجاح حافل في استخدام Python وPower BI وExcel لتحسين العمليات التجارية واستدامة القوى العاملة، إلى جانب بناء سير عمل مؤتمت يدعم اتخاذ القرارات الذكية.
             </p>
 
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
@@ -642,11 +604,11 @@
                 const card = document.createElement('div');
                 card.className = "glass-card rounded-2xl overflow-hidden flex flex-col group project-item relative";
                 card.innerHTML = `
-                    <button onclick="removeArrayElement('projects', ${idx}, event)" class="absolute top-4 left-4 z-50 custom-delete-btn w-8 h-8 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 edit-only hidden">✕</button>
-                    <div class="relative h-64 sm:h-72 bg-[#090d16] overflow-hidden project-slider flex items-center justify-center" data-current-index="0">
+                    <button onclick="removeArrayElement('projects', ${idx}, event)" class="absolute top-4 left-4 z-50 bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-lg">✕</button>
+                    <div class="relative h-64 sm:h-72 bg-slate-900 overflow-hidden project-slider flex items-center justify-center" data-current-index="0">
                         <div class="slider-wrapper flex w-full h-full transition-transform duration-500"></div>
-                        <button onclick="prevSlide(this, event)" class="absolute right-3 top-1/2 -translate-y-1/2 custom-slider-btn w-9 h-9 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-right"></i></button>
-                        <button onclick="nextSlide(this, event)" class="absolute left-3 top-1/2 -translate-y-1/2 custom-slider-btn w-9 h-9 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button onclick="prevSlide(this, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-right"></i></button>
+                        <button onclick="nextSlide(this, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-left"></i></button>
                         <div class="slider-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-30 hidden"></div>
                         <span class="absolute top-4 right-4 bg-sky-500 text-slate-950 text-xs px-3 py-1.5 rounded-lg font-extrabold uppercase z-20 DOM-badge" data-editable>${proj.badge || 'محلل بيانات'}</span>
                         <div class="absolute inset-0 bg-slate-950/80 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition duration-300 edit-only hidden z-20 upload-overlay">
@@ -659,7 +621,7 @@
                     <div class="p-6 flex-grow flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-center mb-3">
-                                <h3 class="text-xl font-bold group-hover:text-sky-400 transition theme-responsive-text DOM-title" data-editable>${proj.title || ''}</h3>
+                                <h3 class="text-xl font-bold group-hover:text-sky-400 transition DOM-title" data-editable>${proj.title || ''}</h3>
                                 <span class="text-xs DOM-date" style="color: var(--text-muted);" data-editable>${proj.date || ''}</span>
                             </div>
                             <p class="text-sm mb-4 leading-relaxed DOM-desc" style="color: var(--text-main);" data-editable>${proj.desc || ''}</p>
@@ -697,10 +659,10 @@
 
             imagesArray.forEach((imgSrc, imgIdx) => {
                 const imgContainer = document.createElement('div');
-                imgContainer.className = "relative w-full h-full flex-shrink-0 project-img-container bg-[#090d16]";
+                imgContainer.className = "relative w-full h-full flex-shrink-0 project-img-container";
                 imgContainer.innerHTML = `
-                    <img src="${imgSrc}" class="w-full h-full object-contain cursor-pointer" onclick="openLightbox(this.src)">
-                    <button onclick="removeInlineImage(${projIdx}, ${imgIdx}, event)" class="absolute top-4 right-4 custom-delete-btn w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold z-50 edit-only hidden">✕</button>
+                    <img src="${imgSrc}" class="w-full h-full object-cover cursor-pointer" onclick="openLightbox(this.src)">
+                    <button onclick="removeInlineImage(${projIdx}, ${imgIdx}, event)" class="absolute top-4 right-4 bg-red-600 hover:bg-red-700 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold z-50 shadow-2xl edit-only hidden">✕</button>
                 `;
                 wrapper.appendChild(imgContainer);
 
@@ -728,8 +690,231 @@
                 const div = document.createElement('div');
                 div.className = "relative pr-8 group timeline-item";
                 div.innerHTML = `
-                    <button onclick="removeArrayElement('timeline', ${idx}, event)" class="absolute top-0 left-0 custom-delete-btn w-6 h-6 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 edit-only hidden">✕</button>
+                    <button onclick="removeArrayElement('timeline', ${idx}, event)" class="absolute top-0 left-0 bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-md">✕</button>
                     <span class="absolute right-0 top-1.5 -mr-[11px] w-5 h-5 rounded-full bg-sky-500 border-4" style="border-color: var(--bg-main);"></span>
                     <span class="text-xs font-bold block mb-1 DOM-date" style="color: var(--text-muted);" data-editable>${item.date || ''}</span>
                     <h3 class="text-xl font-bold DOM-title" style="color: var(--text-main);" data-editable>${item.title || ''}</h3>
-                    <p class="
+                    <p class="text-xs sm:text-sm mb-3 DOM-company" style="color: var(--text-muted);" data-editable>${item.company || ''}</p>
+                    <p class="text-sm leading-relaxed DOM-desc" style="color: var(--text-main);" data-editable>${item.desc || ''}</p>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function renderAllCertificatesHTML() {
+            const container = document.getElementById('certificates-container');
+            if(!container) return;
+            container.innerHTML = '';
+            localPortfolioData.certificates.forEach((cert, idx) => {
+                const div = document.createElement('div');
+                div.className = "glass-card p-6 rounded-2xl relative group";
+                div.innerHTML = `
+                    <button onclick="removeArrayElement('certificates', ${idx}, event)" class="absolute top-3 left-3 bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-[10px] opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-sm">✕</button>
+                    <span class="text-xs font-bold block mb-1 DOM-date" style="color: var(--text-muted);" data-editable>${cert.date || ''}</span>
+                    <h3 class="text-lg font-bold mb-2 DOM-title" style="color: var(--text-main);" data-editable>${cert.title || ''}</h3>
+                    <p class="text-xs mb-2 DOM-company" style="color: var(--text-muted);" data-editable>${cert.company || ''}</p>
+                    <p class="text-xs DOM-desc" style="color: var(--text-main);" data-editable>${cert.desc || ''}</p>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function renderAllSkillsHTML() {
+            const container = document.getElementById('skills-container');
+            if(!container) return;
+            container.innerHTML = '';
+            localPortfolioData.skills.forEach((skill, idx) => {
+                const span = document.createElement('span');
+                span.className = "border text-sky-400 px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 group relative";
+                span.style.backgroundColor = "var(--bg-main)";
+                span.style.borderColor = "var(--border-color)";
+                span.innerHTML = `
+                    <i class="fa-solid fa-code"></i> <span class="DOM-name" data-editable>${skill.name || ''}</span>
+                    <button onclick="removeArrayElement('skills', ${idx}, event)" class="absolute -top-2 -left-2 bg-red-600 text-white w-4 h-4 rounded-full flex items-center justify-center text-[8px] opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-sm">✕</button>
+                `;
+                container.appendChild(span);
+            });
+        }
+
+        window.uploadProjectImageInline = function(projIdx, inputElement) {
+            const file = inputElement.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if (!localPortfolioData.projects[projIdx].images) localPortfolioData.projects[projIdx].images = [];
+                    localPortfolioData.projects[projIdx].images.push(e.target.result);
+                    renderAllProjectsHTML();
+                    applyEditVisibility();
+                    showCustomToast('تم إدراج صورة لوحة التحكم بنجاح! الحفظ معلق حتى تضغط زر الإنهاء.', 'info');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        window.removeInlineImage = function(projIdx, imgIdx, event) {
+            event.preventDefault();
+            event.stopPropagation();
+            localPortfolioData.projects[projIdx].images.splice(imgIdx, 1);
+            renderAllProjectsHTML();
+            applyEditVisibility();
+            showCustomToast('تم حذف الصبورة من السلايدر.', 'info');
+        }
+
+        window.removeArrayElement = function(key, idx, event) {
+            event.preventDefault();
+            event.stopPropagation();
+            localPortfolioData[key].splice(idx, 1);
+            if(key === 'projects') renderAllProjectsHTML();
+            if(key === 'timeline') renderAllTimelineHTML();
+            if(key === 'certificates') renderAllCertificatesHTML();
+            if(key === 'skills') renderAllSkillsHTML();
+            applyEditVisibility();
+            showCustomToast('تم حذف العنصر محلياً.', 'info');
+        }
+
+        window.addNewProject = function() {
+            localPortfolioData.projects.push({ title: 'اسم المشروع الجديد', badge: 'الدور الوظيفي', date: '2026', desc: 'تفاصيل وشرح المشروع...', images: [] });
+            renderAllProjectsHTML();
+            applyEditVisibility();
+        }
+
+        window.addNewTimelineItem = function() {
+            localPortfolioData.timeline.push({ title: 'المسمى الوظيفي الجديد', company: 'اسم الشركة', date: '2026', desc: 'المهام والإنجازات...' });
+            renderAllTimelineHTML();
+            applyEditVisibility();
+        }
+
+        window.addNewCertificate = function() {
+            localPortfolioData.certificates.push({ title: 'الشهادة الأكاديمية الجديدة', company: 'الجهة المانحة', date: '2026', desc: 'التفاصيل والتقدير...' });
+            renderAllCertificatesHTML();
+            applyEditVisibility();
+        }
+
+        window.addNewSkill = function() {
+            localPortfolioData.skills.push({ name: 'مهارة جديدة' });
+            renderAllSkillsHTML();
+            applyEditVisibility();
+        }
+
+        function applyEditVisibility() {
+            const editables = document.querySelectorAll('[data-editable], .DOM-title, .DOM-company, .DOM-desc, .DOM-date, .DOM-badge, .DOM-name');
+            const editOnlyElements = document.querySelectorAll('.edit-only');
+            
+            if (editMode && userPassword === SECRET_PASSWORD) {
+                editables.forEach(el => { 
+                    el.setAttribute('contenteditable', 'true'); 
+                    el.classList.add('edit-active'); 
+                });
+                editOnlyElements.forEach(el => el.classList.remove('hidden'));
+            } else {
+                editables.forEach(el => { 
+                    el.removeAttribute('contenteditable'); 
+                    el.classList.remove('edit-active'); 
+                });
+                editOnlyElements.forEach(el => el.classList.add('hidden'));
+            }
+        }
+
+        window.toggleEditMode = function() {
+            if (userPassword !== SECRET_PASSWORD) {
+                showCustomToast('عذراً، لا تمتلك صلاحية تعديل هذا نظام.', 'error');
+                return;
+            }
+
+            editMode = !editMode;
+
+            if (editMode) {
+                applyEditVisibility();
+                showCustomToast('وضع التعديل نشط! انقر على النصوص والبيانات لتحديثها مباشرة ثم احفظ.', 'info');
+            } else {
+                document.querySelectorAll('[data-editable]').forEach(el => {
+                    if (el.id && !el.className.includes('DOM-')) {
+                        localPortfolioData.texts[el.id] = el.innerText;
+                    }
+                });
+
+                const projectCards = document.querySelectorAll('#projects-grid .project-item');
+                projectCards.forEach((card, idx) => {
+                    if(localPortfolioData.projects[idx]) {
+                        localPortfolioData.projects[idx].title = card.querySelector('.DOM-title').innerText;
+                        localPortfolioData.projects[idx].badge = card.querySelector('.DOM-badge').innerText;
+                        localPortfolioData.projects[idx].date = card.querySelector('.DOM-date').innerText;
+                        localPortfolioData.projects[idx].desc = card.querySelector('.DOM-desc').innerText;
+                    }
+                });
+
+                const timelineItems = document.querySelectorAll('#timeline-container .timeline-item');
+                timelineItems.forEach((item, idx) => {
+                    if(localPortfolioData.timeline[idx]) {
+                        localPortfolioData.timeline[idx].title = item.querySelector('.DOM-title').innerText;
+                        localPortfolioData.timeline[idx].company = item.querySelector('.DOM-company').innerText;
+                        localPortfolioData.timeline[idx].date = item.querySelector('.DOM-date').innerText;
+                        localPortfolioData.timeline[idx].desc = item.querySelector('.DOM-desc').innerText;
+                    }
+                });
+
+                const certItems = document.querySelectorAll('#certificates-container > div');
+                certItems.forEach((item, idx) => {
+                    if(localPortfolioData.certificates[idx]) {
+                        localPortfolioData.certificates[idx].title = item.querySelector('.DOM-title').innerText;
+                        localPortfolioData.certificates[idx].company = item.querySelector('.DOM-company').innerText;
+                        localPortfolioData.certificates[idx].date = item.querySelector('.DOM-date').innerText;
+                        localPortfolioData.certificates[idx].desc = item.querySelector('.DOM-desc').innerText;
+                    }
+                });
+
+                const skillItems = document.querySelectorAll('#skills-container > span');
+                skillItems.forEach((item, idx) => {
+                    if(localPortfolioData.skills[idx]) {
+                        localPortfolioData.skills[idx].name = item.querySelector('.DOM-name').innerText;
+                    }
+                });
+
+                applyEditVisibility();
+
+                set(ref(db, 'osamaPortfolioMaster'), localPortfolioData).then(() => {
+                    showCustomToast('تم الحفظ والمزامنة اللحظية لكافة البيانات بنجاح! 🎉', 'success');
+                }).catch((error) => {
+                    showCustomToast('حدث خطأ أثناء المزامنة: ' + error.message, 'error');
+                });
+            }
+        }
+
+        window.updateSliderPosition = function(sliderContainer) {
+            const index = parseInt(sliderContainer.getAttribute('data-current-index')) || 0;
+            const wrapper = sliderContainer.querySelector('.slider-wrapper');
+            wrapper.style.transform = `translateX(${index * 100}%)`;
+            const dots = sliderContainer.querySelectorAll('.slider-dot');
+            dots.forEach((dot, dIdx) => {
+                if (dIdx === index) { dot.className = "slider-dot w-5 h-2 rounded-full bg-sky-400 transition-all"; }
+                else { dot.className = "slider-dot w-2 h-2 rounded-full bg-white/40 transition-all"; }
+            });
+        }
+
+        window.nextSlide = function(btn, e) {
+            e.stopPropagation();
+            const slider = btn.closest('.project-slider');
+            const totalSlides = slider.querySelectorAll('.slider-wrapper .project-img-container').length;
+            if (totalSlides <= 1) return;
+            let index = (parseInt(slider.getAttribute('data-current-index')) || 0) + 1;
+            index = index % totalSlides;
+            slider.setAttribute('data-current-index', index);
+            updateSliderPosition(slider);
+        }
+
+        window.prevSlide = function(btn, e) {
+            e.stopPropagation();
+            const slider = btn.closest('.project-slider');
+            const totalSlides = slider.querySelectorAll('.slider-wrapper .project-img-container').length;
+            if (totalSlides <= 1) return;
+            let index = (parseInt(slider.getAttribute('data-current-index')) || 0) - 1;
+            if (index < 0) index = totalSlides - 1;
+            slider.setAttribute('data-current-index', index);
+            updateSliderPosition(slider);
+        }
+
+        window.openLightbox = function(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.remove('hidden'); document.getElementById('lightbox').classList.add('flex'); }
+        window.closeLightbox = function() { document.getElementById('lightbox').classList.add('hidden'); document.getElementById('lightbox').classList.remove('flex'); }
+    </script>
+</body>
+</html>
