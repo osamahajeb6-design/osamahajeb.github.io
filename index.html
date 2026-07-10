@@ -140,6 +140,16 @@
             color: var(--text-main);
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
         }
+
+        /* تصحيح تموضع اللوحات الفرعية لتظهر أعلى الأزرار دون أي تداخل بصري مشوه */
+        #size-control-panel {
+            bottom: 250px !important;
+            left: 24px;
+        }
+        #theme-selection-panel {
+            bottom: 250px !important;
+            left: 24px;
+        }
     </style>
 </head>
 <body class="data-grid-bg min-h-screen selection:bg-sky-500 selection:text-white pb-24">
@@ -352,7 +362,7 @@
         </div>
     </footer>
 
-    <div id="size-control-panel" class="fixed bottom-24 left-24 z-50 bg-slate-900/95 border border-slate-800 p-4 rounded-2xl w-64 shadow-2xl backdrop-blur-md hidden transition-all">
+    <div id="size-control-panel" class="fixed z-50 bg-slate-900/95 border border-slate-800 p-4 rounded-2xl w-64 shadow-2xl backdrop-blur-md hidden transition-all">
         <div class="space-y-4">
             <div>
                 <label class="block text-[11px] text-slate-400 mb-1">حجم الخطوط العام</label>
@@ -361,7 +371,7 @@
         </div>
     </div>
 
-    <div id="theme-selection-panel" class="fixed bottom-24 left-6 z-50 bg-slate-900/95 border border-slate-800 p-3 rounded-2xl w-64 shadow-2xl backdrop-blur-md hidden theme-menu-animate">
+    <div id="theme-selection-panel" class="fixed z-50 bg-slate-900/95 border border-slate-800 p-3 rounded-2xl w-64 shadow-2xl backdrop-blur-md hidden theme-menu-animate">
         <div class="text-xs font-bold text-slate-400 mb-2 px-1 text-right">اختر مظهر الموقع الاحترافي:</div>
         <div class="grid grid-cols-1 gap-1.5" id="themes-list-container"></div>
     </div>
@@ -499,12 +509,12 @@
             }, 3500);
         }
 
-        // دالة فتح وإظهار الخيارات العائمة بأمان كامل
+        // دالة فتح وإظهار الخيارات العائمة بأمان كامل مع تعليق الأيقونة التفاعلية واللون الأحمر العاكس للوظيفة
         const openFAB = () => {
           fabOptions.classList.remove('translate-y-10', 'opacity-0', 'pointer-events-none');
           fabOptions.classList.add('translate-y-0', 'opacity-100');
-          fabIcon.className = "fas fa-times text-xl text-white"; // تغيير الأيقونة لإكس
-          fabMainBtn.className = "w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 transform rotate-90 bg-red-600 ring-4 ring-red-600/20 text-white";
+          fabIcon.className = "fas fa-times text-xl text-white"; // تغيير الأيقونة لإكس (X) تعكس وظيفة الإغلاق
+          fabMainBtn.className = "w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 transform rotate-90 bg-red-600 ring-4 ring-red-600/20 text-white"; // تحويل فوري للزر الأحمر الذكي
           
           if (userPassword === SECRET_PASSWORD) {
               if (editModeBtn) editModeBtn.classList.remove('hidden');
@@ -517,7 +527,7 @@
         const closeFAB = () => {
           fabOptions.classList.add('translate-y-10', 'opacity-0', 'pointer-events-none');
           fabOptions.classList.remove('translate-y-0', 'opacity-100');
-          fabIcon.className = "fas fa-cog text-xl text-white animate-spin-slow"; // إرجاع كير الترس واللف
+          fabIcon.className = "fas fa-cog text-xl text-white animate-spin-slow"; // إرجاع مظهر كير الترس واللف
           fabMainBtn.className = "w-14 h-14 bg-blue-600 hover:bg-blue-500 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 transform active:scale-90 focus:outline-none ring-4 ring-blue-600/20";
           
           // إغلاق اللوحات الفرعية المفتوحة فوراً لمنع التداخل البصري
