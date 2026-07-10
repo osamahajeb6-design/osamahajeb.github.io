@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أسامة حاجب | معرض أعمال تفاعلي وتحليل البيانات</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- تضمين أحدث إصدار مستقر من Font Awesome لضمان عمل كافة الأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -107,7 +106,6 @@
 </head>
 <body class="data-grid-bg min-h-screen selection:bg-sky-500 selection:text-white pb-24">
 
-    <!-- شريط التنقل العلوي -->
     <nav class="sticky top-0 z-40 backdrop-blur-md border-b" style="background-color: var(--bg-nav); border-color: var(--border-color);">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -132,7 +130,6 @@
         </div>
     </nav>
 
-    <!-- واجهة الترحيب العلوية Hero Section -->
     <section id="hero" class="relative py-20 md:py-28 overflow-hidden">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div id="hero-tag" class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 px-3.5 py-1.5 rounded-full text-sky-400 text-xs sm:text-sm font-medium mb-8" data-editable>
@@ -157,7 +154,6 @@
         </div>
     </section>
 
-    <!-- إحصائيات الأداء والمؤشرات الحيوية KPIs -->
     <section class="py-10 border-y bg-slate-950/40" style="border-color: var(--border-color);">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -185,7 +181,6 @@
         </div>
     </section>
 
-    <!-- قسم المشاريع الاستراتيجية وعرض التقارير لوحات التحكم -->
     <section id="projects" class="py-20">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
@@ -204,7 +199,6 @@
         </div>
     </section>
 
-    <!-- قسم المسار المهني والخبرات -->
     <section id="experience" class="py-20 bg-slate-950/10 border-y" style="border-color: var(--border-color);">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 relative">
@@ -217,7 +211,6 @@
         </div>
     </section>
 
-    <!-- قسم الشهادات والمؤهلات الأكاديمية -->
     <section id="certificates" class="py-20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 relative">
@@ -230,7 +223,6 @@
         </div>
     </section>
 
-    <!-- قسم المهارات والقدرات الفنية -->
     <section id="skills" class="py-20 border-t" style="border-color: var(--border-color);">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -243,7 +235,6 @@
         </div>
     </section>
 
-    <!-- قسم التواصل وقنوات الاتصال وبوابات المراسلة -->
     <section id="contact" class="py-20 border-t border-slate-900 bg-slate-950/20">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -317,14 +308,12 @@
         </div>
     </section>
 
-    <!-- ذيل الصفحة Footer -->
     <footer class="py-8 border-t text-center text-xs" style="background-color: var(--bg-main); border-color: var(--border-color); color: var(--text-muted);">
         <div class="max-w-6xl mx-auto px-4">
             <p>© 2026 جميع الحقوق محفوظة لـ <span id="footer-credit-name" class="font-bold" style="color: var(--text-main);" data-editable>أُسَامَة حَاجِب</span>.</p>
         </div>
     </footer>
 
-    <!-- لوحة تحكم حجم الخطوط العام لقابلية القراءة السهلة -->
     <div id="size-control-panel" class="fixed bottom-24 left-24 z-50 bg-slate-900/95 border border-slate-800 p-4 rounded-2xl w-64 shadow-2xl backdrop-blur-md hidden transition-all">
         <div class="space-y-4">
             <div>
@@ -334,58 +323,48 @@
         </div>
     </div>
 
-    <!-- لوحة اختيار الثيمات الذكية للموقع ومظهر الألوان المستجيب -->
     <div id="theme-selection-panel" class="fixed bottom-24 left-6 z-50 bg-slate-900/95 border border-slate-800 p-3 rounded-2xl w-64 shadow-2xl backdrop-blur-md hidden theme-menu-animate">
         <div class="text-xs font-bold text-slate-400 mb-2 px-1 text-right">اختر مظهر الموقع الاحترافي:</div>
         <div class="grid grid-cols-1 gap-1.5" id="themes-list-container"></div>
     </div>
 
-    <!-- حاوية التنبيهات المخصصة والمحسنة في أعلى ووسط الشاشة تماماً -->
     <div id="toast-container" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-3 pointer-events-none p-4 max-w-md w-full"></div>
 
-    <!-- هندسة جذرية للقائمة العائمة (FAB) لحل مشكلة ظهور الأيقونات وإضافة المسميات التوضيحية للأزرار الدائرية على الجوال -->
     <div class="fixed bottom-6 left-6 z-50 flex flex-col items-end gap-4" id="fab-container">
-        <!-- الخيارات العلوية المخفية وتظهر عند فتح الزر الرئيسي -->
         <div id="fab-options" class="flex flex-col items-end gap-3.5 transition-all duration-300 transform translate-y-10 opacity-0 pointer-events-none">
           
-          <!-- زر وضع التعديل مع الاسم الوظيفي التوضيحي -->
-          <div class="flex items-center gap-3 select-none">
-            <span class="bg-slate-950/90 text-amber-400 border border-amber-500/30 text-xs font-bold px-3 py-1.5 rounded-lg shadow-xl backdrop-blur-md whitespace-nowrap">وضع التعديل والمزامنة</span>
-            <button onclick="toggleEditMode()" id="edit-mode-btn" class="w-12 h-12 bg-amber-500 hover:bg-amber-400 text-white rounded-full flex items-center justify-center shadow-lg transition-all transform hover:scale-110 active:scale-95 hidden" title="تفعيل / حفظ ومزامنة التعديلات">
-              <i class="fa-solid fa-pen-to-square text-lg text-white"></i>
-            </button>
-          </div>
+          <button onclick="toggleEditMode()" id="edit-mode-btn" class="edit-only hidden flex items-center gap-3 bg-slate-900/95 hover:bg-slate-800 border border-amber-500/30 pl-5 pr-2 py-2 rounded-full shadow-2xl transition-all transform hover:scale-105 active:scale-95 focus:outline-none group">
+            <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-400 flex items-center justify-center shadow-md shadow-amber-500/20 shrink-0">
+              <img src="https://cdn-icons-png.flaticon.com/512/1160/1160515.png" class="w-5 h-5 object-contain block mx-auto">
+            </div>
+            <span class="text-xs font-bold text-amber-400 whitespace-nowrap">وضع التعديل والمزامنة</span>
+          </button>
 
-          <!-- زر اختيار الثيمات مع الاسم الوظيفي التوضيحي -->
-          <div class="flex items-center gap-3 select-none">
-            <span class="bg-slate-950/90 text-purple-400 border border-purple-500/30 text-xs font-bold px-3 py-1.5 rounded-lg shadow-xl backdrop-blur-md whitespace-nowrap">مظهر وألوان الموقع</span>
-            <button onclick="toggleThemePanel(); event.stopPropagation();" class="w-12 h-12 bg-purple-600 hover:bg-purple-500 text-white rounded-full flex items-center justify-center shadow-lg transition-all transform hover:scale-110 active:scale-95" title="تغيير مظهر وثيم الموقع">
-              <i class="fa-solid fa-palette text-lg text-white"></i>
-            </button>
-          </div>
+          <button onclick="toggleThemePanel(); event.stopPropagation();" class="flex items-center gap-3 bg-slate-900/95 hover:bg-slate-800 border border-purple-500/30 pl-5 pr-2 py-2 rounded-full shadow-2xl transition-all transform hover:scale-105 active:scale-95 focus:outline-none group">
+            <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-purple-600 to-fuchsia-400 flex items-center justify-center shadow-md shadow-purple-600/20 shrink-0">
+              <img src="https://cdn-icons-png.flaticon.com/512/3659/3659899.png" class="w-5 h-5 object-contain block mx-auto">
+            </div>
+            <span class="text-xs font-bold text-purple-400 whitespace-nowrap">مظهر وألوان الموقع</span>
+          </button>
 
-          <!-- زر حجم الخط مع الاسم الوظيفي التوضيحي -->
-          <div class="flex items-center gap-3 select-none">
-            <span class="bg-slate-950/90 text-slate-300 border border-slate-700/50 text-xs font-bold px-3 py-1.5 rounded-lg shadow-xl backdrop-blur-md whitespace-nowrap">التحكم بحجم الخطوط</span>
-            <button onclick="toggleSizePanel(); event.stopPropagation();" class="w-12 h-12 bg-slate-700 hover:bg-slate-600 text-white rounded-full flex items-center justify-center shadow-lg transition-all transform hover:scale-110 active:scale-95" title="التحكم بحجم الخطوط">
-              <i class="fa-solid fa-text-height text-lg text-white"></i>
-            </button>
-          </div>
+          <button onclick="toggleSizePanel(); event.stopPropagation();" class="flex items-center gap-3 bg-slate-900/95 hover:bg-slate-800 border border-slate-700/50 pl-5 pr-2 py-2 rounded-full shadow-2xl transition-all transform hover:scale-105 active:scale-95 focus:outline-none group">
+            <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-400 flex items-center justify-center shadow-md shadow-cyan-500/20 shrink-0">
+              <img src="https://cdn-icons-png.flaticon.com/512/2921/2921210.png" class="w-5 h-5 object-contain block mx-auto">
+            </div>
+            <span class="text-xs font-bold text-slate-300 whitespace-nowrap">التحكم بحجم الخطوط</span>
+          </button>
 
         </div>
 
-        <!-- الزر الرئيسي للمجموعة (دائري وحواف متناسقة ويحتوي على أيقونة الإعدادات الترس الدوارة بامتياز) -->
         <button id="fab-main-btn" class="w-14 h-14 bg-blue-600 hover:bg-blue-500 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 transform active:scale-90 focus:outline-none ring-4 ring-blue-600/20">
           <i id="fab-icon" class="fas fa-cog text-xl text-white animate-spin-slow"></i>
         </button>
     </div>
 
-    <!-- نافذة لايت بوكس لعرض صور التقارير ولوحات التحكم مكبرة -->
     <div id="lightbox" class="fixed inset-0 z-50 bg-slate-950/95 hidden flex-col items-center justify-center p-4" onclick="closeLightbox()">
         <img id="lightbox-img" src="" class="max-w-full max-h-[85vh] rounded-xl object-contain border border-slate-800 shadow-2xl">
     </div>
 
-    <!-- محرك العمليات الشامل والكامل لربط Firebase ومزامنة عناصر DOM وتفعيل السلايدر والتنبيهات -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -629,313 +608,4 @@
                     <div class="relative h-64 sm:h-72 bg-slate-900 overflow-hidden project-slider flex items-center justify-center" data-current-index="0">
                         <div class="slider-wrapper flex w-full h-full transition-transform duration-500"></div>
                         <button onclick="prevSlide(this, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-right"></i></button>
-                        <button onclick="nextSlide(this, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-left"></i></button>
-                        <div class="slider-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-30 hidden"></div>
-                        <span class="absolute top-4 right-4 bg-sky-500 text-slate-950 text-xs px-3 py-1.5 rounded-lg font-extrabold uppercase z-20 DOM-badge" data-editable>${proj.badge || 'محلل بيانات'}</span>
-                        <div class="absolute inset-0 bg-slate-950/80 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition duration-300 edit-only hidden z-20 upload-overlay">
-                            <label class="cursor-pointer bg-sky-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-2">
-                                <i class="fa-solid fa-cloud-arrow-up"></i> <span>رفع صورة لوحة التحكم</span>
-                                <input type="file" accept="image/*" class="hidden" onchange="uploadProjectImageInline(${idx}, this)">
-                            </label>
-                        </div>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col justify-between">
-                        <div>
-                            <div class="flex justify-between items-center mb-3">
-                                <h3 class="text-xl font-bold group-hover:text-sky-400 transition DOM-title" data-editable>${proj.title || ''}</h3>
-                                <span class="text-xs DOM-date" style="color: var(--text-muted);" data-editable>${proj.date || ''}</span>
-                            </div>
-                            <p class="text-sm mb-4 leading-relaxed DOM-desc" style="color: var(--text-main);" data-editable>${proj.desc || ''}</p>
-                        </div>
-                    </div>
-                `;
-                grid.appendChild(card);
-                renderProjectImagesInsideSlider(card.querySelector('.project-slider'), proj.images || [], idx);
-            });
-        }
-
-        function renderProjectImagesInsideSlider(slider, imagesArray, projIdx) {
-            const wrapper = slider.querySelector('.slider-wrapper');
-            const dotsContainer = slider.querySelector('.slider-dots');
-            const prevBtn = slider.querySelector('button[onclick*="prevSlide"]');
-            const nextBtn = slider.querySelector('button[onclick*="nextSlide"]');
-            const uploadOverlay = slider.querySelector('.upload-overlay');
-            
-            if (!imagesArray || imagesArray.length === 0) {
-                slider.classList.add('image-placeholder');
-                wrapper.innerHTML = `
-                    <div class="w-full h-full flex flex-col items-center justify-center text-slate-500">
-                        <i class="fa-regular fa-image text-4xl mb-2"></i>
-                        <span class="text-xs">لم يتم رفع لوحات تحكم. تفعيل التعديل للإضافة.</span>
-                    </div>`;
-                if(uploadOverlay) uploadOverlay.style.display = 'flex';
-                return;
-            }
-
-            slider.classList.remove('image-placeholder');
-            if(uploadOverlay) uploadOverlay.style.display = 'none';
-            if(dotsContainer) dotsContainer.classList.remove('hidden');
-            if(prevBtn) prevBtn.classList.remove('hidden');
-            if(nextBtn) nextBtn.classList.remove('hidden');
-
-            imagesArray.forEach((imgSrc, imgIdx) => {
-                const imgContainer = document.createElement('div');
-                imgContainer.className = "relative w-full h-full flex-shrink-0 project-img-container";
-                imgContainer.innerHTML = `
-                    <img src="${imgSrc}" class="w-full h-full object-cover cursor-pointer" onclick="openLightbox(this.src)">
-                    <button onclick="removeInlineImage(${projIdx}, ${imgIdx}, event)" class="absolute top-4 right-4 bg-red-600 hover:bg-red-700 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold z-50 shadow-2xl edit-only hidden">✕</button>
-                `;
-                wrapper.appendChild(imgContainer);
-
-                const dot = document.createElement('span');
-                dot.className = imgIdx === 0 ? "slider-dot w-5 h-2 rounded-full bg-sky-400 transition-all" : "slider-dot w-2 h-2 rounded-full bg-white/40 transition-all";
-                if(dotsContainer) dotsContainer.appendChild(dot);
-            });
-
-            const floatingAddBtn = document.createElement('div');
-            floatingAddBtn.className = `absolute bottom-3 right-3 z-40 edit-only hidden`;
-            floatingAddBtn.innerHTML = `
-                <label class="cursor-pointer bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-3 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1 shadow-xl">
-                    <i class="fa-solid fa-plus"></i> <span>إضافة صورة</span>
-                    <input type="file" accept="image/*" class="hidden" onchange="uploadProjectImageInline(${projIdx}, this)">
-                </label>
-            `;
-            slider.appendChild(floatingAddBtn);
-        }
-
-        function renderAllTimelineHTML() {
-            const container = document.getElementById('timeline-container');
-            if(!container) return;
-            container.innerHTML = '';
-            localPortfolioData.timeline.forEach((item, idx) => {
-                const div = document.createElement('div');
-                div.className = "relative pr-8 group timeline-item";
-                div.innerHTML = `
-                    <button onclick="removeArrayElement('timeline', ${idx}, event)" class="absolute top-0 left-0 bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-md">✕</button>
-                    <span class="absolute right-0 top-1.5 -mr-[11px] w-5 h-5 rounded-full bg-sky-500 border-4" style="border-color: var(--bg-main);"></span>
-                    <span class="text-xs font-bold block mb-1 DOM-date" style="color: var(--text-muted);" data-editable>${item.date || ''}</span>
-                    <h3 class="text-xl font-bold DOM-title" style="color: var(--text-main);" data-editable>${item.title || ''}</h3>
-                    <p class="text-xs sm:text-sm mb-3 DOM-company" style="color: var(--text-muted);" data-editable>${item.company || ''}</p>
-                    <p class="text-sm leading-relaxed DOM-desc" style="color: var(--text-main);" data-editable>${item.desc || ''}</p>
-                `;
-                container.appendChild(div);
-            });
-        }
-
-        function renderAllCertificatesHTML() {
-            const container = document.getElementById('certificates-container');
-            if(!container) return;
-            container.innerHTML = '';
-            localPortfolioData.certificates.forEach((cert, idx) => {
-                const div = document.createElement('div');
-                div.className = "glass-card p-6 rounded-2xl relative group";
-                div.innerHTML = `
-                    <button onclick="removeArrayElement('certificates', ${idx}, event)" class="absolute top-3 left-3 bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-[10px] opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-sm">✕</button>
-                    <span class="text-xs font-bold block mb-1 DOM-date" style="color: var(--text-muted);" data-editable>${cert.date || ''}</span>
-                    <h3 class="text-lg font-bold mb-2 DOM-title" style="color: var(--text-main);" data-editable>${cert.title || ''}</h3>
-                    <p class="text-xs mb-2 DOM-company" style="color: var(--text-muted);" data-editable>${cert.company || ''}</p>
-                    <p class="text-xs DOM-desc" style="color: var(--text-main);" data-editable>${cert.desc || ''}</p>
-                `;
-                container.appendChild(div);
-            });
-        }
-
-        function renderAllSkillsHTML() {
-            const container = document.getElementById('skills-container');
-            if(!container) return;
-            container.innerHTML = '';
-            localPortfolioData.skills.forEach((skill, idx) => {
-                const span = document.createElement('span');
-                span.className = "border text-sky-400 px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 group relative";
-                span.style.backgroundColor = "var(--bg-main)";
-                span.style.borderColor = "var(--border-color)";
-                span.innerHTML = `
-                    <i class="fa-solid fa-code"></i> <span class="DOM-name" data-editable>${skill.name || ''}</span>
-                    <button onclick="removeArrayElement('skills', ${idx}, event)" class="absolute -top-2 -left-2 bg-red-600 text-white w-4 h-4 rounded-full flex items-center justify-center text-[8px] opacity-0 group-hover:opacity-100 transition edit-only hidden shadow-sm">✕</button>
-                `;
-                container.appendChild(span);
-            });
-        }
-
-        window.uploadProjectImageInline = function(projIdx, inputElement) {
-            const file = inputElement.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    if (!localPortfolioData.projects[projIdx].images) localPortfolioData.projects[projIdx].images = [];
-                    localPortfolioData.projects[projIdx].images.push(e.target.result);
-                    renderAllProjectsHTML();
-                    applyEditVisibility();
-                    showCustomToast('تم إدراج صورة لوحة التحكم بنجاح! الحفظ معلق حتى تضغط زر الإنهاء.', 'info');
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        window.removeInlineImage = function(projIdx, imgIdx, event) {
-            event.preventDefault();
-            event.stopPropagation();
-            localPortfolioData.projects[projIdx].images.splice(imgIdx, 1);
-            renderAllProjectsHTML();
-            applyEditVisibility();
-            showCustomToast('تم حذف الصورة من السلايدر.', 'info');
-        }
-
-        window.removeArrayElement = function(key, idx, event) {
-            event.preventDefault();
-            event.stopPropagation();
-            localPortfolioData[key].splice(idx, 1);
-            if(key === 'projects') renderAllProjectsHTML();
-            if(key === 'timeline') renderAllTimelineHTML();
-            if(key === 'certificates') renderAllCertificatesHTML();
-            if(key === 'skills') renderAllSkillsHTML();
-            applyEditVisibility();
-            showCustomToast('تم حذف العنصر محلياً.', 'info');
-        }
-
-        window.addNewProject = function() {
-            localPortfolioData.projects.push({ title: 'اسم المشروع الجديد', badge: 'الدور الوظيفي', date: '2026', desc: 'تفاصيل وشرح المشروع...', images: [] });
-            renderAllProjectsHTML();
-            applyEditVisibility();
-        }
-
-        window.addNewTimelineItem = function() {
-            localPortfolioData.timeline.push({ title: 'المسمى الوظيفي الجديد', company: 'اسم الشركة', date: '2026', desc: 'المهام والإنجازات...' });
-            renderAllTimelineHTML();
-            applyEditVisibility();
-        }
-
-        window.addNewCertificate = function() {
-            localPortfolioData.certificates.push({ title: 'الشهادة الأكاديمية الجديدة', company: 'الجهة المانحة', date: '2026', desc: 'التفاصيل والتقدير...' });
-            renderAllCertificatesHTML();
-            applyEditVisibility();
-        }
-
-        window.addNewSkill = function() {
-            localPortfolioData.skills.push({ name: 'مهارة جديدة' });
-            renderAllSkillsHTML();
-            applyEditVisibility();
-        }
-
-        function applyEditVisibility() {
-            const editables = document.querySelectorAll('[data-editable], .DOM-title, .DOM-company, .DOM-desc, .DOM-date, .DOM-badge, .DOM-name');
-            const editOnlyElements = document.querySelectorAll('.edit-only');
-            
-            if (editMode && userPassword === SECRET_PASSWORD) {
-                editables.forEach(el => { 
-                    el.setAttribute('contenteditable', 'true'); 
-                    el.classList.add('edit-active'); 
-                });
-                editOnlyElements.forEach(el => el.classList.remove('hidden'));
-            } else {
-                editables.forEach(el => { 
-                    el.removeAttribute('contenteditable'); 
-                    el.classList.remove('edit-active'); 
-                });
-                editOnlyElements.forEach(el => el.classList.add('hidden'));
-            }
-        }
-
-        window.toggleEditMode = function() {
-            if (userPassword !== SECRET_PASSWORD) {
-                showCustomToast('عذراً، لا تمتلك صلاحية تعديل هذا نظام.', 'error');
-                return;
-            }
-
-            editMode = !editMode;
-
-            if (editMode) {
-                applyEditVisibility();
-                showCustomToast('وضع التعديل نشط! انقر على النصوص والبيانات لتحديثها مباشرة ثم احفظ.', 'info');
-            } else {
-                document.querySelectorAll('[data-editable]').forEach(el => {
-                    if (el.id && !el.className.includes('DOM-')) {
-                        localPortfolioData.texts[el.id] = el.innerText;
-                    }
-                });
-
-                const projectCards = document.querySelectorAll('#projects-grid .project-item');
-                projectCards.forEach((card, idx) => {
-                    if(localPortfolioData.projects[idx]) {
-                        localPortfolioData.projects[idx].title = card.querySelector('.DOM-title').innerText;
-                        localPortfolioData.projects[idx].badge = card.querySelector('.DOM-badge').innerText;
-                        localPortfolioData.projects[idx].date = card.querySelector('.DOM-date').innerText;
-                        localPortfolioData.projects[idx].desc = card.querySelector('.DOM-desc').innerText;
-                    }
-                });
-
-                const timelineItems = document.querySelectorAll('#timeline-container .timeline-item');
-                timelineItems.forEach((item, idx) => {
-                    if(localPortfolioData.timeline[idx]) {
-                        localPortfolioData.timeline[idx].title = item.querySelector('.DOM-title').innerText;
-                        localPortfolioData.timeline[idx].company = item.querySelector('.DOM-company').innerText;
-                        localPortfolioData.timeline[idx].date = item.querySelector('.DOM-date').innerText;
-                        localPortfolioData.timeline[idx].desc = item.querySelector('.DOM-desc').innerText;
-                    }
-                });
-
-                const certItems = document.querySelectorAll('#certificates-container > div');
-                certItems.forEach((item, idx) => {
-                    if(localPortfolioData.certificates[idx]) {
-                        localPortfolioData.certificates[idx].title = item.querySelector('.DOM-title').innerText;
-                        localPortfolioData.certificates[idx].company = item.querySelector('.DOM-company').innerText;
-                        localPortfolioData.certificates[idx].date = item.querySelector('.DOM-date').innerText;
-                        localPortfolioData.certificates[idx].desc = item.querySelector('.DOM-desc').innerText;
-                    }
-                });
-
-                const skillItems = document.querySelectorAll('#skills-container > span');
-                skillItems.forEach((item, idx) => {
-                    if(localPortfolioData.skills[idx]) {
-                        localPortfolioData.skills[idx].name = item.querySelector('.DOM-name').innerText;
-                    }
-                });
-
-                applyEditVisibility();
-
-                set(ref(db, 'osamaPortfolioMaster'), localPortfolioData).then(() => {
-                    showCustomToast('تم الحفظ والمزامنة اللحظية لكافة البيانات بنجاح! 🎉', 'success');
-                }).catch((error) => {
-                    showCustomToast('حدث خطأ أثناء المزامنة: ' + error.message, 'error');
-                });
-            }
-        }
-
-        window.updateSliderPosition = function(sliderContainer) {
-            const index = parseInt(sliderContainer.getAttribute('data-current-index')) || 0;
-            const wrapper = sliderContainer.querySelector('.slider-wrapper');
-            wrapper.style.transform = `translateX(${index * 100}%)`;
-            const dots = sliderContainer.querySelectorAll('.slider-dot');
-            dots.forEach((dot, dIdx) => {
-                if (dIdx === index) { dot.className = "slider-dot w-5 h-2 rounded-full bg-sky-400 transition-all"; }
-                else { dot.className = "slider-dot w-2 h-2 rounded-full bg-white/40 transition-all"; }
-            });
-        }
-
-        window.nextSlide = function(btn, e) {
-            e.stopPropagation();
-            const slider = btn.closest('.project-slider');
-            const totalSlides = slider.querySelectorAll('.slider-wrapper .project-img-container').length;
-            if (totalSlides <= 1) return;
-            let index = (parseInt(slider.getAttribute('data-current-index')) || 0) + 1;
-            index = index % totalSlides;
-            slider.setAttribute('data-current-index', index);
-            updateSliderPosition(slider);
-        }
-
-        window.prevSlide = function(btn, e) {
-            e.stopPropagation();
-            const slider = btn.closest('.project-slider');
-            const totalSlides = slider.querySelectorAll('.slider-wrapper .project-img-container').length;
-            if (totalSlides <= 1) return;
-            let index = (parseInt(slider.getAttribute('data-current-index')) || 0) - 1;
-            if (index < 0) index = totalSlides - 1;
-            slider.setAttribute('data-current-index', index);
-            updateSliderPosition(slider);
-        }
-
-        window.openLightbox = function(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.remove('hidden'); document.getElementById('lightbox').classList.add('flex'); }
-        window.closeLightbox = function() { document.getElementById('lightbox').classList.add('hidden'); document.getElementById('lightbox').classList.remove('flex'); }
-    </script>
-</body>
-</html>
+                        <button onclick="nextSlide(this, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text
