@@ -331,7 +331,7 @@
     <div id="toast-container" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-3 pointer-events-none p-4 max-w-md w-full"></div>
 
     <div class="fixed bottom-6 left-6 z-50 flex flex-col items-end gap-4" id="fab-container">
-        <div id="fab-options" class="flex flex-col items-end gap-3.5 transition-all duration-300 transform translate-y-10 opacity-0 pointer-events-none">
+        <div id="fab-options" class="flex flex-col items-end gap-3.5 transition-all duration-300 transform scale-90 opacity-0 hidden">
           
           <button onclick="toggleEditMode()" id="edit-mode-btn" class="edit-only hidden flex items-center gap-3 bg-slate-900/95 hover:bg-slate-800 border border-amber-500/30 pl-5 pr-2 py-2 rounded-full shadow-2xl transition-all transform hover:scale-105 active:scale-95 focus:outline-none group">
             <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-400 flex items-center justify-center shadow-md shadow-amber-500/20 shrink-0">
@@ -427,7 +427,6 @@
         let localPortfolioData = JSON.parse(JSON.stringify(defaultPortfolioData));
         let editMode = false;
 
-        // دالة التنبيهات المحدثة والممركزة أعلى وسط الشاشة تماماً
         window.showCustomToast = function(message, type = 'success') {
             const container = document.getElementById('toast-container');
             if(!container) return;
@@ -462,10 +461,13 @@
             }, 3500);
         }
 
-        // دالة فتح القائمة العائمة (FAB Open)
+        // تحسين دالة فتح وإغلاق القائمة العائمة لتفادي مشاكل الحجب برمجياً
         const openFAB = () => {
-          fabOptions.classList.remove('translate-y-10', 'opacity-0', 'pointer-events-none');
-          fabOptions.classList.add('translate-y-0', 'opacity-100');
+          fabOptions.classList.remove('hidden');
+          setTimeout(() => {
+              fabOptions.classList.remove('scale-90', 'opacity-0');
+              fabOptions.classList.add('scale-100', 'opacity-100');
+          }, 10);
           fabIcon.classList.remove('fa-cog', 'animate-spin-slow');
           fabIcon.classList.add('fa-times');
           fabMainBtn.classList.add('rotate-90', 'bg-red-600', 'ring-red-600/20');
@@ -478,10 +480,12 @@
           }
         };
 
-        // دالة إغلاق القائمة العائمة (FAB Close)
         const closeFAB = () => {
-          fabOptions.classList.add('translate-y-10', 'opacity-0', 'pointer-events-none');
-          fabOptions.classList.remove('translate-y-0', 'opacity-100');
+          fabOptions.classList.remove('scale-100', 'opacity-100');
+          fabOptions.classList.add('scale-90', 'opacity-0');
+          setTimeout(() => {
+              fabOptions.classList.add('hidden');
+          }, 300);
           fabIcon.classList.remove('fa-times');
           fabIcon.classList.add('fa-cog', 'animate-spin-slow');
           fabMainBtn.classList.remove('rotate-90', 'bg-red-600', 'ring-red-600/20');
@@ -501,7 +505,7 @@
 
         fabMainBtn.addEventListener('click', (e) => {
           e.stopPropagation();
-          const isOpen = fabOptions.classList.contains('opacity-100');
+          const isOpen = !fabOptions.classList.contains('hidden') && fabOptions.classList.contains('opacity-100');
           if (isOpen) { closeFAB(); } else { openFAB(); }
         });
 
@@ -511,6 +515,7 @@
           }
         });
 
+        // ربط الدوال بالنطاق العالمي لضمان استجابة أزرار الموديول
         window.toggleSizePanel = function() {
             if (themeSelectionPanel) themeSelectionPanel.classList.add('hidden');
             document.getElementById('size-control-panel').classList.toggle('hidden');
@@ -608,4 +613,72 @@
                     <div class="relative h-64 sm:h-72 bg-slate-900 overflow-hidden project-slider flex items-center justify-center" data-current-index="0">
                         <div class="slider-wrapper flex w-full h-full transition-transform duration-500"></div>
                         <button onclick="prevSlide(this, event)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-right"></i></button>
-                        <button onclick="nextSlide(this, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text
+                        <button onclick="nextSlide(this, event)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-slate-950/70 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs transition opacity-0 group-hover:opacity-100 z-30 hidden"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div class="slider-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-30 hidden"></div>
+                        <span class="absolute top-4 right-4 bg-sky-500 text-slate-950 text-xs px-3 py-1.5 rounded-lg font-extrabold uppercase z-20 DOM-badge" data-editable>${proj.badge || 'محلل بيانات'}</span>
+                        <div class="absolute inset-0 bg-slate-950/80 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition duration-300 edit-only hidden z-20 upload-overlay">
+                            <label class="cursor-pointer bg-sky-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-2">
+                                <i class="fa-solid fa-cloud-arrow-up"></i> <span>رفع صورة لوحة التحكم</span>
+                                <input type="file" accept="image/*" class="hidden" onchange="uploadProjectImageInline(${idx}, this)">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <h3 class="text-xl font-bold group-hover:text-sky-400 transition DOM-title" data-editable>${proj.title || ''}</h3>
+                                <span class="text-xs DOM-date" style="color: var(--text-muted);" data-editable>${proj.date || ''}</span>
+                            </div>
+                            <p class="text-sm mb-4 leading-relaxed DOM-desc" style="color: var(--text-main);" data-editable>${proj.desc || ''}</p>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+                renderProjectImagesInsideSlider(card.querySelector('.project-slider'), proj.images || [], idx);
+            });
+        }
+
+        function renderProjectImagesInsideSlider(slider, imagesArray, projIdx) {
+            const wrapper = slider.querySelector('.slider-wrapper');
+            const dotsContainer = slider.querySelector('.slider-dots');
+            const prevBtn = slider.querySelector('button[onclick*="prevSlide"]');
+            const nextBtn = slider.querySelector('button[onclick*="nextSlide"]');
+            const uploadOverlay = slider.querySelector('.upload-overlay');
+            
+            if (!imagesArray || imagesArray.length === 0) {
+                slider.classList.add('image-placeholder');
+                wrapper.innerHTML = `
+                    <div class="w-full h-full flex flex-col items-center justify-center text-slate-500">
+                        <i class="fa-regular fa-image text-4xl mb-2"></i>
+                        <span class="text-xs">لم يتم رفع لوحات تحكم. تفعيل التعديل للإضافة.</span>
+                    </div>`;
+                if(uploadOverlay) uploadOverlay.style.display = 'flex';
+                return;
+            }
+
+            slider.classList.remove('image-placeholder');
+            if(uploadOverlay) uploadOverlay.style.display = 'none';
+            if(dotsContainer) dotsContainer.classList.remove('hidden');
+            if(prevBtn) prevBtn.classList.remove('hidden');
+            if(nextBtn) nextBtn.classList.remove('hidden');
+
+            imagesArray.forEach((imgSrc, imgIdx) => {
+                const imgContainer = document.createElement('div');
+                imgContainer.className = "relative w-full h-full flex-shrink-0 project-img-container";
+                imgContainer.innerHTML = `
+                    <img src="${imgSrc}" class="w-full h-full object-cover cursor-pointer" onclick="openLightbox(this.src)">
+                    <button onclick="removeInlineImage(${projIdx}, ${imgIdx}, event)" class="absolute top-4 right-4 bg-red-600 hover:bg-red-700 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold z-50 shadow-2xl edit-only hidden">✕</button>
+                `;
+                wrapper.appendChild(imgContainer);
+
+                const dot = document.createElement('span');
+                dot.className = imgIdx === 0 ? "slider-dot w-5 h-2 rounded-full bg-sky-400 transition-all" : "slider-dot w-2 h-2 rounded-full bg-white/40 transition-all";
+                if(dotsContainer) dotsContainer.appendChild(dot);
+            });
+
+            const floatingAddBtn = document.createElement('div');
+            floatingAddBtn.className = `absolute bottom-3 right-3 z-40 edit-only hidden`;
+            floatingAddBtn.innerHTML = `
+                <label class="cursor-pointer bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-3 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1 shadow-xl">
+                    <i class="fa-solid fa-plus"></i> <span>إضافة صورة</span>
+                    <input type="file" accept="
