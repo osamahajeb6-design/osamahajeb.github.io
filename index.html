@@ -703,42 +703,32 @@
             });
         }
 
-        // تم إضافة معالجة الأخطاء وحماية نطاق الاتصال للتغلب على قيود متصفح كروم بعد مسح الكاش
-        const dbRef = ref(db, 'osamaPortfolioMaster');
-        onValue(dbRef, (snapshot) => {
-            try {
-                const data = snapshot.val();
-                
-                if (data) {
-                    localPortfolioData = data;
-                    if (!localPortfolioData.projects || localPortfolioData.projects.length === 0) localPortfolioData.projects = defaultPortfolioData.projects;
-                    if (!localPortfolioData.timeline || localPortfolioData.timeline.length === 0) localPortfolioData.timeline = defaultPortfolioData.timeline;
-                    if (!localPortfolioData.certificates || localPortfolioData.certificates.length === 0) localPortfolioData.certificates = defaultPortfolioData.certificates;
-                    if (!localPortfolioData.skills || localPortfolioData.skills.length === 0) localPortfolioData.skills = defaultPortfolioData.skills;
-                    if (!localPortfolioData.texts) localPortfolioData.texts = {};
-                    if (!localPortfolioData.current_theme) localPortfolioData.current_theme = "cyber_midnight";
-                } else {
-                    localPortfolioData = JSON.parse(JSON.stringify(defaultPortfolioData));
-                }
-
-                Object.keys(localPortfolioData.texts).forEach(id => {
-                    const el = document.getElementById(id);
-                    if (el) el.innerText = localPortfolioData.texts[id];
-                });
-
-                applyThemeStyles(localPortfolioData.current_theme);
-                renderAllProjectsHTML();
-                renderAllTimelineHTML();
-                renderAllCertificatesHTML();
-                renderAllSkillsHTML();
-                applyEditVisibility();
-            } catch (err) {
-                console.error("Firebase Read Error: ", err);
-                showCustomToast('خطأ في استيراد البيانات، يرجى إعادة تحميل الصفحة.', 'error');
+        onValue(ref(db, 'osamaPortfolioMaster'), (snapshot) => {
+            const data = snapshot.val();
+            
+            if (data) {
+                localPortfolioData = data;
+                if (!localPortfolioData.projects || localPortfolioData.projects.length === 0) localPortfolioData.projects = defaultPortfolioData.projects;
+                if (!localPortfolioData.timeline || localPortfolioData.timeline.length === 0) localPortfolioData.timeline = defaultPortfolioData.timeline;
+                if (!localPortfolioData.certificates || localPortfolioData.certificates.length === 0) localPortfolioData.certificates = defaultPortfolioData.certificates;
+                if (!localPortfolioData.skills || localPortfolioData.skills.length === 0) localPortfolioData.skills = defaultPortfolioData.skills;
+                if (!localPortfolioData.texts) localPortfolioData.texts = {};
+                if (!localPortfolioData.current_theme) localPortfolioData.current_theme = "cyber_midnight";
+            } else {
+                localPortfolioData = JSON.parse(JSON.stringify(defaultPortfolioData));
             }
-        }, (error) => {
-            console.error("Database connection lost: ", error);
-            showCustomToast('فشل الاتصال بقاعدة البيانات. تأكد من إعدادات المتصفح.', 'error');
+
+            Object.keys(localPortfolioData.texts).forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.innerText = localPortfolioData.texts[id];
+            });
+
+            applyThemeStyles(localPortfolioData.current_theme);
+            renderAllProjectsHTML();
+            renderAllTimelineHTML();
+            renderAllCertificatesHTML();
+            renderAllSkillsHTML();
+            applyEditVisibility();
         });
 
         function renderAllProjectsHTML() {
